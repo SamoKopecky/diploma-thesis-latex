@@ -1,0 +1,187 @@
+% Files should be in encoding corresponding to the setting of \usepackage[...]{inputenc}
+
+\documentclass[%      Basic settings of the document
+%  draft,    				  % Turn on draft compilation
+  12pt,       				% 12 points default font size
+	t,                  % The slides should always start at their top (not vertically centered)
+	aspectratio=1610,   % Ratio of width and height is 16:10 (corresponding to lecture rooms at Technická 12),
+	                    % other options are 43, 149, 169, 54, 32.
+	unicode,						% Bookmarks and metainformation in the compiled PDF will be unicode
+]{beamer}				    	% Document type 'beamer' is the most often used one for slides
+%\usepackage{etex}
+
+\usepackage[utf8]		  %	The input files are in UTF-8 (unicode)
+	{inputenc}					% Package for setting input encoding
+	
+\usepackage{graphicx} % Package for inclusion of external graphics
+
+\usepackage[
+	nohyperlinks				% No hyperlinks to the list of acronyms will be created
+]{acronym}						% Package 'acronym' for automated handling of abbreviations and symbols
+											% Neccessary for the 'acronym' environment of 'thesis' to work
+
+\usepackage{cmap} 		% This package allows the final PDF
+											% is fully "searchable" and "copyable"
+
+%\usepackage{amsmath} %for typesetting advanced mathematics
+
+\usepackage{booktabs} % Package allowing the use of commands \toprule, \midrule, \bottomrule
+                      % when creating tables
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%                   Definitions                 %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{settings}      % please go into that file and fill information about you, your topic etc.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%   Setting values that appear in the Properties of the PDF  %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% If 'hyperref' package is loaded then command '\pdfsettings' can be simply used
+\pdfsettings
+%  However, you can set the individual fields by hand:
+%\hypersetup{
+%  pdftitle={Title of the thesis},    	% 'Document Title' field
+%  pdfauthor={Author name},   	        % 'Author' field
+%  pdfsubject={Type of the document}, 	% 'Subject' field
+%  pdfkeywords={Keywords}           	  % 'Keywords' field
+%}
+\hypersetup{pdfpagemode=FullScreen}  % when opening the file with Adobe Reader,
+                                     % automatically open it in fullscreen mode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetheme{VUT} 				% colours and layout corresponding to the BUT style
+% alternatively, other styles can be used, such as
+%\usetheme{Darmstadt} \usecolortheme{default2}
+% but with no guarantees
+\logoheader					% inserts small BUT FEEC logotype in the header; leave this in use
+
+
+
+
+\begin{document}
+
+% if you do not use the following command, the lower right corner of each slide will contain active navigation symbols
+\disablenavigationsymbols
+
+% the title slide will be created without header, footer etc.
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% First slide should contain the goals of the thesis
+\begin{frame} 
+	\frametitle{Goals}
+	\begin{itemize}
+			\item Study
+			\item Describe
+				\begin{itemize}
+					\item the studied
+				\end{itemize}
+			\item Implement
+				\begin{itemize}
+					\item older
+					\item new
+				\end{itemize}
+			\item Compare, evaluate
+				\begin{itemize}
+						\item results
+				\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame} 
+	\frametitle{Key Tools}
+
+	% environment 'alertblock' for alerting the particular info
+	\begin{alertblock}{The key tool in this thesis is the Euler formula}
+		$$\eul^{\jmag x}=\cos x + \jmag\sin x$$
+	\end{alertblock}
+
+	\vspace{4ex}
+	The Euler identity is the special case of the above, with $x=\uppi$\,:
+
+	% environment 'block'
+	\begin{block}{Euler identity}
+		$$\eul^{\jmag \uppi}=\cos \uppi + \jmag\sin \uppi,$$\\
+		from which it follows that
+		$$\eul^{\jmag \uppi}+1=0.$$
+	\end{block}
+\end{frame} 
+
+
+%%%%%%%%%%%%%
+\begin{frame} 
+	\frametitle{Printed Circuit Board}
+	
+	\begin{columns}[T] 								% columns environment, top placement
+		\begin{column}{0.4\textwidth}		% first column
+			Depicted model contains:\\[2ex]
+			%
+			\begin{itemize}
+				\item Board
+				\item Signals
+				\item Battery
+			\end{itemize}
+		\end{column}
+		%
+		\begin{column}{0.6\textwidth}		% second column
+			\begin{figure}%	
+				\centering
+				\vspace{1cm}	              % horizontal space
+				\includegraphics[width=0.8\columnwidth]{pict/soucastky}
+			\end{figure}
+		\end{column}
+	\end{columns}											% end of the main environment
+\end{frame}
+
+
+%%%%%%%%%%%%%
+\begin{frame} 
+	\frametitle{Results}
+	\vspace{1cm}
+	\begin{table}[]
+		\centering
+		\caption{Results of measurement in mobile networks}
+		\label{tab:table.results}
+			\begin{tabular}{lcc}
+				\toprule
+					Technology  & Speed, download [kB/s] & Speed, upload [kB/s] \\
+				\midrule
+					GPRS (2,5G)	& 7,2 	& 3,6\\
+					UMTS 3G     & 48 		& 48\\
+					HSPA (3,5G)	&	1\,706	&	720\\
+					LTE (4G) 		& 40\,750 & 10\,750\\
+				\bottomrule                                       
+			\end{tabular}
+	\end{table}
+\end{frame}
+
+
+%%%%%%%%%%%%%
+\begin{frame} 
+	\frametitle{Conclusion}
+	\dots
+\end{frame}
+
+
+% thanks
+\begin{frame}[c] 
+% no frametitle
+	\frametitle{\mbox{ }}
+	\begin{center}
+		{\Huge Thank you for your attention!}
+	\end{center}
+\end{frame}
+
+% opponent's questions
+\frame{
+\frametitle{Questions of the Opponent}
+	\emph{Is there some relationship between your formula (1.2) and integral Maxwell equations?}\\[2ex]
+	%
+	Well, yes, it might be\,\dots
+}
+
+\end{document}

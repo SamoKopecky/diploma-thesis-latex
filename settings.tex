@@ -1,0 +1,103 @@
+% Variable fields such as your name, title of the thesis atc. are set in this file.
+% The file is SHARED between the thesis text and the presentation --- no need to set anything twice.
+
+\usepackage[
+  english,			% English study program
+%%% Choose one of the thesis types
+	semestral,		%	semestral project (abstracts, declaration and acknowledgements are excluded) (default)
+  %bachelor,			%	Bachelor's thesis
+  %master,			% Master's thesis
+  %treatise,			% Treatise on doctoral thesis
+  %doctoral,				% Doctoral thesis
+%%% Choose one of the options:
+%  left,				% Equations and captions will be aligned to the left
+  center,			% Equations and captions will be centered (default)
+]{thesis}   % Package for typesetting theses
+
+
+%%% First and last name of the thesis author, following the scheme
+% [titles in front]{FirstName}{LastName}[titles after]
+% If the author does not have a title in front/after, just delete the entire string '[...]'
+\author[Bc.]{FirstName}{LastName}
+
+%%% Brno University of Technology identification number of author (BUT ID)
+\butid{007}
+
+%%% First and last name of the advisor
+% [titles in front]{FirstName}{LastName}[titles after]
+% If the author does not have a title in front/after, just delete the entire string '[...]'
+% [titles in front]{FirstName}{LastName}[titles after]
+\advisor[prof.\ Ing.]{FirstName}{LastName}[CSc.]
+
+%%% First and last name of the opponent
+% [titles in front]{FirstName}{LastName}[titles after]
+% Makes use only in the presentation for defense;
+% in case you do not want the opponent to be shown on the title slide, just comment out the command
+% The opponent is not shown in case of the semestral thesis (no opponent exists actually at that time)
+% In the case of a doctoral thesis, two to three oponents are typically involved. In such a case, if you want to have them on the title slide, please go to the definition of "VUT title page" in the thesis.sty file, uncomment and adapt their names.
+\opponent[doc.\ Mgr.]{FirstName}{LastName}[Ph.D.]
+
+%%% Thesis title
+%  In the case of a very long thesis title, it may happen that it does not fit
+%  into the slot in the footbar of the slides. You may use the command
+%  \def\insertshorttitle{Shortened th.\ title}
+%  where the shortened version of the title appears as the parameter.
+%  If you do not want to shorten the title, you will have to redefine how the slide footbar
+%  is generated, see: https://bit.ly/3EJTp5A
+\title{Title of Student's Thesis}
+
+%%% Study program/specialization
+\specialization{Teleinformatics} %Teleinformatika
+
+%%% Department
+%\department{Department of Control and Instrumentation}  %Ústav automatizace a měřicí techniky
+%\department{Department of Biomedical Engineering}       %Ústav biomedicínského inženýrství
+%\department{Department of Electrical Power Engineering} %Ústav elektroenergetiky
+%\department{Department of Electrical and Electronic Technology}   %Ústav elektrotechnologie
+%\department{Department of Physics}                      %Ústav fyziky
+%\department{Department of Foreign Languages}            %Ústav jazyků
+%\department{Department of Mathematics}                  %Ústav matematiky
+%\department{Department of Microelectronics}             %Ústav mikroelektroniky
+%\department{Department of Radio Electronics}            %Ústav radioelektroniky
+%\department{Department of Theoretical and Experimental Electrical Engineering}  %Ústav teoretické a experimentální elektrotechniky
+\department{Department of Telecommunications}           %Ústav telekomunikací
+%\department{Department of Power Electrical and Electronic Engineering}   %Ústav výkonové elektrotechniky a elektroniky
+
+%%% Faculty
+%\faculty{Faculty of Architecture}   %Fakulta architektury
+\faculty{Faculty of Electrical Engineering and~Communication}   %Fakulta elektrotechniky a~komunikačních technologií
+%\faculty{Faculty of Chemistry}   %Fakulta chemická
+%\faculty{Faculty of Information Technology}   %Fakulta informačních technologií
+%\faculty{Faculty of Business and Management}   $Fakulta podnikatelská
+%\faculty{Faculty of Civil Engineering}   %Fakulta stavební
+%\faculty{Faculty of Mechanical Engineering}   %Fakulta strojního inženýrství
+%\faculty{Faculty of Fine Arts}   %Fakulta výtvarných umění
+%
+%Logotype selection (in square brackets short logo, in curly brackets full logo):
+\facultylogo[logo/FEEC_abbreviation_color_PANTONE_EN]{logo/UTKO_color_PANTONE_EN}
+
+
+%%% Graduate year (typically the calendar year of the defense)
+\graduateyear{2033}
+%%% Academic year (typically the year of solution of the thesis in the format n/n+1)
+\academicyear{2032/33}
+% Date of the defense (makes use only in the presentation slides)
+\date{15 June 2033} 
+
+%%% Place of the defense
+\city{Brno}
+
+%%% Abstract
+\abstract{%
+Abstract in English.
+}
+
+%%% Keywords
+\keywrds{%
+Keywords in English
+}
+
+%%% Thanks and acknowledgement
+\acknowledgement{%
+I would like to thank the advisor of my thesis, Ing.~XXX YYY, Ph.D.\ for his/her valuable comments etc.
+}%

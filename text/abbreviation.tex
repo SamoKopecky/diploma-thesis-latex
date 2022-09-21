@@ -1,0 +1,26 @@
+\cleardoublepage
+\chapter*{\listofabbrevname}
+\phantomsection
+\addcontentsline{toc}{chapter}{\listofabbrevname}
+
+\begin{acronym}[HowMuchSpace]
+
+	\acro{abbrTemp}		% label of the abbrev.
+		[Width of the left column of this list]								% symbol
+		{is governed by the width of the parameter of \texttt{acronym} (see row~1 of the listing at page~\pageref{lst:abbrevs})}
+											% full text
+
+	\acro{abbrDummy}
+		[HowMuchSpace]
+		{only to demonstrate how the space of the left column is reserved}
+
+	\acro{DSP}		% label/symbol of the abbrev.
+		{Digital Signal Processing}
+											% full text
+	%%% bsymfvz %label for selecting a block with listings
+	\acro{symfs}						% label of the abbrev.
+		[\ensuremath{f_\textind{s}}]  % symbol
+		{sampling frequency}					% full text
+	%%% esymfvz %label for selecting a block with listings
+
+\end{acronym}
