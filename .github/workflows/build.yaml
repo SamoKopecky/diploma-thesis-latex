@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build and publish
-        uses: SamoKopecky/.github/.github/actions/build-latex@main
+        uses: SamoKopecky/.github/.github/actions/publish-pdf-from-tex@main
         with:
           file_name: thesis
           github_token: ${{ secrets.GITHUB_TOKEN }}
