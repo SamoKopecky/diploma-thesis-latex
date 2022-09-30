@@ -16,3 +16,4 @@ jobs:
         with:
           file_name: thesis
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.client_payload.repository }}
