@@ -1,4 +1,4 @@
-name: Build pdf file
+name: Build and publish
 
 on:
   push:
@@ -8,58 +8,12 @@ on:
       - "**/*.tex"
 
 jobs:
-  build-pdf:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone repo
-        uses: actions/checkout@v3
+      - name: Build and publish
+        uses: SamoKopecky/.github/.github/actions/publish-pdf-from-tex@main
         with:
-          repository: '${{ github.event.client_payload.repository }}'
-
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%H-%M-%S-%d-%m-%Y')"
-
-      - name: Install dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y texlive \
-          texlive-plain-generic \
-          texlive-latex-extra \
-          texlive-lang-czechslovak \
-          texlive-lang-greek \
-          texlive-font-utils \
-          lmodern \
-          texlive-base
-
-      - name: Build pdfs
-        run: |
-          # Needs two rounds of compiling
-          pdflatex thesis.tex
-          pdflatex thesis.tex
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.date.outputs.date }}
-          release_name: ${{ steps.date.outputs.date }}
-          body: |
-            Release for ${{ steps.date.outputs.date }}
-          draft: false
-          prerelease: false
-    
-      - name: Upload pdf
-        id: upload-pdf
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./thesis.pdf
-          asset_name: thesis.pdf
-          asset_content_type: application/pdf
+          file_name: thesis
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.client_payload.repository }}
