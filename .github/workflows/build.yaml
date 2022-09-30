@@ -3,7 +3,7 @@ name: Build pdf file
 on:
   push:
     branches:
-      - main
+      - ci
     paths:
       - "**/*.tex"
 
