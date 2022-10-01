@@ -4,8 +4,8 @@
 %  draft,    				  % Turn on draft compilation
   12pt,       				% 12 points default font size
   a4paper,    				% Paper format A4
-  %oneside,      			% One-sided print
-	twoside,      			% Two-sided print (chapters and other important blocks begin at odd-numbered pages)
+  oneside,      			% One-sided print
+	%twoside,      			% Two-sided print (chapters and other important blocks begin at odd-numbered pages)
 	unicode,						% Bookmarks and metainformation in the compiled PDF will be unicode
 ]{report}				    	% Report class, suitable for typesetting theses
 
@@ -190,25 +190,10 @@
 \cleardoublepage\pagestyle{plain}   % turn page-numbering on
 
 %Including chapters and appendices should be preferrably done with \include instead of \input
-%%% Include the file with Introduction
 \include{text/introduction}
-
-%%% Include the file with Introduction
-\include{text/objectives}
-
-%%% Include the file with the project solution
-\include{text/solution}
-
-%%% Include the file with the results
-\include{text/results}
-
-%%% Include the file with Conclusion
+\include{text/1st_chapter/theory}
 \include{text/conclusion}
-
-%%% Include the file with references
 \include{text/bibliography}
-
-%%% Include the file with the list of symbols, quantities and abbreviations
 \include{text/abbreviation}
 
 %%% Apendices begin here
