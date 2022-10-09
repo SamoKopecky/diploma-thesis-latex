@@ -1,0 +1,37 @@
+\newcommand{\object}[5][1]{
+    \IfStrEq{#2}{obr}{
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=#1\textwidth]{#3}
+            \caption{#4}
+            \label{#5}
+        \end{figure}
+    }{}
+    \IfStrEq{#2}{tab}{
+        \begin{table}[htbp]
+            \centering
+            \caption{#4}
+            \input{#3}
+            \label{#5}
+        \end{table}
+    }{}
+}
+
+\newcommand{\listing}[5]{
+\lstinputlisting[frame=single,numbers=left,caption={#2},label=#3,firstline=#4,lastline=#5,firstnumber=#4]{#1}
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\codequote}[1]{\textquotedblright#1\textquotedblright}
+
+\newcommand{\minisection}[1]{\noindent{}\textbf{#1}}
+
+\newcommand{\question}[3]{
+\begin{frame}[t]
+    \frametitle{#1}
+	\emph{#2}\\[2ex]
+	%
+	#3
+\end{frame}
+}

@@ -1,0 +1,15 @@
+
+Cryptography is an essential part of internet communication. It makes sure an established connection has three required properties\cite{Bernstein149}:
+\begin{itemize}
+  \item \textbf{Confidentiality} -- data can't be read by 3rd parties.
+  \item \textbf{Integrity} -- data can't be edited by 3rd parties.
+  \item \textbf{Authenticity} -- communicating parties can't be impersonated.
+\end{itemize}
+Many cryptographic primitives exist in cryptography to ensure the aforementioned properties. The most commonly used protocol that utilizes these algorithms and specifications is TLS (\acl{TLS}).
+
+Building blocks for primitives are cryptographic algorithms and specifications. These are mathematical problems that can be solved in polynomial time ($O(n^x)$) with the knowledge of some secret. Without the knowledge of this secret the problem can only be solved in exponential time ($O(x^n)$). This means if a new algorithm is found that is able to solve the problem without the knowledge the secret in polynomial time, the underling cryptographic primitive is broken and can no longer be safely used in any cryptographic algorithms or specifications.\cite{Smart2004}
+
+Cryptography can be split into symmetric cryptography and asymmetric cryptography. These groups and their underling cryptographic primitives will be described in more detail in the following sections (sections \ref{sec:1_1} and \ref{sec:1_2}).
+
+
+% Describe what is the current state of classical cryptography. Mention that the current key lengths for RSA, DSA are not sufficiently big enough to resist quantum computers. Explain the problems that current algorithms use. 
