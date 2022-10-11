@@ -276,3 +276,5 @@ TSWLatexianTemp*
 *.lpz
 presentation.pdf
 thesis.pdf
+
+.vscode/settings.json
