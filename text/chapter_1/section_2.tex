@@ -1,0 +1,20 @@
+Hash functions work by digesting a message of arbitrary size into a fixed sized output or a variable sized output (SHAKE hash function) called the \textit{hash value}. The digest process can also be described as a transformation of a set bits into another set of bits:
+\begin{equation}
+  H(k, n): \{0,1\}^k \rightarrow \{0,1\}^n,
+\end{equation}
+where $k$ stands for the size of the input message and $n$ stands for the output size. For a hash function to be secure it also must posses these three properties\cite{Paar2010}:
+\begin{itemize}
+  \item \textbf{preimage resistance} -- it is computationally infeasible to find the input of an already generated hash value,
+  \item \textbf{second preimage resistance} -- for a given hash value, it is computationally infeasible to generate two inputs that map to the same hash value,
+  \item \textbf{collision resistance} -- there mustn't exist two different inputs that generate the same hash value.
+\end{itemize}
+
+How the digest process works internally depends on the specific hash function being used, it doesn't have a single definition. For example a hash function can be based on a Merkle-Damag\aa rd construction. In this construction the message io firstly split into blocks. With the help of a compression function the blocks are then consumed one by one. The output of one compressed block is then fed back to the input of another round of compression, until all the blocks are consumed \cite{Smart2004}. 
+
+Other types of constructions also exists, for example hash functions based the KECCEK construction also called the sponge construction. The main idea behind the sponge construction is that after each round of compression, a number of bits are firstly absorbed by the compression function and then at some point some bits are taken out of each compression iteration that make up the final hash value. How many bits are absorbed or taken out is dictated by the hash function parameters. \cite{1Od8f4TuMxetfmHu} Examples of specific hash functions are listed in table \ref{tab:hash_func}. Since SHAKE can generate any sized output, its hash value is dictated by the parameter $d$.
+
+\object{tab}{tables/hash_functions}{Modern hash functions \cite{rd1wUlxEgliEynii}\cite{1Od8f4TuMxetfmHu}}{tab:hash_func}
+
+Hash functions are used in many other ares of cryptography. As an example they are used in digital signature schemes (section TODO Ref ), message authentication codes (\acs{MAC}), pseudo random number generators and even public-key quantum resistant cryptography \cite{Chen2016}. 
+
+
