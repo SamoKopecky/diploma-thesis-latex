@@ -2,10 +2,10 @@ The other important type of cryptography is asymmetric cryptography. Compared to
 
 An encryption algorithm can be seen in figure \ref{img:asym_crypto}. \textit{Alice} can encrypt a document using \textit{Bobs} public key since the public key is shared with everyone and \textit{Bob} wants anyone to send him encrypted messages. After receiving the encrypted document \textit{Bob} can decrypt it with his private key since he is the only one that owns it. \cite{Smart2004}
 
-\object[0.9]{obr}{pict/asym_crypto.pdf}{Asymmetric encryption cipher}{img:asym_crypto}
+\object[0.9]{obr}{pictures/asym_crypto.pdf}{Asymmetric encryption cipher}{img:asym_crypto}
 
 Digital signature schemes serve as a tool to verify the origin of data. The following process is illustrated by figure \ref{img:asym_sign}. If \textit{Bob} wants anyone who receives his document to be able to verify he was the one who created it, he signs the document with his private key. Everyone else including \textit{Alice} can check whether the document came from \textit{Bob} by verifying the signature with his pubic key. If the verification succeeds the verifier can be sure that \textit{Bob} generated the signature because he is the only that posses it. \cite{Paar2010}
 
 In practice \textit{Bob} would be signing a hash of the document instead of the document itself, and would also send a the unsigned document. \textit{Alice} would be comparing hashes hash of the document with the verified signature. This is because as mentioned before asymmetric algorithms are slow relative to symmetric algorithms and signing all of the data is unnecessary when signing the hash of a some data servers the same purpose. Hash functions are described in the previous section of this chapter (section \ref{sec:hash_functions}).
 
-\object[0.9]{obr}{pict/asym_sign.pdf}{Digital signature scheme}{img:asym_sign}
+\object[0.9]{obr}{pictures/asym_sign.pdf}{Digital signature scheme}{img:asym_sign}

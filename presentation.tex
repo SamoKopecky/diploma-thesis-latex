@@ -1,112 +1,128 @@
-% Files should be in encoding corresponding to the setting of \usepackage[...]{inputenc}
+% Soubory musí být v kódování, které je nastaveno v příkazu \usepackage[...]{inputenc}
 
-\documentclass[%      Basic settings of the document
-%  draft,    				  % Turn on draft compilation
-  12pt,       				% 12 points default font size
-	t,                  % The slides should always start at their top (not vertically centered)
-	aspectratio=1610,   % Ratio of width and height is 16:10 (corresponding to lecture rooms at Technická 12),
-	                    % other options are 43, 149, 169, 54, 32.
-	unicode,						% Bookmarks and metainformation in the compiled PDF will be unicode
-]{beamer}				    	% Document type 'beamer' is the most often used one for slides
+\documentclass[%        Základní nastavení
+  %draft,    				  % Testovací překlad
+  12pt,       				% Velikost základního písma je 12 bodů
+	t,                  % obsah slajdů bude vždy začínat od shora (nebude vertikálně centrovaný)
+	aspectratio=1610,   % poměr stran bude 16:10 (všechny projektory v učebnách na Technické 12 Brno),
+	                    % další volby jsou 43, 149, 169, 54, 32.
+	unicode,						% Záložky a informace budou v kódování unicode
+]{beamer}				    	% Dokument třídy 'zpráva', vhodná pro sazbu závěrečných prací s kapitolami
 %\usepackage{etex}
 
-\usepackage[utf8]		  %	The input files are in UTF-8 (unicode)
-	{inputenc}					% Package for setting input encoding
+\usepackage[utf8]		  % Kódování zdrojových souborů je v UTF-8
+	{inputenc}					% Balíček pro nastavení kódování zdrojových souborů
 	
-\usepackage{graphicx} % Package for inclusion of external graphics
+\usepackage{graphicx} % Balíček 'graphicx' pro vkládání obrázků
+											% Nutné pro vložení logotypů školy a fakulty
 
-\usepackage[
-	nohyperlinks				% No hyperlinks to the list of acronyms will be created
-]{acronym}						% Package 'acronym' for automated handling of abbreviations and symbols
-											% Neccessary for the 'acronym' environment of 'thesis' to work
+\usepackage[          % Balíček 'acronym' pro sazby zkratek a symbolů
+	nohyperlinks				% Nebudou tvořeny hypertextové odkazy do seznamu zkratek
+]{acronym}						
+											% Nutné pro použití prostředí 'acronym' balíčku 'thesis'
 
-\usepackage{cmap} 		% This package allows the final PDF
-											% is fully "searchable" and "copyable"
+%% Balíček hyperref je volán třídou beamer automaticky, proto není třeba následujícího kódu:
+%\usepackage[
+%	breaklinks=true,		% Hypertextové odkazy mohou obsahovat zalomení řádku
+%	hypertexnames=false % Názvy hypertextových odkazů budou tvořeny
+%											% nezávisle na názvech TeXu
+%]{hyperref}						% Balíček 'hyperref' pro sazbu hypertextových odkazů
+%											% Nutné pro použití příkazu 'nastavenipdf' balíčku 'thesis'
 
-%\usepackage{amsmath} %for typesetting advanced mathematics
+\usepackage{cmap} 		% Balíček cmap zajišťuje, že PDF vytvořené `pdflatexem' je
+											% plně "prohledávatelné" a "kopírovatelné"
 
-\usepackage{booktabs} % Package allowing the use of commands \toprule, \midrule, \bottomrule
-                      % when creating tables
+%\usepackage{upgreek}	% Balíček pro sazbu stojatých řeckých písmem
+											%% např. stojaté pí: \uppi
+											%% např. stojaté mí: \upmu (použitelné třeba v mikrometrech)
+											%% pozor, grafická nekompatibilita s fonty typu Computer Modern!
+
+%\usepackage{amsmath} %balíček pro sabu náročnější matematiky
+
+\usepackage{booktabs} % Balíček, který umožňuje v tabulce používat
+                      % příkazy \toprule, \midrule, \bottomrule
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%                   Definitions                 %%%%%%%%%%
+%%%%%%      Definice informací o dokumentu             %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{settings}      % please go into that file and fill information about you, your topic etc.
-
+\input{nastaveni}      % v tomto souboru doplňte údaje o sobě, o názvu práce...
+                       % (tento soubor je sdílený s textem práce)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%   Setting values that appear in the Properties of the PDF  %%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% If 'hyperref' package is loaded then command '\pdfsettings' can be simply used
+%%%%%%     Nastavení polí ve Vlastnostech dokumentu PDF      %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Při vloženém balíčku 'hyperref' lze použít příkaz '\pdfsettings'
 \pdfsettings
-%  However, you can set the individual fields by hand:
+%  Nastavení polí je možné provést také ručně příkazem:
 %\hypersetup{
-%  pdftitle={Title of the thesis},    	% 'Document Title' field
-%  pdfauthor={Author name},   	        % 'Author' field
-%  pdfsubject={Type of the document}, 	% 'Subject' field
-%  pdfkeywords={Keywords}           	  % 'Keywords' field
+%  pdftitle={Název studentské práce},    	% Pole 'Document Title'
+%  pdfauthor={Autor studenstké práce},   	% Pole 'Author'
+%  pdfsubject={Typ práce}, 						  	% Pole 'Subject'
+%  pdfkeywords={Klíčová slova}           	% Pole 'Keywords'
 %}
-\hypersetup{pdfpagemode=FullScreen}  % when opening the file with Adobe Reader,
-                                     % automatically open it in fullscreen mode
+\hypersetup{pdfpagemode=FullScreen}       % otevření rovnou v režimu celé obrazovky
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usetheme{VUT} 				% colours and layout corresponding to the BUT style
-% alternatively, other styles can be used, such as
+\usetheme{VUT} 				% barvy a rozložení prezentace odpovídající VUT FEKT
+% alternativně lze použít jiná berevná témata, ale bez záruky. Například: 
 %\usetheme{Darmstadt} \usecolortheme{default2}
-% but with no guarantees
-\logoheader					% inserts small BUT FEEC logotype in the header; leave this in use
-
+\logoheader					% vytvoření zkráceného loga VUT FEKT v hlavičce slajdu, nechte odkomentované
 
 
 
 \begin{document}
 
-% if you do not use the following command, the lower right corner of each slide will contain active navigation symbols
+% v případě zakomentování následujícího se zobrazí v pravém dolním rohu slajdů klikatelné navigační symboly 
 \disablenavigationsymbols
 
-% the title slide will be created without header, footer etc.
+% titulní snímek, vysazen bez horních, dolních a postranních lišt (volba plain),
+% není tak vysazen ani nadpis snímku
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% First slide should contain the goals of the thesis
+% 1. snímek s cíli (zadaním) práce
 \begin{frame} 
-	\frametitle{Goals}
+	% nadpis snímku
+	\frametitle{Cíle práce}
 	\begin{itemize}
-			\item Study
-			\item Describe
+			\item Nastudovat
+			\item Popsat
 				\begin{itemize}
-					\item the studied
+					\item nastudované
 				\end{itemize}
-			\item Implement
+			\item Implementovat
 				\begin{itemize}
-					\item older
-					\item new
+					\item nastudované
+					\item nové
 				\end{itemize}
-			\item Compare, evaluate
+			\item Porovnat a vyhodnotit
 				\begin{itemize}
-						\item results
+						\item výsledky
 				\end{itemize}
 	\end{itemize}
 \end{frame}
 
+
 %%%%%%%%%%%%%
 \begin{frame} 
-	\frametitle{Key Tools}
+	\frametitle{Klíčové nástroje}
 
-	% environment 'alertblock' for alerting the particular info
-	\begin{alertblock}{The key tool in this thesis is the Euler formula}
+	% prostředí 'alertblock', které slouží pro zdůraznění informace
+	\begin{alertblock}{Pro práci je klíčový Eulerův vzorec}
 		$$\eul^{\jmag x}=\cos x + \jmag\sin x$$
 	\end{alertblock}
 
 	\vspace{4ex}
-	The Euler identity is the special case of the above, with $x=\uppi$\,:
+	Eulerova identita je speciálním případem tohoto vzorce, jestliže dosadíme $x=\uppi$\,:
 
-	% environment 'block'
-	\begin{block}{Euler identity}
+	% prostředí 'block', které slouží jako informativní
+	\begin{block}{Eulerova identita}
 		$$\eul^{\jmag \uppi}=\cos \uppi + \jmag\sin \uppi,$$\\
-		from which it follows that
+		odkud vyplývá
 		$$\eul^{\jmag \uppi}+1=0.$$
 	\end{block}
 \end{frame} 
@@ -114,41 +130,45 @@
 
 %%%%%%%%%%%%%
 \begin{frame} 
-	\frametitle{Printed Circuit Board}
+	\frametitle{Plošný spoj}
 	
-	\begin{columns}[T] 								% columns environment, top placement
-		\begin{column}{0.4\textwidth}		% first column
-			Depicted model contains:\\[2ex]
+	\begin{columns}[T] 								% prostředí sloupce s umístěním nahoře
+		\begin{column}{0.4\textwidth}		% první sloupec
+			Obrázek znázorňuje model:\\[2ex]
 			%
 			\begin{itemize}
-				\item Board
-				\item Signals
-				\item Battery
+				\item Deska
+				\item Součástky
+				\item Signály
+				\item Napájení
 			\end{itemize}
 		\end{column}
 		%
-		\begin{column}{0.6\textwidth}		% second column
+		\begin{column}{0.6\textwidth}		% druhý sloupec
 			\begin{figure}%	
 				\centering
-				\vspace{1cm}	              % horizontal space
-				\includegraphics[width=0.8\columnwidth]{pict/soucastky}
+				\vspace{1cm}	              % horizontální mezera
+				\includegraphics[width=0.8\columnwidth]{obrazky/soucastky}
+				%lze vložit popisek, ale povetšinou je to v prezentaci zbytečné
+				%\caption{Popisek obrázku}%
+				%\label{obr:ukazka}
 			\end{figure}
 		\end{column}
-	\end{columns}											% end of the main environment
+	\end{columns}											% ukončení prostředí sloupce
 \end{frame}
 
 
 %%%%%%%%%%%%%
 \begin{frame} 
-	\frametitle{Results}
+	\frametitle{Výsledky}
 	\vspace{1cm}
 	\begin{table}[]
 		\centering
-		\caption{Results of measurement in mobile networks}
-		\label{tab:table.results}
+		\caption{Výsledky měření mobilních sítí}
+		\label{tab:tabulka}
 			\begin{tabular}{lcc}
 				\toprule
-					Technology  & Speed, download [kB/s] & Speed, upload [kB/s] \\
+					Technologie  & Rychlost stahování [kB/s] & Rychlost nahrávání [kB/s] \\
 				\midrule
 					GPRS (2,5G)	& 7,2 	& 3,6\\
 					UMTS 3G     & 48 		& 48\\
@@ -162,26 +182,26 @@
 
 %%%%%%%%%%%%%
 \begin{frame} 
-	\frametitle{Conclusion}
+	\frametitle{Závěr}
 	\dots
 \end{frame}
 
 
-% thanks
+% podekovani
 \begin{frame}[c] 
-% no frametitle
+% bez nadpisu snímku
 	\frametitle{\mbox{ }}
 	\begin{center}
-		{\Huge Thank you for your attention!}
+		{\Huge Děkuji za pozornost!}
 	\end{center}
 \end{frame}
 
-% opponent's questions
+% otázky oponenta
 \frame{
-\frametitle{Questions of the Opponent}
-	\emph{Is there some relationship between your formula (1.2) and integral Maxwell equations?}\\[2ex]
+\frametitle{Otázky oponenta}
+	\emph{Jaká je souvislost Vašeho vzorce (1.2) s~Maxwellovými rovnicemi v~integrálním tvaru?}\\[2ex]
 	%
-	Well, yes, it might be\,\dots
+	Již staří Římané\,\dots
 }
 
 \end{document}

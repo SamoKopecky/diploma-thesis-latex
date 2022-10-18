@@ -1,103 +1,131 @@
-% Variable fields such as your name, title of the thesis atc. are set in this file.
-% The file is SHARED between the thesis text and the presentation --- no need to set anything twice.
+% V tomto souboru se nastavují téměř veškeré informace, proměnné mezi studenty:
+% jméno, název práce, pohlaví atd.
+% Tento soubor je SDÍLENÝ mezi textem práce a prezentací k obhajobě -- netřeba něco nastavovat na dvou místech.
 
 \usepackage[
-  english,			% English study program
-%%% Choose one of the thesis types
-	semestral,		%	semestral project (abstracts, declaration and acknowledgements are excluded) (default)
-  %bachelor,			%	Bachelor's thesis
-  %master,			% Master's thesis
-  %treatise,			% Treatise on doctoral thesis
-  %doctoral,				% Doctoral thesis
-%%% Choose one of the options:
-%  left,				% Equations and captions will be aligned to the left
-  center,			% Equations and captions will be centered (default)
-]{thesis}   % Package for typesetting theses
+  %%% Z následujících voleb jazyka lze použít pouze jednu
+  %czech-english,		% originální jazyk je čeština, překlad je anglicky (výchozí)
+  %english-czech,	% originální jazyk je angličtina, překlad je česky
+  %slovak-english,	% originální jazyk je slovenština, překlad je anglicky
+  english-slovak,	% originální jazyk je angličtina, překlad je slovensky
+  %
+  %%% Z následujících voleb typu práce lze použít pouze jednu
+  semestral,		  % semestrální práce (nesází se abstrakty, prohlášení, poděkování) (výchozí)
+  %bachelor,			%	bakalářská práce
+  %master,			  % diplomová práce
+  %treatise,			% pojednání o disertační práci
+  %doctoral,			% disertační práce
+  %
+  %%% Z následujících voleb zarovnání objektů lze použít pouze jednu
+  %  left,				  % rovnice a popisky plovoucích objektů budou zarovnány vlevo
+  center,			    % rovnice a popisky plovoucích objektů budou zarovnány na střed (vychozi)
+  %
+]{thesis}   % Balíček pro sazbu studentských prací
 
 
-%%% First and last name of the thesis author, following the scheme
-% [titles in front]{FirstName}{LastName}[titles after]
-% If the author does not have a title in front/after, just delete the entire string '[...]'
+%%% Jméno a příjmení autora ve tvaru
+%  [tituly před jménem]{Křestní}{Příjmení}[tituly za jménem]
+% Pokud osoba nemá titul před/za jménem, smažte celý řetězec '[...]'
 \author[Bc.]{Samuel}{Kopecký}
 
-%%% Brno University of Technology identification number of author (BUT ID)
+%%% Identifikační číslo autora (VUT ID)
 \butid{211799}
 
-%%% First and last name of the advisor
-% [titles in front]{FirstName}{LastName}[titles after]
-% If the author does not have a title in front/after, just delete the entire string '[...]'
-% [titles in front]{FirstName}{LastName}[titles after]
+%%% Pohlaví autora/autorky
+% (nepoužije se ve variantě english-czech ani english-slovak)
+% Číselná hodnota: 1...žena, 0...muž
+\gender{0}
+
+%%% Jméno a příjmení vedoucího/školitele včetně titulů
+%  [tituly před jménem]{Křestní}{Příjmení}[tituly za jménem]
+% Pokud osoba nemá titul před/za jménem, smažte celý řetězec '[...]'
 \advisor[Ing.]{David}{Smékal}[]
 
-%%% First and last name of the opponent
-% [titles in front]{FirstName}{LastName}[titles after]
-% Makes use only in the presentation for defense;
-% in case you do not want the opponent to be shown on the title slide, just comment out the command
-% The opponent is not shown in case of the semestral thesis (no opponent exists actually at that time)
-% In the case of a doctoral thesis, two to three oponents are typically involved. In such a case, if you want to have them on the title slide, please go to the definition of "VUT title page" in the thesis.sty file, uncomment and adapt their names.
+%%% Jméno a příjmení oponenta včetně titulů
+%  [tituly před jménem]{Křestní}{Příjmení}[tituly za jménem]
+% Pokud osoba nemá titul před/za jménem, smažte celý řetězec '[...]'
+% Nastavení oponenta se uplatní pouze v prezentaci k obhajobě;
+% v případě, že nechcete, aby se na titulním snímku prezentace zobrazoval oponent, pouze příkaz zakomentujte;
+% u obhajoby semestrální práce se oponent nezobrazuje (jelikož neexistuje)
+% U dizertační práce jsou typicky dva až tři oponenti. Pokud je chcete mít na titulním slajdu, prosím ručně odkomentujte a upravte jejich jména v definici "VUT title page" v souboru thesis.sty.
 \opponent[TODO]{TODO}{TODO}[TODO]
 
-%%% Thesis title
-%  In the case of a very long thesis title, it may happen that it does not fit
-%  into the slot in the footbar of the slides. You may use the command
-%  \def\insertshorttitle{Shortened th.\ title}
-%  where the shortened version of the title appears as the parameter.
-%  If you do not want to shorten the title, you will have to redefine how the slide footbar
-%  is generated, see: https://bit.ly/3EJTp5A
-\title{Modular communication based on post-quantum cryptohraphy}
+%%% Název práce
+%  Parametr ve složených závorkách {} je název v originálním jazyce,
+%  parametr v hranatých závorkách [] je překlad (podle toho jaký je originální jazyk).
+%  V případě, že název Vaší práce je dlouhý a nevleze se celý do zápatí prezentace, použijte příkaz
+%  \def\insertshorttitle{Zkác.\ náz.\ práce}
+%  kde jako parametr vyplníte zkrácený název. Pokud nechcete zkracovat název, budete muset předefinovat,
+%  jak se vytváří patička slidu. Viz odkaz: https://bit.ly/3EJTp5A
+\title[Modular communication based on post-quantum cryptohraphy]{Modulární komunikace postavená na postkvantové kryptografii}
 
-%%% Study program/specialization
-\specialization{Information Security} %Teleinformatika
+%%% Označení oboru studia
+%  Parametr ve složených závorkách {} je název oboru v originálním jazyce,
+%  parametr v hranatých závorkách [] je překlad
+\specialization[Teleinformatics]{Teleinformatika}
 
-%%% Department
-%\department{Department of Control and Instrumentation}  %Ústav automatizace a měřicí techniky
-%\department{Department of Biomedical Engineering}       %Ústav biomedicínského inženýrství
-%\department{Department of Electrical Power Engineering} %Ústav elektroenergetiky
-%\department{Department of Electrical and Electronic Technology}   %Ústav elektrotechnologie
-%\department{Department of Physics}                      %Ústav fyziky
-%\department{Department of Foreign Languages}            %Ústav jazyků
-%\department{Department of Mathematics}                  %Ústav matematiky
-%\department{Department of Microelectronics}             %Ústav mikroelektroniky
-%\department{Department of Radio Electronics}            %Ústav radioelektroniky
-%\department{Department of Theoretical and Experimental Electrical Engineering}  %Ústav teoretické a experimentální elektrotechniky
-\department{Department of Telecommunications}           %Ústav telekomunikací
-%\department{Department of Power Electrical and Electronic Engineering}   %Ústav výkonové elektrotechniky a elektroniky
+%%% Označení ústavu
+%  Parametr ve složených závorkách {} je název ústavu v originálním jazyce,
+%  parametr v hranatých závorkách [] je překlad
+%\department[Department of Control and Instrumentation]{Ústav automatizace a měřicí techniky}
+%\department[Department of Biomedical Engineering]{Ústav biomedicínského inženýrství}
+%\department[Department of Electrical Power Engineering]{Ústav elektroenergetiky}
+%\department[Department of Electrical and Electronic Technology]{Ústav elektrotechnologie}
+%\department[Department of Physics]{Ústav fyziky}
+%\department[Department of Foreign Languages]{Ústav jazyků}
+%\department[Department of Mathematics]{Ústav matematiky}
+%\department[Department of Microelectronics]{Ústav mikroelektroniky}
+%\department[Department of Radio Electronics]{Ústav radioelektroniky}
+%\department[Department of Theoretical and Experimental Electrical Engineering]{Ústav teoretické a experimentální elektrotechniky}
+\department[Department of Telecommunications]{Ústav telekomunikací}
+%\department[Department of Power Electrical and Electronic Engineering]{Ústav výkonové elektrotechniky a elektroniky}
 
-%%% Faculty
-%\faculty{Faculty of Architecture}   %Fakulta architektury
-\faculty{Faculty of Electrical Engineering and~Communication}   %Fakulta elektrotechniky a~komunikačních technologií
-%\faculty{Faculty of Chemistry}   %Fakulta chemická
-%\faculty{Faculty of Information Technology}   %Fakulta informačních technologií
-%\faculty{Faculty of Business and Management}   $Fakulta podnikatelská
-%\faculty{Faculty of Civil Engineering}   %Fakulta stavební
-%\faculty{Faculty of Mechanical Engineering}   %Fakulta strojního inženýrství
-%\faculty{Faculty of Fine Arts}   %Fakulta výtvarných umění
+%%% Označení fakulty
+%  Parametr ve složených závorkách {} je název fakulty v originálním jazyce,
+%  parametr v hranatých závorkách [] je překlad
+%\faculty[Faculty of Architecture]{Fakulta architektury}
+\faculty[Faculty of Electrical Engineering and~Communication]{Fakulta elektrotechniky a~komunikačních technologií}
+%\faculty[Faculty of Chemistry]{Fakulta chemická}
+%\faculty[Faculty of Information Technology]{Fakulta informačních technologií}
+%\faculty[Faculty of Business and Management]{Fakulta podnikatelská}
+%\faculty[Faculty of Civil Engineering]{Fakulta stavební}
+%\faculty[Faculty of Mechanical Engineering]{Fakulta strojního inženýrství}
+%\faculty[Faculty of Fine Arts]{Fakulta výtvarných umění}
 %
-%Logotype selection (in square brackets short logo, in curly brackets full logo):
-\facultylogo[logo/FEEC_abbreviation_color_PANTONE_EN]{logo/UTKO_color_PANTONE_EN}
+%Nastavení logotypu (v hranatych zavorkach zkracene logo, ve slozenych plne):
+\facultylogo[logo/FEKT_zkratka_barevne_PANTONE_CZ]{logo/UTKO_color_PANTONE_CZ}
 
-
-%%% Graduate year (typically the calendar year of the defense)
+%%% Rok odevzdání práce
 \graduateyear{2023}
-%%% Academic year (typically the year of solution of the thesis in the format n/n+1)
+%%% Akademický rok odevzdání práce
 \academicyear{2022/23}
-% Date of the defense (makes use only in the presentation slides)
-\date{TODO} 
 
-%%% Place of the defense
+%%% Datum obhajoby (uplatní se pouze v prezentaci k obhajobě)
+\date{TODO}
+
+%%% Místo obhajoby
+% Na titulních stránkách bude automaticky vysázeno VELKÝMI písmeny (pokud tyto stránky sází šablona)
 \city{Brno}
 
-%%% Abstract
-\abstract{%
-Abstract in English.
+%%% Abstrakt
+\abstract[%
+  Překlad abstraktu
+  (v~angličtině, pokud je originálním jazykem čeština či slovenština; v~češtině či slovenštině, pokud je originálním jazykem angličtina)
+]{%
+  Abstrakt práce v~originálním jazyce
 }
 
-%%% Keywords
-\keywrds{%
-Keywords in English
+%%% Klíčová slova
+\keywrds[%
+  Překlad klíčových slov
+  (v~angličtině, pokud je originálním jazykem čeština či slovenština; v~češtině či slovenštině, pokud je originálním jazykem angličtina)
+]{%
+  Klíčová slova v~originálním jazyce
 }
 
-%%% Thanks and acknowledgement
+%%% Poděkování
 \acknowledgement{%
-TODO
+  Rád bych poděkoval vedoucímu bakalářské/diplomové/disertační práce
+  panu Ing.~XXX YYY, Ph.D.\ za odborné vedení,
+  konzultace, trpělivost a~podnětné návrhy k~práci.
 }%
