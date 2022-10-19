@@ -1,8 +1,8 @@
-Symmetric cryptography is used for maintaining confidentiality of the data that is being transferred over a communication medium. The general idea of symmetric ciphers is that they are fast ciphers (compared to asymmetric ones, see section \ref{sec:asymmetric_enc}) that use only one secret (private key) to encrypt data. This key needs to be either pre-shared before the communication starts or a KEM ({\acl{KEM}}) has to be used (section \ref{sec:key_agreement}).
+Symmetric cryptography is used for maintaining confidentiality of the data that is being transferred over a communication medium. The general idea of symmetric ciphers is that they are fast ciphers (compared to asymmetric ones, see section \ref{sec:asymmetric_enc}) that use only one secret (private key) to encrypt data. This key needs to be either pre-shared before the communication starts or a KEM ({\acl{KEM}}) has to be used (see section \ref{sec:key_agreement}). \cite{Ristic2014}
 
 How symmetric ciphers work is illustrated with figure \ref{img:sym_crypto}. In a situation where \textit{Alice} wants to send \textit{Bob} an obfuscated document (plaintext), \textit{Alice} firstly needs to encrypt the document with the shared private key. She then sends \textit{Bob} the encrypted document (ciphertext) and Bob can decrypt it agin with a shared key. Symmetric ciphers can be split into block and stream ciphers.
 
-\object[0.9]{obr}{pictures/sym_crypto.pdf}{Symmetric cipher}{img:sym_crypto}
+\object[0.9]{obr}{pictures/sym_crypto.pdf}{Simplified symmetric cipher}{img:sym_crypto}
 
 
 %  In a real world example an attacker could change the amount of money someone is getting paid just by exchanging one block of a message to another which contains a bigger number.
