@@ -5,6 +5,8 @@ Block ciphers operate on blocks of data and use padding to handle situations whe
   \item \textbf{GCM} (\acl{GCM}).
 \end{itemize}
 
+CITATION HERE
+
 These ciphers are based on a substitution-permutation network (figure \ref{img:sbox_pbox}), which consists of two layers, a substitution layer and a permutation layer as the name implies. 
 
 The substitution layer introduces \textit{confusion} to the data. Confusion creates a relation between the key and the ciphertext, where one changed bit in the key will generate a change for many bits int the ciphertext. In practice a substitution layer just substitutes a byte with the help of a substitution table which is predefined and used for every operation (see figure \ref{img:sbox_pbox}). On the other hand the permutation layer introduces \textit{diffusion}, which means that a changed bit in the plaintext will dissipate into more changed bits in the ciphertext. As can be seen in the figure \ref{img:sbox_pbox} an example of a permutation layer functions by scrambling the order of bytes randomly. \cite{Paar2010}\cite{Shannon1949}
