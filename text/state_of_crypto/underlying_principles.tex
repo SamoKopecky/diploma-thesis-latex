@@ -9,3 +9,5 @@ while knowing the values for $x$ and $\alpha$ but very hard (in exponential time
   x\equiv\mathrm{log}_\alpha\beta\,\mathrm{mod}\,p
 \end{equation}
 with the knowledge of only $\alpha$ and $\beta$, where $p$ is a prime number \cite{Paar2010}. This problem only works if modulus $p$ is in the range of 2048-15360 bits. DSA (\acl{DSA}) utilizes this problem for creating digital signatures. An alternative exists to this problem that uses elliptic curves instead of cyclic groups called the \acl{ECDSA} (ECDSA). This is because the DLP equivalent in elliptic curves is more secure while using the same size for parameters such as $x$ which is the private key \cite{Ristic2014}. This property is allows the use of smaller keys while staying on the same level of security.
+
+TODO: Rewrite IFP

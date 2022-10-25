@@ -1,0 +1,42 @@
+The biggest thread to modern cryptography is Shor's algorithm. It can be used for factoring prime numbers ($N$) in time complexity of $O(n^2\ log\,n\ log\ log\,n)$ where $n$ is the number of bits required to represent $N$. \cite{Yanofsky2008}. One of the fundamental problems used in modern cryptography is the IFP (subsection \ref{subsec:underlying_principles}) used in RSA, which can now be broken by Shor’s algorithm in polynomial time. Shor's algorithm can be split into two parts. The first part can be easily be computed on a classical computer and the second part can also theoretically be done on a classical computer but it would take much longer then on a quantum computer. 
+
+The first part of the shor's algorithms is as follows. Generate a random number $a$ in the range of $a\in\{2,...,N-1\}$ which is co-prime to $N$
+\begin{equation}
+  \mathrm{GCD}(a, N) = 1,
+\end{equation}
+fortunately we can use the Euclid's algorithm to compute the GCD (\acl{GCD}) very fast even on a classical computer. From there the order of $a$ has to be found. The order is the smallest number such that
+\begin{equation}
+  \label{eq:order}
+  a^r \equiv 1\,\mathrm{mod}\,N.
+\end{equation}
+Finding order of $a$ is computationally infeasible in polynomial time using a classical computer, thats why a quantum computer is needed to find $r$ and will be explained later. If $r$ is odd or $a^r\equiv-1\,\mathrm{mod}\,N$ it is discarded and and a new $r$ is found. Equation \ref{eq:order} can no be altered by subtracting 1 from booth sides
+\begin{equation}
+  a^r -1\equiv 0\,\mathrm{mod}\,N,
+\end{equation}
+and now can be rewritten as
+\begin{equation}
+  a^r -1=kN,
+\end{equation}
+where $k$ is some integer integer. With the help of $x^2 - y^2=(x+y)(x-y)$ the previous equation can be written as
+\begin{equation}
+  (\sqrt{a^r}+1)(\sqrt{a^r}-1)= kN,
+\end{equation}
+or even a more readable version as
+\begin{equation}
+  \label{eq:half}
+  (a^{r/2}+1)(a^{r/2}-1)= kN.
+\end{equation}
+Equation \ref{eq:half} can now be used to find at least one nontrivial factor of $N$ by calculating
+\begin{align}
+  GCD((a^{r/2}+1), N), \nonumber \\
+  GCD((a^{r/2}-1), N),
+\end{align}
+and by dividing $N$ the first factor we can calculate the other factor and thus break any algorithm or cipher that depends on the IFP. After some modifications, it also be used for breaking the DLP. \cite{Yanofsky2008}\cite{Pittenger2000}
+
+The second part of the algorithm as mention is used to find the order of $a$. An order of a number can also be represented as a period of function  $f_{a,N}(x)$
+\begin{equation}
+  f_{a,N}(x)\equiv a^x\,\mathrm{mod}\,N,
+\end{equation}
+where its output values are repeated at regular intervals of size $r$ \cite{Yanofsky2008}. The table \ref{tab:func_period} shows an example for $N=15$, $a=2$ and $x\in\{0,1,2,3,4,5\}$, where it is shown that the period (order) of $a$ is $r=4$. The repeating outputs can also be seen for $x\in\{5,6\}$. As mention earlier, computing this on a classical computer for large $N$ is infeasible but a quantum computer can evaluate a function for many values at the same time (see section \ref{sec:quantum_data_repr}). This property is used in finding the order of $a$. It firstly calculates the repeating sequence of outputs for the function $f_{a,N}$ all at the same time. Using the QFT (\acl{QFT}) the period is found which is the number $r$, then it can be used in the rest of the algorithm. \cite{McMahon2008}
+
+\object{tab}{tables/order_example}{Example of a function period}{tab:func_period}
