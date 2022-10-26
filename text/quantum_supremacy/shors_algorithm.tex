@@ -1,4 +1,4 @@
-The biggest thread to modern cryptography is Shor's algorithm. It can be used for factoring prime numbers ($N$) in time complexity of $O(n^2\ log\,n\ log\ log\,n)$ where $n$ is the number of bits required to represent $N$. \cite{Yanofsky2008}. One of the fundamental problems used in modern cryptography is the IFP (subsection \ref{subsec:underlying_principles}) used in RSA, which can now be broken by Shor’s algorithm in polynomial time. Shor's algorithm can be split into two parts. The first part can be easily be computed on a classical computer and the second part can also theoretically be done on a classical computer but it would take much longer then on a quantum computer. 
+The biggest thread to modern cryptography is Shor's algorithm. It can be used for factoring prime numbers ($N$) in time complexity of $O(n^2\ log\,n\ log\ log\,n)$ where $n$ is the number of bits required to represent $N$. \cite{Yanofsky2008}. One of the fundamental problems used in modern cryptography is the IFP (subsection \ref{subsec:underlying_principles}) used in RSA, which can now be broken by Shor’s algorithm in polynomial time. Shor's algorithm can be split into two parts. The first part can be easily be computed on a classical computer and the second part can also theoretically be done on a classical computer but it would take much longer then on a quantum computer.
 
 The first part of the shor's algorithms is as follows. Generate a random number $a$ in the range of $a\in\{2,...,N-1\}$ which is co-prime to $N$
 \begin{equation}
@@ -27,11 +27,13 @@ or even a more readable version as
   (a^{r/2}+1)(a^{r/2}-1)= kN.
 \end{equation}
 Equation \ref{eq:half} can now be used to find at least one nontrivial factor of $N$ by calculating
-\begin{align}
-  GCD((a^{r/2}+1), N), \nonumber \\
-  GCD((a^{r/2}-1), N),
-\end{align}
-and by dividing $N$ the first factor we can calculate the other factor and thus break any algorithm or cipher that depends on the IFP. After some modifications, it also be used for breaking the DLP. \cite{Yanofsky2008}\cite{Pittenger2000}
+\begin{equation}
+  \begin{aligned}
+    \mathrm{GCD}((a^{r/2}+1), N), \\
+    \mathrm{GCD}((a^{r/2}-1), N),
+  \end{aligned}
+\end{equation}
+and by dividing $N$ with the first factor the second factor can be calculated and thus break any algorithm or cipher that depends on the IFP. After some modifications, it also be used for breaking the DLP. \cite{Yanofsky2008}\cite{Pittenger2000}
 
 The second part of the algorithm as mention is used to find the order of $a$. An order of a number can also be represented as a period of function  $f_{a,N}(x)$
 \begin{equation}
