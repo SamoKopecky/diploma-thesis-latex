@@ -1,1 +1,12 @@
-Describe network basics such as TCP 3 way handshake, UDP and so on.
+In order to fully understand how any application that creates a communication channel between two entites works, it is important to firtly look at the concepts of network basics. The contetns of this chapter will focus on the topis such as the TCP/IP protocol suite, TCP/UDP protocols and differenes between client-server and peer-to-peer communications.
+
+IMAG HERE: tcp/ip layers, some protocols for each layer
+
+The TCP/IP protocol suit consists of 5 layers as illustrated in ref: TODO. Each layer is defined by one or more protocols. A protocol defines strict rules for what, how and when should an entity communicate. Each row on the TCP/IP suite contains atleast one protocol, which again dictates how the communication should proceed on that layer. A protocol layer communicates horizontally with other protocol layers using PDUs (\acl{PDU}) and vertically using either physical channels (physical layer) or virtual channels (all other layers). Channels on each layer communicate with a different level of intrastructure and use a different identifier to differencieate between indidividual channels. All of this information for each layer can be found in table ref: TODO.
+
+TABLE HERE: each layer, its identifier (Ip, port, ...), pdus, network intrastructure
+
+
+% Describe network basics such as TCP 3 way handshake, UDP and so on.
+
+TODO: cite
