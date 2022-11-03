@@ -1,0 +1,23 @@
+Another post-quantum KEM scheme is NTRU or \acl{NTRU}. It is one of the most efficient public key encryption schemes since instead of using a basis for  its public key, it uses a $p$-coefficient polynomial:
+\begin{equation}
+  h=h_0+h_1x+h_2x^2+\dots+h_{p-1}x^{p-1}.
+\end{equation}
+Like GGH this scheme is based on the CVP. The message consists of two polynomials $d, e$ which are not a lattice point and the ciphertext $c$ which is calculated from $d, e$~and~$h$ points to a lattice point. An attacker cannot easily compute back $d, e$ only with the knowledge of $h, c$. The use of polynomials makes NTRU much faster then for example the GGH cryptosystem and is considered heavily for post-quantum standardization by NIST \cite{Bernstein149}.
+
+LWE is not a cryptosystem by itself, but many cryptosystem are based on it. The problem is based in modular linear equations for example
+\begin{align}
+  3s_1+6s_2+7s_3+2s_4&\equiv 10\,\mathrm{mod}\,11,\\
+  10s_1+8s_2+3s_3+5s_4&\equiv 1\,\mathrm{mod}\,11,\\
+  5s_1+s_2+7s_3+10s_4&\equiv 8\,\mathrm{mod}\,11,\\
+  6s_1+8s_2+3s_3+4s_4&\equiv 7\,\mathrm{mod}\,11,
+\end{align}
+where the goal is to find $s_1, s_2, s_3, s_4$. This is easily solvable even for big $n$ amount of equations with the Gaussian elimination, but if an error is added to the right side of each equation (-1 or +1)
+\begin{align}
+  3s_1+6s_2+7s_3+2s_4&\equiv 9\,\mathrm{mod}\,11,\\
+  10s_1+8s_2+3s_3+5s_4&\equiv 2\,\mathrm{mod}\,11,\\
+  5s_1+s_2+7s_3+10s_4&\equiv 9\,\mathrm{mod}\,11,\\
+  6s_1+8s_2+3s_3+4s_4&\equiv 6\,\mathrm{mod}\,11,
+\end{align}
+for big $n$ it becomes a significantly harder problem. \cite{Regev2005}
+
+Unlike other mentioned lattice-based post-quantum cryptosystems LWE-based cryptosystems are supported by a theoretical proof of security. This makes them a very good candidate for standardization by NIST. Examples of LWE-based cryptosystems can be found in section \ref{sec:currently_standardized}
