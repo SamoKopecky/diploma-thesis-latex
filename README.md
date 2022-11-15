@@ -20,6 +20,6 @@ latexmk -pdf thesis.pdf
 
 This table displays numbers only for relevant sections (introduction, all chapters and conclusion).
 
-| Characters | Words | Pages |
-|------------|-------|-------|
-| 37 256     | 5 581 | 20    |
+| Characters | Pages |
+|------------|-------|
+| 39 002     | 22    |
