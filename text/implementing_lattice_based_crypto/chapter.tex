@@ -1,1 +1,5 @@
-Describe the implementation details of kyber and dilithium, error chance, speed, NTT ..
+As mentioned in \ref{sec:nist} lattice three algorithms have been standardized that are based on lattice cryptography. This chapter will describe two of these algorithms in more detail, namely CRYSTALS-Kyber and CRYSTALS-Dilithium. The respective sections will also describe some implementation aspects of implementing these algorithms in the programming language Go. It is a relatively new programming language compared to others (2009) as of writing this \cite{Donovan2016}. Go the programming language will be characterized in the next section of this chapter.
+
+The implementations of the aforementioned protocols are done using only the standard Go library with the exception of one external library which is required for the implementations of the hash functions \texttt{SHAKE-128/256} and \texttt{SHA-3} (see section \ref{sec:hash_functions}).
+
+
