@@ -1,0 +1,11 @@
+The key generation functions starts with a function \texttt{cpapkeKeyGen()}. At first parameters need to be generated, this process is described by listing \ref{lst:kyber_1}. At first two 32 byte arrays ($\rho$ and $\sigma$) are created at random. Matrix \rmhat{A} of $k\times k$ polynomials is then generated from $\rho$ with the function \texttt{genPolyMat()}. This function is deterministic, that means there for the same values of $\rho$ the function will always generate the same matrix. The matrix \rmhat{A} is publicly know to everyone and needs to shared, but since the function that generates it is deterministic only $\rho$ needs to be shared instead of the while matrix. The generation function also makes sure the matrix is already in NTT form. Next the polynomial vectors \rmhat{s} and \rmhat{e} are generated at random using $\sigma$ and transformed into the NTT domain.
+\listing{text/code/kyber.go}{Variable creation}{lst:kyber_1}{3}{7}
+
+After variables have been setup the actual key generation can begin. The vector \rmhat{t} is calculated by multiplying \rmhat{A} by \rmhat{s}, and then increased by adding the vector \rmhat{e}. The public key is then generated from the the encoded vector \rmhat{t} and the $\rho$ byte array. The public key is just the vector \rmhat{s} encoded into bytes. The key calculation is also illustrated by figure \ref{img:cpapke_keygen}.
+\newpage
+\listing{text/code/kyber.go}{Key caluclation}{lst:kyber_2}{8}{16}
+\object[0.5]{obr}{pictures/kyber_keygen.pdf}{Key calculation for \texttt{cpapkeKeyGen()}}{img:cpapke_keygen}
+
+The key generation functions is then encapsulated by another key generated function called \texttt{ccakemKeyGen()} in listing \ref{lst:kyber_3}. The public key doesn't change but the secret key now also consists of the public key, 32\,B hash of the public key and 32\,B of randomness.
+\listing{text/code/kyber.go}{CCAKEM.KeyGen}{lst:kyber_3}{64}{71}
+

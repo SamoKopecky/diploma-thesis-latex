@@ -65,13 +65,16 @@
 %	Definice jazyka použitého ve výpisech
 %    language=[LaTeX]{TeX},	% LaTeX
 %	language={Matlab},		% Matlab
-	language={C},           % jazyk C
-    basicstyle=\ttfamily,	% definice základního stylu písma
+	language={Go},           % jazyk C
+    basicstyle=\ttfamily\small,	% definice základního stylu písma
     tabsize=2,			% definice velikosti tabulátoru
     inputencoding=utf8,         % pro soubory uložené v kódování UTF-8
 		columns=fixed,  %fixed nebo flexible,
 		fontadjust=true %licovani sloupcu
     extendedchars=true,
+    keywordstyle=\color{orange}\bfseries,
+    commentstyle=\itshape\color{purple!40!black},
+    numbersep=8pt,
     literate=%  definice symbolů s diakritikou
     {á}{{\'a}}1
     {č}{{\v{c}}}1
@@ -105,6 +108,7 @@
     {Ž}{{\v{Z}}}1
 }
 
+\definecolor{mygreen}{RGB}{0,204,102}
 \usepackage{array,ragged2e}
 \usepackage{amsfonts}
 \usepackage{mathtools}

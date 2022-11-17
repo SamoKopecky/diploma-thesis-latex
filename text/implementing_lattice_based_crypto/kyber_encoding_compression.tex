@@ -1,0 +1,15 @@
+In order to transfer polynomials over the network they need to be serialized into bytes. Kyber defines two functions for this purpose:
+\begin{itemize}
+  \item \texttt{encode(}$p$,\,$l$\texttt{)}\,--\,convert a polynomial \texttt{poly} into $32*l$ bytes,
+  \item \texttt{decode(}B,\,$l$\texttt{)}\,--\,convert $32*l$ bytes into a polynomial.
+\end{itemize}
+In the following code listings functions like \texttt{encodePolyVec()} which means it encodes every polynomial in the vector. The same applies for the decode functionality.
+
+Another feature of Kyber is compression of the polynomials that are encoded. Due to the fact that Kyber is based on LWE, the calculations don't need exact numbers to be correct. This is why a compression mechanism that discards some low-order bits from encoded polynomials can be introduced. Two more functions are defined by kyber for compressing and decompressing bytes:
+\begin{itemize}
+  \item \texttt{compress(}$x$,\,$d$\texttt{)}\,--\,compress a number into the range of $\{0,\dots,2^d-1\}$,
+  \item \texttt{decompress(}$x$,\,$d$\texttt{)}\,--\,decompress a number while loosing some low-order bits.
+\end{itemize}
+Similarly to the encoding/decoding function theses functions can be applied for every coefficient of a polynomial.
+
+Whenever it mentioned that a random polynomial or a polynomial vector has been generated it is implied that a CBD (\acl{CBD}) is used with a parameter either $\eta_1$ or $\eta_2$.
