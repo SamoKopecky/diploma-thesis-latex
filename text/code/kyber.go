@@ -1,4 +1,4 @@
-package kyber
+package kyber#
 
 func cpapkeKeyGen() (pk []byte, sk []byte) {
 	rho, sigma := randBytes(64)
@@ -17,12 +17,12 @@ func cpapkeKeyGen() (pk []byte, sk []byte) {
 
 func cpapkeEnc(pk []byte, m []byte, r []byte) (c []byte) {
 	t_hat := decodePolyVec(pk)
-	// Get the last 32 bytes from PK
-	rho := pk[len(pk)-32:]
+	rho := pk[len(pk)-32:] // Get the last 32 bytes from PK
 	A_hat := genPolyMat(rho)
 	r_hat := nttPolyVec(randPolyVec(r))
 	e1 := randPolyVec(r)
 	e2 := randPoly(r)
+
 	for i := 0; i < K; i++ {
 		u[i] = mulPolyVec(A_hat[i], r_hat)
 	}
@@ -31,6 +31,7 @@ func cpapkeEnc(pk []byte, m []byte, r []byte) (c []byte) {
 	v := invNtt(mulPolyVec(t_hat, r_hat))
 	v = polyAdd(v, e2)
 	v = polyAdd(v, parsed_m)
+
 	for i := 0; i < K; i++ {
 		c1 = append(c1, encode(compress(u[i], Du), Du))
 	}
@@ -40,49 +41,38 @@ func cpapkeEnc(pk []byte, m []byte, r []byte) (c []byte) {
 }
 
 func cpapkeDec(sk []byte, c []byte) (m []byte) {
-
-	c2 := c[Du * K * N / 8:]
 	u_decoded := decodePolyVec(c, Du)
-
 	for i := 0; i < K; i++ {
-		u_hat[i] = decompress(u_decoded[i], Du)
+		u_hat[i] = ntt(decompress(u_decoded[i], Du))
 	}
-
-	nttPolyVec(u_hat)
-
+	c2 := c[POLY_BYTES*K:] // Get last POLY_BYTES bytes
 	v := decompress(decode(c2, Dv), Dv)
 	s_hat := decodePolyVec(sk, 12)
 
 	s_hat_u_hat := mulPolyVec(s_hat, u_hat)
 	invNtt(s_hat_u_hat)
-	first_m := polySub(v, s_hat_u_hat)
-
-	m = encode(compress(first_m, 1), 1)
+	m_decoded := polySub(v, s_hat_u_hat)
+	m = encode(compress(m_decoded, 1), 1)
 	return
 }
 
 func CcakemKeyGen() (pk []byte, sk []byte) {
 	pk, sk := cpapkeKeyGen()
 	sk = append(sk, pk)
-	sk = append(sk, hash32(pk)
+	sk = append(sk, hash32(pk))
 	sk = append(sk, randBytes(32))
 	return
 }
 
 func CcakemEnc(pk []byte) (c, key []byte) {
 	m := hash32(randBytes(32))
-
-	g_input := []byte{}
-	g_input = append(g_input, m...)
-	g_input = append(g_input, hash32(pk)...)
-
+	g_input = append(g_input, m)
+	g_input = append(g_input, hash32(pk))
 	K_dash, r := hash64(g_input)
 	c = cpapkeEnc(pk, m, r)
-
-	kdf_input := []byte{}
-	kdf_input = append(kdf_input, K_dash...)
-	kdf_input = append(kdf_input, hash32(c)...)
-	key = kdf(kdf_input, 32)
+	kdf_input = append(kdf_input, K_dash)
+	kdf_input = append(kdf_input, hash32(c))
+	key = kdf(kdf_input, 32) // Output 32 bytes
 	return
 }
 
@@ -93,24 +83,18 @@ func CcakemDec(c, sk []byte) (key []byte) {
 	z := sk[keySize*2+64:]
 
 	m_dash := cpapkeDec(sk, c)
-
-	g_input := []byte{}
-	g_input = append(g_input, m_dash...)
-	g_input = append(g_input, hash...)
+	g_input = append(g_input, m_dash)
+	g_input = append(g_input, hash)
 	k_dash, r_dash := hash64(g_input)
-
 	c_dash := cpapkeEnc(pk, m_dash, r_dash)
 	hash_c := hash32(c)
 
-	kdf_input := []byte{}
 	if BytesEqual(c, c_dash) {
-		kdf_input = append(kdf_input, k_dash...)
-		kdf_input = append(kdf_input, hash_c...)
-		key = kdf(kdf_input, SharedKeySize)
+		kdf_input = append(kdf_input, k_dash)
 	} else {
-		kdf_input = append(z, k_dash...)
-		kdf_input = append(kdf_input, hash_c...)
-		key = kdf(kdf_input, SharedKeySize)
+		kdf_input = append(kdf_input, z)
 	}
+	kdf_input = append(kdf_input, hash_c)
+	key = kdf(kdf_input, SharedKeySize)
 	return
 }

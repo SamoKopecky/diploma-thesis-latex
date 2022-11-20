@@ -22,4 +22,4 @@ This table displays numbers only for relevant sections (introduction, all chapte
 
 | Characters | Pages |
 |------------|-------|
-| 46 286     | 26    |
+| 52 293     | 29    |
