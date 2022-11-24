@@ -278,3 +278,6 @@ presentation.pdf
 thesis.pdf
 
 .vscode/settings.json
+
+*.bkp
+*.dtmp
