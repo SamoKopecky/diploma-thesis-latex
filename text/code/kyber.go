@@ -83,9 +83,6 @@ func CcakemDec(c, sk []byte) (key []byte) {
 	z := sk[keySize*2+64:]
 
 	m_dash := cpapkeDec(sk, c)
-	g_input = append(g_input, m_dash)
-	g_input = append(g_input, hash)
-	k_dash, r_dash := hash64(g_input)
 	c_dash := cpapkeEnc(pk, m_dash, r_dash)
 	hash_c := hash32(c)
 

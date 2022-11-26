@@ -1,1 +1,7 @@
+The verification process for Dilithium starts off by unpacking required variables from the public key and the signature. \rmhat{A} is generated the same way as in \ref{lst:dil_keygen_1} line 9, it is then multiplied by the vector $z$. The public parameter $t_1$ is then at first scaled by $2^d$ to make up for the lower bits taken out by the \texttt{power2Round} function. It is then again scaled by $c$ which is parsed from the signature.
+\listing{text/code/dilithium.go}{Variable preperation}{lst:dil_verify_1}{117}{121}
+
+The variable $r$ is the result of subtracting $ct_1$ from $Az$. As mentioned in \ref{subsec:dil_sign} the goal is to calculate the high bits of $w$. To achieve this the created hints are used on the vector $r$ to create the exact copy of $w_1$. The hash of $w_1$ together with the message and some other shared parameters are then compared to $c$. If they are equal the verification process succeeded, if they don't equal the verification failed. See figure \ref{img:dil_verify} for the simplified summary of the process.
+\listing{text/code/dilithium.go}{Signature verification}{lst:dil_verify_2}{123}{126}
+
 \object[0.5]{obr}{pictures/dil_dec.pdf}{Dilithium signature verification}{img:dil_verify}

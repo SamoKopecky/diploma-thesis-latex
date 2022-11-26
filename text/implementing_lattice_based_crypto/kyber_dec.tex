@@ -1,16 +1,13 @@
 Similarly as with the encapsulation process the decapsulation process requires the decryption function to be defined. The decryption process is also illustrated with a figure, specifically \ref{img:cpapke_dec} and described in the following code snipets. Decryption process begins with decoding the parameters \texttt{u} and \texttt{v} from the ciphertext (see listing \ref{lst:kyber_dec_1}). Additionally the parameter \texttt{u} is transformed into NTT domain. The secret key used for decryption is also decoded.
-\listing{text/code/kyber.go}{Decryption variable setup}{lst:kyber_dec_1}{43}{50}
+\listing{text/code/kyber.go}{Decryption variable setup}{lst:kyber_dec_1}{44}{50}
 
 The actually decryption begins by multiplying \rmhat{s} and \rmhat{u} and transforming the product from NTT domain. It is then subtracted from \texttt{v} compressed and decoded to get the original message \texttt{m}. This process can be seen in listing \ref{lst:kyber_dec_2}
 
-\listing{text/code/kyber.go}{Decryption process}{lst:kyber_dec_2}{52}{56}
+\listing{text/code/kyber.go}{Decryption process}{lst:kyber_dec_2}{52}{55}
 \object[0.5]{obr}{pictures/kyber_dec.pdf}{Decription for \texttt{cpapkeDec()}}{img:cpapke_dec}
 
-Decapsulation starts by parsing the secret key and creating variables for the private key, hash of the private key and random 32\,B named \texttt{z}.
-\listing{text/code/kyber.go}{CCAKEM.Dec decapsulation parameter parsing}{lst:kyber_dec_3}{79}{83}
-
-The rndomly generated message\,--\,named $m'$ here\,--\,in \ref{lst:kyber_enc_4} is decrypted using the secret key. Also the variables $K'$ and $r'$ are created using the same process as in \ref{lst:kyber_enc_4} lines 69-71. Another hashed ciphertext is created from $m'$ and $r'$.
-\listing{text/code/kyber.go}{CCAKEM.Dec decapsulation part 1}{lst:kyber_dec_4}{85}{90}
+Decapsulation starts by parsing the secret key and creating variables for the private key, hash of the private key and random 32\,B named \texttt{z}. The randomly generated message generated in \ref{lst:kyber_enc_4} is decrypted using the secret key. The variable $r'$ is created using the same process as in \ref{lst:kyber_enc_4} lines 69-71. Then another hashed ciphertext is created from $m'$ and $r'$.
+\listing{text/code/kyber.go}{CCAKEM.Dec decapsulation part 1}{lst:kyber_dec_4}{85}{87}
 
 The code in the last listing in this section (\ref{lst:kyber_dec_5}) derives the actual shared key. Though firstly an if statement has to be used. If the original ciphertext $c$ and ciphertext created here $c'$ are equal the value $K'$ is used for generating the key, if they don't equal \texttt{z} is used. Additionally the hash of $c'$ used to derive the key via a KDF.
-\listing{text/code/kyber.go}{CCAKEM.Dec decapsulation part 2}{lst:kyber_dec_5}{92}{99}
+\listing{text/code/kyber.go}{CCAKEM.Dec decapsulation part 2}{lst:kyber_dec_5}{89}{95}
