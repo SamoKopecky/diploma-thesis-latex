@@ -1,5 +1,5 @@
 The encapsulation process relies on the encryption function\,--\,\texttt{cpapkeEnc()}\,--\,to work which which is illustrated in figure \ref{img:cpapke_enc} and explained by by further text together with code snipets in listings. Firstly the parameters have to be setup as seen in listing \ref{lst:kyber_enc_1}. The public key ($pk$) parameter is decoded into \rmhat{t} and $\rho$ is extracted and the matrix \rmhat{A} is generated. A random polynomial vector \rmhat{r} is created and transformed into the NTT domain. Parameters $e_1$ and $e_2$ are also randomly generated where the first one is another polynomial vector and $e_2$ is just a single polynomial.
-\listing{text/code/kyber.go}{Encryption variable setup}{lst:kyber_enc_1}{18}{24}
+\listing{text/code/kyber.go}{Encryption variable setup}{lst:kyber_enc_1}{21}{24}
 
 The parameter \texttt{u} is calculated by multiplying \rmhat{A} and \rmhat{r} plus the vector $e_1$ is added to it. Afterwards it is transformed from the NTT domain since booth factors are in NTT domain. The message \texttt{m} to be encrypted is decoded in order to create a polynomial from it and decompressed. The polynomial \texttt{v} is the factor of \rmhat{t} and \rmhat{r} and is again similarly transformed from the NTT domain. Then the polynomial $e_1$ is added to it together with the decoded message. Theses process can be seen in listing \ref{lst:kyber_enc_2}
 
@@ -7,9 +7,9 @@ As the last step booth \texttt{u} and \texttt{v} are firstly compressed and enco
 
 \listing{text/code/kyber.go}{Encryption process}{lst:kyber_enc_2}{26}{33}
 \newpage
-\listing{text/code/kyber.go}{Creating ciphertext}{lst:kyber_enc_3}{35}{40}
+\listing{text/code/kyber.go}{Creating ciphertext}{lst:kyber_enc_3}{35}{39}
 \object[0.5]{obr}{pictures/kyber_enc.pdf}{Encryption for \texttt{cpapkeEnc()}}{img:cpapke_enc}
 
 After the encryption function defined the encapsulation process (listing \ref{lst:kyber_enc_4}) can begin. Firstly a random message \texttt{m} is generated and hashed, then together with the hashed public key parameters $K'$ and $r$ are created using a hash function. Each parameter is the size of 32\,B. The randomly generated message is generated encrypted using the public key and random 32 bytes. Finally a key is derived using a KDF (\acl{KDF}) with the inputs of $K'$ and a hash of \texttt{m}. Booth the ciphertext and the derived key are then returned from the function.
 \newpage
-\listing{text/code/kyber.go}{CCAKEM.Enc}{lst:kyber_enc_4}{67}{76}
+\listing{text/code/kyber.go}{CCAKEM.Enc}{lst:kyber_enc_4}{68}{75}
