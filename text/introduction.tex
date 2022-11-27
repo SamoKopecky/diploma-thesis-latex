@@ -2,5 +2,8 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{Introduction}
 
-Here comes the introduction of the thesis. Do this when you are finished with writing the main chapters.
-Mention the listings code is a go pseudo code.
+Development of quantum computers is the next big step in technology evolution and brings many new possibilities of improvement but also many dangers to modern cryptography algorithms. In the first chapter this thesis aims to provide the a basic understanding of modern cryptography and which cryptography primitives are utilized within it. Next it introduces the reader at a very basic level to quantum mechanics and its basic principles such as quantum superposition. The provided knowledge is then expanded with quantum algorithms such as Shor's algorithm which is capable of braking modern cryptography.
+
+To resolve the problem of a possible quantum supremacy this thesis introduces the concept of post quantum cryptography which consists of cryptographic algorithms which are resistant to attacks with quantum algorithms or classical algorithms. One such group of post quantum algorithms are lattice-based algorithms. They are the most promising group of post quantum algorithms for standardization by NIST (\acl{NIST}). NIST has so far led three rounds of the standardization process. During the writing of this thesis the third round of NIST standardization has ended and the winning algorithms Kyber and Dilithium are described later.
+
+Part of the practical part of this thesis are the also the implementations of these algorithms in the programing language Go. Go was chosen because it creates a good balance between performance and simplicity. The performance is owned due the fact that is a compiled language, and thats why it can compete with the programing language C. During the description of the implemented lattice-based algorithms some code snippets are also shown, but for the sake of readability are more of pseudocode snippets styled like Go. There are also simplified block diagrams explaining the processes of Kyber and Dilithium in appendix \ref{ch:block_diagrams}.

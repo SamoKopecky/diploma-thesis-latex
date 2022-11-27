@@ -18,7 +18,7 @@
 }
 
 \newcommand{\listing}[5]{
-\lstinputlisting[frame=single,numbers=left,caption={#2},label=#3,firstline=#4,lastline=#5,firstnumber=#4]{#1}
+    \lstinputlisting[frame=single,numbers=left,caption={#2},label=#3,firstline=#4,lastline=#5,firstnumber=#4]{#1}
 }
 
 \newcommand{\code}[1]{\texttt{#1}}
@@ -28,14 +28,21 @@
 \newcommand{\minisection}[1]{\noindent{}\textbf{#1}}
 
 \newcommand{\question}[3]{
-\begin{frame}[t]
-    \frametitle{#1}
-	\emph{#2}\\[2ex]
-	%
-	#3
-\end{frame}
+    \begin{frame}[t]
+        \frametitle{#1}
+        \emph{#2}\\[2ex]
+        %
+        #3
+    \end{frame}
 }
 
 \DeclarePairedDelimiter{\round}\lfloor\rceil
 
 \newcommand{\rmhat}[1]{$\mathrm{\hat{#1}}$}
+
+\newcommand{\benchmarklink}[3]{
+    \item #1 by #2
+    \begin{itemize}
+        \item[$\circ$]\url{#3}
+    \end{itemize}
+}
