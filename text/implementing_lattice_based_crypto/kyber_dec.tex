@@ -6,7 +6,7 @@ The actually decryption begins by multiplying \rmhat{s} and \rmhat{u} and transf
 \listing{text/code/kyber.go}{Decryption process}{lst:kyber_dec_2}{52}{55}
 \object[0.5]{obr}{pictures/kyber_dec.pdf}{Decription for \texttt{cpapkeDec()}}{img:cpapke_dec}
 
-Decapsulation starts by parsing the secret key and creating variables for the private key, hash of the private key and random 32\,B named \texttt{z}. The randomly generated message generated in \ref{lst:kyber_enc_4} is decrypted using the secret key. The variable $r'$ is created using the same process as in \ref{lst:kyber_enc_4} lines 69-71. Then another hashed ciphertext is created from $m'$ and $r'$.
+Decapsulation starts by parsing the secret key and creating variables for the secret key, hash of the secret key and random 32\,B named \texttt{z}. The randomly generated message generated in \ref{lst:kyber_enc_4} is decrypted using the secret key. The variable $r'$ is created using the same process as in \ref{lst:kyber_enc_4} lines 69-71. Then another hashed ciphertext is created from $m'$ and $r'$.
 \listing{text/code/kyber.go}{CCAKEM.Dec decapsulation part 1}{lst:kyber_dec_4}{85}{87}
 
 The code in the last listing in this section (\ref{lst:kyber_dec_5}) derives the actual shared key. Though firstly an if statement has to be used. If the original ciphertext $c$ and ciphertext created here $c'$ are equal the value $K'$ is used for generating the key, if they don't equal \texttt{z} is used. Additionally the hash of $c'$ used to derive the key via a KDF.

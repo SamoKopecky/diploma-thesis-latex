@@ -1,8 +1,8 @@
-Another post-quantum KEM scheme is NTRU or \acl{NTRU}. It is one of the most efficient public key encryption schemes since instead of using a basis for  its public key, it uses a $p$-coefficient polynomial:
+Another post-quantum KEM scheme is NTRU or \acl{NTRU}. It is one of the most efficient public key encryption schemes since instead of~using a basis for  its public key, it uses a $p$-coefficient polynomial:
 \begin{equation}
   h=h_0+h_1x+h_2x^2+\dots+h_{p-1}x^{p-1}.
 \end{equation}
-Like GGH this scheme is based on the CVP. The message consists of two polynomials $d, e$ which are not a lattice point and the ciphertext $c$ which is calculated from $d, e$~and~$h$ points to a lattice point. An attacker cannot easily compute back $d, e$ only with the knowledge of $h, c$. The use of polynomials makes NTRU much faster then for example the GGH cryptosystem and is considered heavily for post-quantum standardization by NIST \cite{Bernstein149}.
+Like GGH this scheme is based on the CVP. The message consists of two polynomials $d, e$ which are not a lattice points and the ciphertext $c$ which is calculated from $d, e$ where $h$ points to a lattice point. An attacker cannot easily compute back $d, e$ only with the knowledge of $h, c$. The use of polynomials makes NTRU much faster then the GGH cryptosystem and was considered heavily for post-quantum standardization by NIST \cite{Bernstein149}.
 
 LWE is not a cryptosystem by itself, but many cryptosystem are based on it. The problem is based in modular linear equations for example
 \begin{align}

@@ -1,15 +1,15 @@
-One of the underlying principles used in asymmetric cryptography is the \textbf{integer factorization problem} (\acs{IFP}). This problem utilizes the idea that factorizing a big integer $n$ composing of two prime numbers (up to 15360 bits) is impossible to compute on todays computers in polynomial time \cite{Paar2010}. But producing $n$ from two prime numbers $p$ and $q$ is trivial and fast
+One of the underlying principles used in asymmetric cryptography is the \textbf{integer factorization problem} (\acs{IFP}). This problem utilizes the idea that factorizing a~big integer $n$ composing of two prime numbers (up to 15360 bits) is impossible to~compute on todays computers in polynomial time \cite{Paar2010}. But producing $n$ from two prime numbers $p$ and $q$ is trivial and fast
 \begin{equation}
   n=p*q.
 \end{equation}
-where $p$ and $q$ are the unique prime number. IFP together with modular arithmetic create the RSA (\acl{RSA}) cipher that is one of the most used ciphers used today for creating digital signatures. The private and public keys would be derived from the integer $n$.
+where $p$ and $q$ are the unique prime number. IFP together with modular arithmetic create the RSA (\acl{RSA}) cipher that is one of the most used ciphers used today for creating digital signatures. The secret and public keys would be derived from the integer $n$.
 
-The other principle that is used heavily in todays asymmetric cryptography is the \textbf{discrete logarithm problem} (\acs{DLP}). It heavily relies on the use of modular arithmetic and cyclic groups in which there are a finite amount of integer values. This is possible because it uses the the modulo operation together with any other operation to stay inside this cyclic group. In this group it is very easy (in polynomial time) to compute $\beta$ with
+The other principle that is used often in todays asymmetric cryptography is the \textbf{discrete logarithm problem} (\acs{DLP}). It heavily relies on the use of modular arithmetic and cyclic groups in which there are a finite amount of integer values. This is possible because it uses the the modulo operation together with any other operation to stay inside this cyclic group. In this group it is very easy (in polynomial time) to compute $\beta$ with
 \begin{equation}
   \alpha^x\equiv\beta\,\mathrm{mod}\,p
 \end{equation}
-while knowing the values for $x$ and $\alpha$ but very hard (in exponential time on todays computers) to compute x using this formula
+while knowing the values for $x$ and $\alpha$, but very hard (in exponential time on todays computers) to compute x using this formula
 \begin{equation}
   x\equiv\mathrm{log}_\alpha\beta\,\mathrm{mod}\,p
 \end{equation}
-with the knowledge of only $\alpha$ and $\beta$, where $p$ is a prime number \cite{Paar2010}. This problem only works if modulus $p$ is in the range of 2048-15360 bits. DSA (\acl{DSA}) utilizes this problem for creating digital signatures. An alternative exists to this problem that uses elliptic curves instead of cyclic groups called the \acl{ECDSA} (ECDSA). This is because the DLP equivalent in elliptic curves is more secure while using the same size for parameters such as $x$ which is the private key \cite{Ristic2014}. This property is allows the use of smaller keys while staying on the same level of security.
+with the knowledge of only $\alpha$ and $\beta$, where $p$ is a prime number \cite{Paar2010}. This problem only works if modulus $p$ is in the bigger then 2048 bits. DSA (\acl{DSA}) utilizes this problem for creating digital signatures. An alternative exists to this problem that uses elliptic curves instead of cyclic groups called ECDSA (\acl{ECDSA}). This is because the DLP equivalent in elliptic curves is more secure while using the same size for parameters such as $x$ which is the secret key \cite{Ristic2014}. This property is allows the use of smaller keys while staying on the same level of security.
