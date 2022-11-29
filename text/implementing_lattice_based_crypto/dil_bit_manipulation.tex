@@ -5,14 +5,14 @@ Dilithium employs some helper functions which are used in booth the simple and m
 \end{equation}
 \noindent As can be see in equation \ref{eq:decompose} the \texttt{Decompose} function splits a number into two smaller numbers $r_1=3278$ and $r_0=616$. The number $r_1$ is the closest multiple of the second input parameter $\alpha=1735$ to the input number. The second returned number $r_0$ is what remains after the division of $\alpha$. This function is wrapped by two additional functions \texttt{HighBits} and \texttt{LowBits}. \texttt{LowBits} returns only $r_0$ and \texttt{HighBits} returns only $r_1$.
 
-A similar function \texttt{Power2Round} does basically the same but instead of taking any $\alpha$ as the divisor it takes a parameter $d$ which is then used for calculating a power of 2 that is used as the divisor. Booth function output the same number for parameters $d=13$ and $\alpha=8192$ as seen bellow
+A similar function \texttt{Power2Round} does basically the same but instead of taking any $\alpha$ as the divisor it takes a parameter $d$ which is then used for calculating a~power of 2 that is used as the divisor. Booth function output the same number for parameters $d=13$ and $\alpha=8192$ as seen bellow
 
 \begin{align}
   \mathrm{\texttt{Power2Round}}(5687946,\,13\mathrm)&=694*8192+2698, \\
   \mathrm{\texttt{Decompose}}(5687946,\,8192\mathrm)&=694*8192+2698.
 \end{align}
 
-Functions \texttt{MakeHint} and \texttt{UseHint} make use of these functions to create and consume hints. The implementation for \texttt{MakeHint} is relatively simple and can be seen in listing \ref{lst:make_hint}. It returns true if the number $z+r_0$ is bigger then $\alpha$ because $r_1$ would either increase or decrease at least by one if that was the case. If the number $z$ doesn't change the high bits of $r$ it returns false and means that $z$ doesn't affect the high bits of $r$.
+Functions \texttt{MakeHint} and \texttt{UseHint} make use of the aforementioned functions to create and consume hints. The implementation for \texttt{MakeHint} is relatively simple and can be seen in listing \ref{lst:make_hint}. It returns true if the number $z+r_0$ is bigger then $\alpha$ because $r_1$ would either increase or decrease at least by one if that was the case. If the number $z$ doesn't change the high bits of $r$ it returns false and means that $z$ doesn't affect the high bits of $r$.
 \listing{text/code/dilithium.go}{\texttt{MakeHint} implementation}{lst:make_hint}{131}{131}
 \noindent\texttt{UseHint} takes $h$, $r$ and $\alpha$ as parameters. It can be used to calculate the high bits of $r+z$ without the knowledge of $z$ and using only the hint $h$ as seen in equation \ref{eq:use_hint}. The function first decomposes $r$ and if the hint is true it will either add or subtract 1 from $r_1$ (high bits of $r$) depending on the sign of $r_0$.
 
