@@ -1,10 +1,12 @@
-The benchmarked values available in tables \ref{tab:kyber_perf} and \ref{tab:dil_perf} were measured using a go program available in the practical part of this thesis, more specifically the code inside the \texttt{benchmark.go} file. One iteration of the benchmarking process for Kyber consists of key generation, key encapsulation and decapuslation. Similarly an iteration for Dilithium consists of key generation, signing process and a verification process. All benchmarks were done on AMD Ryzen 3600 cpu with a base core clock of 3.6\,GHz. Implementations used to compare the performance to the thesis implementation are the following:
+The benchmarked values available in tables \ref{tab:kyber_perf} and \ref{tab:dil_perf} were measured using a go program available in the practical part of this thesis, more specifically the code inside the \texttt{benchmark.go} file. One iteration of the benchmarking process for Kyber consists of key generation, key encapsulation and decapuslation. Similarly an iteration for Dilithium consists of key generation, signing process and a verification process. All benchmarks were done on AMD Ryzen 3600 cpu with a base core clock of 3.6\,GHz. Implementations used to compare the performance to the thesis are the following:
 \begin{itemize}
   \benchmarklink{kyber-k2so}{symbolicsoft}{https://github.com/SymbolicSoft/kyber-k2so}
   \benchmarklink{circl}{cloudflare}{https://github.com/cloudflare/circl}
 \end{itemize}
+\noindent As is clear from the results of benchmarking, this implementation of the post quantum algorithms is substantially worse then other implementations. This is because the main goal behind the implementations was to get an understanding of how these algorithms work and so they are not optimized in any way other then the NTT transformation used for polynomial multiplication. One of the main goals for the second part of this diploma thesis ill be optimizing these algorithms.
+\object{tab}{tables/kyber_performance}{Kyber performace comparison}{tab:kyber_perf}
+\object{tab}{tables/dil_performance}{Dilithium performace comparison}{tab:dil_perf}
 
 Along with a guide on how to run/build the benchmarking application in appendix \ref{ch:go_instructions} it also contains a guide on how to test the correctness of Kyber and Dilithium implementations. In the case of Kyber the test only checks if the shared key is the same before and after decryption. The test for Dilithium checks if the~signature is verified. These tests can be found in \texttt{main\_test.go}.
 
-\object{tab}{tables/kyber_performance}{Kyber performace comparison}{tab:kyber_perf}
-\object{tab}{tables/dil_performance}{Dilithium performace comparison}{tab:dil_perf}
+
