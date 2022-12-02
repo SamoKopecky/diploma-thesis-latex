@@ -10,10 +10,16 @@ Releases are published using Github actions. Everytime there is a push to master
 
 Install the required dependencies using [this guide](https://gist.github.com/ogajduse/ad4db70f9a6d396a133e6fd68f1a1204). After that install [latexmk](https://mg.readthedocs.io/latexmk.html).
 
-To generate a pdf run:
+To generate a pdf for the thesis run:
 
 ```sh
 latexmk -pdf thesis.pdf
+```
+
+To generate a pdf for the presentation run:
+
+```sh
+latexmk -pdf presentation.pdf
 ```
 
 ## Info

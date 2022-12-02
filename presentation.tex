@@ -2,7 +2,7 @@
 
 \documentclass[%        Základní nastavení
   %draft,    				  % Testovací překlad
-  12pt,       				% Velikost základního písma je 12 bodů
+  14pt,       				% Velikost základního písma je 12 bodů
 	t,                  % obsah slajdů bude vždy začínat od shora (nebude vertikálně centrovaný)
 	aspectratio=1610,   % poměr stran bude 16:10 (všechny projektory v učebnách na Technické 12 Brno),
 	                    % další volby jsou 43, 149, 169, 54, 32.
@@ -47,7 +47,7 @@
 %%%%%%      Definice informací o dokumentu             %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{nastaveni}      % v tomto souboru doplňte údaje o sobě, o názvu práce...
+\input{settings}      % v tomto souboru doplňte údaje o sobě, o názvu práce...
                        % (tento soubor je sdílený s textem práce)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,125 +83,124 @@
 % není tak vysazen ani nadpis snímku
 \maketitle
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 1. snímek s cíli (zadaním) práce
+
 \begin{frame} 
-	% nadpis snímku
 	\frametitle{Cíle práce}
 	\begin{itemize}
-			\item Nastudovat
-			\item Popsat
-				\begin{itemize}
-					\item nastudované
-				\end{itemize}
-			\item Implementovat
-				\begin{itemize}
-					\item nastudované
-					\item nové
-				\end{itemize}
-			\item Porovnat a vyhodnotit
-				\begin{itemize}
-						\item výsledky
-				\end{itemize}
+		\item Výber post kvantových algoritmov.
+		\item Implementácia post kvantového algoritmu pre výmenu klúčov/šiforvanie.
+		\item Implementácia post kvantového algoritmu pre digitálny podpis.
+		\item Výber implementačného programovacieho jazyka.
 	\end{itemize}
 \end{frame}
 
-
-%%%%%%%%%%%%%
 \begin{frame} 
-	\frametitle{Klíčové nástroje}
+	\frametitle{Post kvantová kryptografia}
+	\begin{itemize}
+		\item Pomocou Shorovho algoritmu je možné prelomiť IFP (Integer Factorization Problem) a DLP (Discreete Logarithm Problem)
+		      \begin{itemize}
+			      \item RSA
+			      \item ECDH
+			      \item ECDSA
+		      \end{itemize}
+		\item Potreba kvantového počítača z miliónmy qubitov.
+		\item Najlepší kvantový počítač obsahuje 127 qubitov od IBM.
+		\item Potreba vynájsť algoritmy asymetcikej kryptografie odolné voči kvantovým počítačom.
+	\end{itemize}
+\end{frame}
 
-	% prostředí 'alertblock', které slouží pro zdůraznění informace
-	\begin{alertblock}{Pro práci je klíčový Eulerův vzorec}
-		$$\eul^{\jmag x}=\cos x + \jmag\sin x$$
-	\end{alertblock}
-
-	\vspace{4ex}
-	Eulerova identita je speciálním případem tohoto vzorce, jestliže dosadíme $x=\uppi$\,:
-
-	% prostředí 'block', které slouží jako informativní
-	\begin{block}{Eulerova identita}
-		$$\eul^{\jmag \uppi}=\cos \uppi + \jmag\sin \uppi,$$\\
-		odkud vyplývá
-		$$\eul^{\jmag \uppi}+1=0.$$
-	\end{block}
-\end{frame} 
-
-
-%%%%%%%%%%%%%
 \begin{frame} 
-	\frametitle{Plošný spoj}
-	
-	\begin{columns}[T] 								% prostředí sloupce s umístěním nahoře
-		\begin{column}{0.4\textwidth}		% první sloupec
-			Obrázek znázorňuje model:\\[2ex]
-			%
+	\frametitle{Programovací jazyk Go}
+	\begin{itemize}
+		\item Relatívne nový (2009) kompilovaný jazyk od spoločnosti Google.
+		\item Podobný jazyku C.
+		\item Zameraný na vytváranie rýchlych sieťových aplikácií
+	\end{itemize}
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.9\textwidth]{pictures/compiler_sk.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame} 
+	\frametitle{Kyber a Dilithium}
+	\begin{itemize}
+		\item Obidve algoritmu sú založené na mriežkach (lattice-based)
+		\item Algoritmy zvolené v treťom kole NIST štandardizácie (Júl 2022).
+	\end{itemize}
+	\vspace{3ex}
+	\begin{columns}[T]
+		\begin{column}{0.5\textwidth}
+			CRYSTALS-Kyber
 			\begin{itemize}
-				\item Deska
-				\item Součástky
-				\item Signály
-				\item Napájení
+				\item Post kvantový algoritmus typu KEM (Key Encapsulation Mechanism).
 			\end{itemize}
 		\end{column}
-		%
-		\begin{column}{0.6\textwidth}		% druhý sloupec
-			\begin{figure}%	
-				\centering
-				\vspace{1cm}	              % horizontální mezera
-				\includegraphics[width=0.8\columnwidth]{obrazky/soucastky}
-				%lze vložit popisek, ale povetšinou je to v prezentaci zbytečné
-				%\caption{Popisek obrázku}%
-				%\label{obr:ukazka}
-			\end{figure}
+		\begin{column}{0.5\textwidth}
+			CRYSTALS-Dilithium
+			\begin{itemize}
+				\item Post kvantový algoritmus pre digitálny podpis.
+			\end{itemize}
 		\end{column}
-	\end{columns}											% ukončení prostředí sloupce
+	\end{columns}
+	
 \end{frame}
 
 
-%%%%%%%%%%%%%
-\begin{frame} 
-	\frametitle{Výsledky}
-	\vspace{1cm}
-	\begin{table}[]
+\begin{frame}
+	\frametitle{Výsledky implementácie}
+	
+	\begin{table}[htbp]
 		\centering
-		\caption{Výsledky měření mobilních sítí}
-		\label{tab:tabulka}
-			\begin{tabular}{lcc}
-				\toprule
-					Technologie  & Rychlost stahování [kB/s] & Rychlost nahrávání [kB/s] \\
-				\midrule
-					GPRS (2,5G)	& 7,2 	& 3,6\\
-					UMTS 3G     & 48 		& 48\\
-					HSPA (3,5G)	&	1\,706	&	720\\
-					LTE (4G) 		& 40\,750 & 10\,750\\
-				\bottomrule                                       
-			\end{tabular}
+		\input{tables/kyber_performance_sk}
+		\caption{Kyber}
+	\end{table}
+	\begin{table}[htbp]
+		\centering
+		\input{tables/dil_performance_sk}
+		\caption{Dilithium}
 	\end{table}
 \end{frame}
 
-
-%%%%%%%%%%%%%
 \begin{frame} 
-	\frametitle{Závěr}
-	\dots
+	\frametitle{Navádzajúca post kvantová komunikácia}
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.7\textwidth]{pictures/future.pdf}
+	\end{figure}
 \end{frame}
 
+\begin{frame} 
+	\frametitle{Záver}
+	Dosiahnuté ciele
+	\begin{itemize}
+		\item Algorimy pre výmenu klúčov/šiforvanie a digitálny podpis boly implementované v jazyku Go
+	\end{itemize}
+	Ciele v nasledujúcej práci
+	\begin{itemize}
+		\item Vylepšenie výsledkov implementácie Kyber a Dilithium
+		\item Implementácia všetkých bezpečnostných úrovní
+		\item Implementovanie post kvantovej komunikácie
+		\item Rozsiahlejšie výkonové testovanie implementácií
+		\item Implementácia post kvantového podpus do X.509 certifikátu
+	\end{itemize}
+\end{frame}
 
 % podekovani
-\begin{frame}[c] 
-% bez nadpisu snímku
+\begin{frame}[c]
+	% bez nadpisu snímku
 	\frametitle{\mbox{ }}
 	\begin{center}
-		{\Huge Děkuji za pozornost!}
+		{\Huge Ďakujem za pozornosť!}
 	\end{center}
 \end{frame}
 
 % otázky oponenta
-\frame{
-\frametitle{Otázky oponenta}
-	\emph{Jaká je souvislost Vašeho vzorce (1.2) s~Maxwellovými rovnicemi v~integrálním tvaru?}\\[2ex]
-	%
-	Již staří Římané\,\dots
-}
+% \frame{
+% \frametitle{Otázky oponenta}
+% 	\emph{Jaká je souvislost Vašeho vzorce (1.2) s~Maxwellovými rovnicemi v~integrálním tvaru?}\\[2ex]
+% 	%
+% 	Již staří Římané\,\dots
+% }
 
 \end{document}
