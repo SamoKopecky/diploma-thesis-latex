@@ -84,72 +84,120 @@
 \maketitle
 
 
-\begin{frame} 
+\begin{frame}[c]
 	\frametitle{Cíle práce}
-	\begin{itemize}
-		\item Výber post kvantových algoritmov.
-		\item Implementácia post kvantového algoritmu pre výmenu klúčov/šiforvanie.
-		\item Implementácia post kvantového algoritmu pre digitálny podpis.
-		\item Výber implementačného programovacieho jazyka.
-	\end{itemize}
+	\large{\begin{itemize}
+			\item Výber post kvantových algoritmov
+			\item Implementácia post kvantového algoritmu pre výmenu klúčov/šiforvanie
+			\item Implementácia post kvantového algoritmu pre digitálny podpis
+			\item Výber implementačného programovacieho jazyka
+		\end{itemize}}
+	
 \end{frame}
 
-\begin{frame} 
-	\frametitle{Post kvantová kryptografia}
-	\begin{itemize}
-		\item Pomocou Shorovho algoritmu je možné prelomiť IFP (Integer Factorization Problem) a DLP (Discreete Logarithm Problem)
-		      \begin{itemize}
-			      \item RSA
-			      \item ECDH
-			      \item ECDSA
-		      \end{itemize}
-		\item Potreba kvantového počítača z miliónmy qubitov.
-		\item Najlepší kvantový počítač obsahuje 127 qubitov od IBM.
-		\item Potreba vynájsť algoritmy asymetcikej kryptografie odolné voči kvantovým počítačom.
-	\end{itemize}
-\end{frame}
+% \begin{frame}[c]
+% 	\frametitle{Post kvantová kryptografia}
+% 	\large{\begin{itemize}
+% 			\item Shorov algoritmus prelomí IFP a DLP
+% 			\item Potreba kvantového počítača z miliónmy qubitov
+% 			\item Kvantový počítač od IBM\,--\,127 qubitov
+% 			\item Potreba algoritmov asymetcikej kryptografie odolné voči kvantovým počítačom
+% 		\end{itemize}}
 
-\begin{frame} 
+% \end{frame}
+
+\begin{frame}[c]
 	\frametitle{Programovací jazyk Go}
-	\begin{itemize}
-		\item Relatívne nový (2009) kompilovaný jazyk od spoločnosti Google.
-		\item Podobný jazyku C.
-		\item Zameraný na vytváranie rýchlych sieťových aplikácií
-	\end{itemize}
+	\large{\begin{itemize}
+			\item Relatívne nový (2009) kompilovaný jazyk od spoločnosti Google
+			\item Podobný jazyku C
+			\item Zameraný na vytváranie rýchlych sieťových aplikácií
+		\end{itemize}}
+	
 	\begin{figure}[htbp]
 		\centering
-		\includegraphics[width=0.9\textwidth]{pictures/compiler_sk.pdf}
+		\includegraphics[width=\textwidth]{pictures/compiler_sk.pdf}
 	\end{figure}
 \end{frame}
 
-\begin{frame} 
+\begin{frame}[c]
 	\frametitle{Kyber a Dilithium}
-	\begin{itemize}
-		\item Obidve algoritmu sú založené na mriežkach (lattice-based)
-		\item Algoritmy zvolené v treťom kole NIST štandardizácie (Júl 2022).
-	\end{itemize}
-	\vspace{3ex}
-	\begin{columns}[T]
-		\begin{column}{0.5\textwidth}
-			CRYSTALS-Kyber
-			\begin{itemize}
-				\item Post kvantový algoritmus typu KEM (Key Encapsulation Mechanism).
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			CRYSTALS-Dilithium
-			\begin{itemize}
-				\item Post kvantový algoritmus pre digitálny podpis.
-			\end{itemize}
-		\end{column}
-	\end{columns}
-	
+	\large{
+		\begin{itemize}
+			\item Založené na mriežkach (lattice-based)
+			\item Zvolené v treťom kole NIST štandardizácie (Júl 2022)
+		\end{itemize}
+		\vspace{3ex}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				CRYSTALS-Kyber
+				\begin{itemize}
+					\item Post kvantový algoritmus typu KEM
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				CRYSTALS-Dilithium
+				\begin{itemize}
+					\item Post kvantový algoritmus pre digitálny podpis
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Proces implementácie algoritmu Kyber}
+	\large{
+		\begin{itemize}
+			\item Vychádzal som z officiálnych špecifikácií
+			\item Začal som z implementáciou NTT u Kyber
+			\item Implementácia pomocných funkcií
+			\item Zostavenie algiritmu
+			\item Implementácia transformácie na bajty
+		\end{itemize}
+	}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Všeobecná násobenie v NTT tvare}
+	\large{
+		Pre vektory $f$ a $g$
+		\begin{align*}
+			f & = f_0 + f_1x + f_2x^2 + \dots + f_{254}x^{254} + f_{255}x^{255}, \\
+			g & = g_0 + g_1x + g_2x^2 + \dots + g_{254}x^{254} + g_{255}x^{255},
+		\end{align*}
+		je násobenie pre $h=f*g$ v tvare NTT
+		\begin{align*}
+			h & = f_0g_0 + f_1g_1x + f_2g_2x^2 + \dots + f_{254}g_{254}x^{254} + f_{255}g_{255}x^{255}.
+		\end{align*}
+	}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Proces implementácie algoritmu Dilithium}
+	\large{
+		\begin{itemize}
+			\item Vychádzal som z officiálnych špecifikácií
+			\item Využitie NTT z Kyber implementácie s malou úpravou
+			\item Implementácia pomocných funkcií
+			\item Zostavenie algiritmu
+			\item Zložitejšia implementácia transformácie na bajty
+		\end{itemize}
+	}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Transoformácia na bajty}
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=\textwidth]{pictures/bit_packing.pdf}
+	\end{figure}
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[c]
 	\frametitle{Výsledky implementácie}
-	
+	Implementácia využíva jedinú externú knižincu pre Hash funkcie
 	\begin{table}[htbp]
 		\centering
 		\input{tables/kyber_performance_sk}
@@ -162,28 +210,30 @@
 	\end{table}
 \end{frame}
 
-\begin{frame} 
-	\frametitle{Navádzajúca post kvantová komunikácia}
-	\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=0.7\textwidth]{pictures/future.pdf}
-	\end{figure}
-\end{frame}
+% \begin{frame}[c]
+% 	\frametitle{Navádzajúca post kvantová komunikácia}
+% 	\begin{figure}[htbp]
+% 		\centering
+% 		\includegraphics[width=0.7\textwidth]{pictures/future.pdf}
+% 	\end{figure}
+% \end{frame}
 
-\begin{frame} 
+\begin{frame}[c]
 	\frametitle{Záver}
-	Dosiahnuté ciele
-	\begin{itemize}
-		\item Algorimy pre výmenu klúčov/šiforvanie a digitálny podpis boly implementované v jazyku Go
-	\end{itemize}
-	Ciele v nasledujúcej práci
-	\begin{itemize}
-		\item Vylepšenie výsledkov implementácie Kyber a Dilithium
-		\item Implementácia všetkých bezpečnostných úrovní
-		\item Implementovanie post kvantovej komunikácie
-		\item Rozsiahlejšie výkonové testovanie implementácií
-		\item Implementácia post kvantového podpus do X.509 certifikátu
-	\end{itemize}
+	\large{
+		Dosiahnuté ciele
+		\begin{itemize}
+			\item Implementácia algoritmov pre výmenu klúčov, šiforvanie a digitálny podpis
+		\end{itemize}
+		Ciele v nasledujúcej práci
+		\begin{itemize}
+			\item Vylepšenie výsledkov implementácie Kyber a Dilithium
+			\item Implementácia všetkých bezpečnostných úrovní
+			\item Implementovanie post kvantovej komunikácie
+			\item Rozsiahlejšie výkonové testovanie implementácií
+		\end{itemize}
+	}
+	
 \end{frame}
 
 % podekovani
@@ -204,3 +254,4 @@
 % }
 
 \end{document}
+
