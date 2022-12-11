@@ -73,7 +73,6 @@
 \logoheader					% vytvoření zkráceného loga VUT FEKT v hlavičce slajdu, nechte odkomentované
 
 
-
 \begin{document}
 
 % v případě zakomentování následujícího se zobrazí v pravém dolním rohu slajdů klikatelné navigační symboly 
@@ -85,10 +84,10 @@
 
 
 \begin{frame}[c]
-	\frametitle{Cíle práce}
+	\frametitle{Ciele práce}
 	\large{\begin{itemize}
 			\item Výber post kvantových algoritmov
-			\item Implementácia post kvantového algoritmu pre výmenu klúčov/šiforvanie
+			\item Implementácia post kvantového algoritmu pre výmenu kľúčov/šifrovanie
 			\item Implementácia post kvantového algoritmu pre digitálny podpis
 			\item Výber implementačného programovacieho jazyka
 		\end{itemize}}
@@ -121,24 +120,28 @@
 \end{frame}
 
 \begin{frame}[c]
+	
 	\frametitle{Kyber a Dilithium}
 	\large{
 		\begin{itemize}
-			\item Založené na mriežkach (lattice-based)
+			\item Post kvantové algoritmy založené na mriežkach
 			\item Zvolené v treťom kole NIST štandardizácie (Júl 2022)
+			\item 3 módy bezpečnosti
 		\end{itemize}
 		\vspace{3ex}
 		\begin{columns}[T]
 			\begin{column}{0.5\textwidth}
 				CRYSTALS-Kyber
 				\begin{itemize}
-					\item Post kvantový algoritmus typu KEM
+					\item Výmena kľúčov
+					\item Najrýchlejší algoritmus
 				\end{itemize}
 			\end{column}
 			\begin{column}{0.5\textwidth}
 				CRYSTALS-Dilithium
 				\begin{itemize}
-					\item Post kvantový algoritmus pre digitálny podpis
+					\item Digitálny podpis
+					\item Najmenší verejný kľúč
 				\end{itemize}
 			\end{column}
 		\end{columns}
@@ -149,11 +152,11 @@
 	\frametitle{Proces implementácie algoritmu Kyber}
 	\large{
 		\begin{itemize}
-			\item Vychádzal som z officiálnych špecifikácií
-			\item Začal som z implementáciou NTT u Kyber
+			\item Implementácia vychádza z oficiálnej špecifikácie
+			\item NTT implementácia
 			\item Implementácia pomocných funkcií
-			\item Zostavenie algiritmu
-			\item Implementácia transformácie na bajty
+			\item Zostavenie algoritmu z častí
+			\item Implementácia transformácie polynómov na bajty
 		\end{itemize}
 	}
 \end{frame}
@@ -166,9 +169,9 @@
 			f & = f_0 + f_1x + f_2x^2 + \dots + f_{254}x^{254} + f_{255}x^{255}, \\
 			g & = g_0 + g_1x + g_2x^2 + \dots + g_{254}x^{254} + g_{255}x^{255},
 		\end{align*}
-		je násobenie pre $h=f*g$ v tvare NTT
+		je násobenie pre $\hat{h}=\hat{f}*\hat{g}$ v tvare NTT
 		\begin{align*}
-			h & = f_0g_0 + f_1g_1x + f_2g_2x^2 + \dots + f_{254}g_{254}x^{254} + f_{255}g_{255}x^{255}.
+			\hat{h} & = \hat{f}_0\hat{g}_0 + \hat{f}_1\hat{g}_1x + \hat{f}_2\hat{g}_2x^2 + \dots + \hat{f}_{254}\hat{g}_{254}x^{254} + \hat{f}_{255}\hat{g}_{255}x^{255}.
 		\end{align*}
 	}
 \end{frame}
@@ -177,17 +180,17 @@
 	\frametitle{Proces implementácie algoritmu Dilithium}
 	\large{
 		\begin{itemize}
-			\item Vychádzal som z officiálnych špecifikácií
+			\item Implementácia vychádza z oficiálnej špecifikácie
 			\item Využitie NTT z Kyber implementácie s malou úpravou
 			\item Implementácia pomocných funkcií
-			\item Zostavenie algiritmu
-			\item Zložitejšia implementácia transformácie na bajty
+			\item Zostavenie algoritmu z častí
+			\item Zložitejšia implementácia transformácie polynómov na bajty
 		\end{itemize}
 	}
 \end{frame}
 
 \begin{frame}[c]
-	\frametitle{Transoformácia na bajty}
+	\frametitle{Transformácia na bajty}
 	\begin{figure}[htbp]
 		\centering
 		\includegraphics[width=\textwidth]{pictures/bit_packing.pdf}
@@ -197,7 +200,7 @@
 
 \begin{frame}[c]
 	\frametitle{Výsledky implementácie}
-	Implementácia využíva jedinú externú knižincu pre Hash funkcie
+	Implementácia využíva jedinú externú knižnicu pre Hash funkcie
 	\begin{table}[htbp]
 		\centering
 		\input{tables/kyber_performance_sk}
@@ -223,7 +226,7 @@
 	\large{
 		Dosiahnuté ciele
 		\begin{itemize}
-			\item Implementácia algoritmov pre výmenu klúčov, šiforvanie a digitálny podpis
+			\item Implementácia algoritmov pre výmenu kľúčov, šifrovanie a digitálny podpis
 		\end{itemize}
 		Ciele v nasledujúcej práci
 		\begin{itemize}
@@ -254,4 +257,3 @@
 % }
 
 \end{document}
-
