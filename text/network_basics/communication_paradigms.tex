@@ -2,4 +2,5 @@ Two of the most used communication paradigms to provide services to users are cl
 
 The second communication paradigm, peer-to-peer relies on the fact that if two entities want to communicate they will create a connection between them only, which eliminates the problem with the client-server paradigm of connecting two users. Each entity consists of a server and a client also since each entity needs to~be~able to listen for incoming connections and also accept create connections to~other listening entities.
 
+TODO: Remake
 The issue with using peer-to-peer for communicating with users, is that each user needs to have an open port. But since most of users on the internet are behind a NAT (\acl{NAT}), it is not always easily solvable. This issue is mitigated by using the client-server paradigm since the clients can initialize the~connections with the server which then transfers the messages between the initialized connections. However as mention before this leaves the messages open and readable by the server. 
