@@ -1,0 +1,6 @@
+As mentioned in \ref{sec:nist} a group of three lattice based algorithms have been standardized, which Kyber and Dilithium are a part of. That is the main reason why they are chosen as the public key algorithms for this thesis. Each of them have their respective chapter (\ref{ch:kyber} and \ref{ch:dilithium}) that describe some implementation aspects and also introduce some theoretical background that makes them secure.
+
+As for symmetric cryptography AES is chosen with the key size of 256\,bits. AES is used in modern cryptography as the main symmetric cipher and is also usable in post-quantum cryptography but requires a bigger size of the key, due to the threat of Grovers algorithm. Used hash functions in this application are SHAKE-128/256 for the implementing of Kyber and Dilithium following the authors recommendations. SHA3-512 is used by the networking part of the application. A summary of the chosen cryptographic algorithms can be found in the table bellow.
+
+
+\object{tab}{tables/choose_algs}{Choosen algorithms}{tab:choosen_algs}
