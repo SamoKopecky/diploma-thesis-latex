@@ -20,15 +20,15 @@ If $h(\sigma)=y_p$ then the signature is verified. However the signer cannot reu
 The solution to one time hash based signatures was introduced by Ralph Merkle in 1979 and is called the Merkle's tree signature scheme. Key generation starts with generating a binary tree which always has $2^n$ leafs, this is the master private key. Each leaf correspond to a hash of Lamport's public key. Every two neighboring nodes are hashed together to create their parent node. In figure \ref{img:merkel_tree} an example can be given for $N_1$ and $N_2$ where
 \begin{equation}
   N_3=h(N_1, N_2).
-\end{equation} 
+\end{equation}
 \object[1]{obr}{pictures/merkel-tree.pdf}{Merkel tree}{img:merkel_tree}
 \noindent After the tree is generated the master public key is the root of the tree, in this case $N_{15}$. To sign a message, the signer chooses some random leaf node and signs a message with Lamport's one time signature using the corresponding private key. In this case $N_5$. To verify this signature, at first the one time signature is verified using Lamport's public key. The signature is verified but the public key also has to be verified. That is why the signer also sent the least amount of hashes need to compute the root. In this case he sent $N_4$, $N_3$, $N_{14}$ as seen in figure \ref{img:merkel_tree_path}. To calculate $N_{15}$, the verifier has to calculate
 \begin{align}
-  N_6  & =h(N_4,N_5)  \\
-  N_7  & =h(N_6,N_3)  \\
+  N_6    & =h(N_4,N_5)     \\
+  N_7    & =h(N_6,N_3)     \\
   N_{15} & =h(N_{14},N_7).
 \end{align}
 If the calculated $N_{15}$ equals the master public key, the signature is verified. \cite{Bernstein2009}
-\object[1]{obr}{pictures/merkel-tree-path.pdf}{Merkel tree path}{img:merkel_tree_path}
+\object[1]{obr}{pictures/merkel-tree-path.pdf}{Merkel tree -- signature verification}{img:merkel_tree_path}
 
 As mentioned earlier, the security requirements for hash based ciphers are very low and the principles that they are based on are very well understood. This makes them an excellent candidate in NIST standardization process. However one flaw of these ciphers is that the signer has to keep record of previously signed messages hence they can produce only a limited amount of signatures. Although one signature has been standardized by NIST in the 3rd round and that is SPHINCS+, which is based on the aforementioned Merkle's tree signature.
