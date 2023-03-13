@@ -22,10 +22,10 @@ To generate a pdf for the presentation run:
 latexmk -pdf presentation.pdf
 ```
 
-## Info
+<!-- ## Info
 
 This table displays numbers only for relevant sections (introduction, all chapters and conclusion).
 
 | Characters | Pages |
 |------------|-------|
-| 68 244     | ~38   |
+| 68 244     | ~38   | -->
