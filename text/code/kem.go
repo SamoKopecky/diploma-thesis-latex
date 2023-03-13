@@ -11,4 +11,3 @@ var kems = map[string]KemAlgorithm{
 	"PqComKyber512": &kem.PqComKyber512{},
 	"CirclKyber512": &kem.CirclKyber512{},
 }
-

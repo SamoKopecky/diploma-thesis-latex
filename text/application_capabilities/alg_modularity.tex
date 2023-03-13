@@ -8,4 +8,3 @@ The interface for signatures is shown in listing \ref{lst:sign_int}. As with the
 
 After implementing these interfaces they need to be added to a shared map contained in either \texttt{crypto/kem.go} or \texttt{crypto/sign.go} files. The key for the map entry is the algorithm name that will be used in the configuration file and the value is a pointer to the implemented interface (a Go \texttt{struct}). See the listing bellow for an example.
 \listing{text/code/kem.go}{KEM algorithms map}{lst:kem_map}{10}{13}
-

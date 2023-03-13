@@ -2,7 +2,7 @@ Hash functions work by digesting a~message of arbitrary size into a fixed sized 
 \begin{equation}
   H(k, n): \{0,1\}^k \rightarrow \{0,1\}^d,
 \end{equation}
-where $k$ stands for the size of the input message and $d$ stands for the output size. 
+where $k$ stands for the size of the input message and $d$ stands for the output size.
 \newpage
 \noindent For a hash function to be secure it also must posses these three properties \cite{Paar2010}:
 \begin{itemize}
@@ -11,7 +11,7 @@ where $k$ stands for the size of the input message and $d$ stands for the output
   \item \textbf{collision resistance}\,--\,there mustn't exist two different inputs that generate the same hash value.
 \end{itemize}
 
-How the digest process works internally depends on the specific hash function being used, it doesn't have a single definition. For example a hash function can be based on a Merkle-Damag\aa rd construction. This construction and many more use compression functions, which take in input of some size and reduce it into an output of a smaller size. In the Merkle-Damg\aa rd construction the message is firstly split into blocks. With the help of a compression function the blocks are then consumed one by one. The output of one compressed block is then fed back to the input of~another round of compression, until all the blocks are consumed \cite{Smart2004}. 
+How the digest process works internally depends on the specific hash function being used, it doesn't have a single definition. For example a hash function can be based on a Merkle-Damag\aa rd construction. This construction and many more use compression functions, which take in input of some size and reduce it into an output of a smaller size. In the Merkle-Damg\aa rd construction the message is firstly split into blocks. With the help of a compression function the blocks are then consumed one by one. The output of one compressed block is then fed back to the input of~another round of compression, until all the blocks are consumed \cite{Smart2004}.
 
 Other types of constructions are also used such as hash functions based the KECCEK construction also called the sponge construction. The main idea behind the sponge construction is that after each round of compression, a number of bits are firstly absorbed by the compression function and then some bits are taken out of each compression iteration that make up the final hash value. How many bits are absorbed or taken out is dictated by the hash function parameters. \cite{1Od8f4TuMxetfmHu}
 
@@ -19,6 +19,4 @@ Examples of specific hash functions are listed in table \ref{tab:hash_func}. Sin
 
 \object{tab}{tables/hash_functions}{Modern hash functions \cite{rd1wUlxEgliEynii}\cite{1Od8f4TuMxetfmHu}}{tab:hash_func}
 
-Hash functions are used in many ares of cryptography. As an example they are used in digital signature schemes (section \ref{sec:asymmetric_enc}), message authentication codes (\acs{MAC}), pseudo random number generators and even public-key quantum resistant cryptography \cite{Chen2016}. 
-
-
+Hash functions are used in many ares of cryptography. As an example they are used in digital signature schemes (section \ref{sec:asymmetric_enc}), message authentication codes (\acs{MAC}), pseudo random number generators and even public-key quantum resistant cryptography \cite{Chen2016}.
