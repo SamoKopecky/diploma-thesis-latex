@@ -3,9 +3,9 @@ As any modern L7 protocol, this messages in this protocol consist of a header th
 \object[0.6]{obr}{pictures/header.pdf}{Protocol header}{img:header}
 \noindent From the possible 255 types only 4 types of payloads are implemented:
 \begin{itemize}
-  \itemtt{ClientInitT}initialization message for the client side,
-  \itemtt{ServerInitT}initialization message for the server side,
-  \itemtt{ContentT}generic data payload type,
-  \itemtt{ErrorT}error messages.
+  \item \textbf{ClientInitT}\,--\,initialization message for the client side,
+  \item \textbf{ServerInitT}\,--\,initialization message for the server side,
+  \item \textbf{ContentT}\,--\,generic data payload type,
+  \item \textbf{ErrorT}\,--\,error messages.
 \end{itemize}
-The initialization together with the client and server init types is detailed in the following subsection \ref{subsec:init_phase}. The rest of the types are mentioned in the subsection \ref{subsec:other_phase}
+The initialization together with the client and server init types is detailed in the following subsection \ref{subsec:init_phase}. The rest of the types are mentioned in the subsection \ref{subsec:other_phase}. Apart from the headers of the message types all of the data is encrypted using a quantum resistant symmetric cipher, more specifically AES-GCM with the keys size of 256\,b. The GCM block mode also computes a MAC which is used for validating the authentication and integrity of the encrypt message \cite{Paar2010}.
