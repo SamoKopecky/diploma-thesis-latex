@@ -31,7 +31,7 @@ Before commands that create quantum resistant connections can be used a configur
 \begin{itemize}
   \item \texttt{./pqcom config gen}
 \end{itemize}
-To use different algorithms for the configuration check the section \ref{sec:cmd_config}. Too use a created configuration file use one of the three options defined in section \ref{sec:cmd_app}.
+To use different algorithms for the configuration check the section \ref{sec:cmd_config}. Too use a created configuration file use one of the three options defined in section \ref{sec:cmd_app}. In order to receive log messages the option \texttt{-\--log info} can be appended to the commands to enable logging at the info level. By default the logging will be output to the \texttt{stderr} channel of the terminal. However while application using the \texttt{chat} mode, log messages are instead saved to a file located at \texttt{\$HOME/.local/state/pqcom}.
 
 \subsection{Chat mode}
 Now that configuration files are generated, the application can be used to create connections, for example using the \texttt{chat} command. Firstly the server has to start listening. By default command
@@ -40,7 +40,7 @@ Now that configuration files are generated, the application can be used to creat
 \end{itemize}
 will start listening on port \texttt{4040} and on address \texttt{127.0.0.1}. Now a client has to connect by running
 \begin{itemize}
-  \item \texttt{./pqcom app chat -c -\--config pqcom\_server.json}
+  \item \texttt{./pqcom app chat -c -\--config pqcom\_client.json}
 \end{itemize}
 where the default remote port is again \texttt{4040} with the IP address \texttt{127.0.0.1}. If everything was done correctly a TUI should open where users can send messages to each other.
 
@@ -51,9 +51,9 @@ To run the application in send/receive mode for file exchange one of the peers f
 \end{itemize}
 and the other peer has to run
 \begin{itemize}
-  \item \texttt{cat test.txt | ./pqcom app send -\--config pqcom\_server.json}
+  \item \texttt{cat test.txt | ./pqcom app send -\--config pqcom\_client.json}
 \end{itemize}
-In order to receive log messages the option \texttt{-\--log info} can be appended to the commands to enable logging at the info level. When the commands are ran in the correct order, the client will send contents of the \texttt{test.txt} file to the server who will save the file in a file named \texttt{output.txt}.
+When the commands are ran in the correct order, the client will send contents of the \texttt{test.txt} file to the server who will save the file in a file named \texttt{output.txt}.
 
 \section{How to test}
 Tests that check whether the implementations are working correctly can be ran by entering
