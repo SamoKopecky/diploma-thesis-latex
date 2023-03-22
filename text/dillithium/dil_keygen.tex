@@ -1,5 +1,5 @@
 Dilithium key generation process starts by generating three random seeds $\rho$, $\rho'$, $K$. $\rho$ is used to create the matrix \rmhat{A} and $\rho'$ for generating error vectors $s_1$, $s_2$. The product of \rmhat{A} and $s_1$ to which $s_2$ is added is passed to the aforementioned function \texttt{Power2Round} together with $d$ which is a parameter defined \ref{tab:dil_sec_levels}. This functions splits $t$ into $t_1$ and $t_0$.
 
-Variable $t_1$ is used as the public key together with the randomly generated $K$. The secret key consists of a hash (a block with H) of the public key $tr$, secret parameters $s_1$, $s_2$, $t_0$ and the random seed $\rho$. Polynomials vectors are additionally packed into bytes for easy transfer over the network. This process but simplified is also illustrated in figure.
+Variable $t_1$ is used as the public key together with the randomly generated $K$. The secret key consists of a hash (a block with H) of the public key $tr$, secret parameters $s_1$, $s_2$, $t_0$ and the random seed $\rho$. Polynomials vectors are additionally packed into bytes for easy transfer over the network. This process but simplified is also illustrated in figure \ref{img:dil_keygen}.
 
 \object[0.5]{obr}{pictures/dil_key_gen.pdf}{Dilithium key generation}{img:dil_keygen}
