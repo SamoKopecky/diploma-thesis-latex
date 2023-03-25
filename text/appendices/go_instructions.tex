@@ -1,15 +1,19 @@
 This appendix contains the necessary information for building the go program, running it and then instructions on how to run the provided tests.
 
 \section{How to build}
-Go supports most of the well know operating systems such as Linux, Windows and Mac. However this application only supports the Linux operating system.First of all download the latest version of the go binary from this link
+Go supports most of the well know operating systems such as Linux, Windows and Mac. This application supports the Linux and Windows operating systems. It was no tested on a Mac system but since theoretically it should also work on them. First of all download the latest version of the go binary from this link
 \begin{itemize}
   \item \url{https://go.dev/doc/install}.
 \end{itemize}
-Once go is installed the binary for this thesis can be built by running
+Once go is installed the binary executable file for this thesis can be built by running
 \begin{itemize}
   \item \texttt{go build -v -o pqcom}
 \end{itemize}
-inside the command line interface. The command also has to be ran inside the root directory of the project. The output of this command should yield a~file named \texttt{pqcom}.
+or for Windows
+\begin{itemize}
+  \item \texttt{go build -v -o pqcom.exe}
+\end{itemize}
+inside a command line interface. The command also has to be ran inside the root directory of the project. The output of this command should yield a~file named \texttt{pqcom} or \texttt{pqcom.exe} respectively. From now on only the Linux binary will be used for examples but the same examples also apply to the Windows executable.
 \section{How to run}
 Once the binary is built it can be ran just like any other binary. Run with
 \begin{itemize}
@@ -22,7 +26,7 @@ in the command line interface. Refer to chapter \ref{ch:app_capab} for applicati
 to see what commands are available.
 
 \section{Examples}
-The benchmarks for implementations of Kyber and Dilithium and for other added post quantum algorithms can be ran without the required configuration files. Here is an example that will run benchmarks for all available algorithms
+The benchmarks for implementations of Kyber and Dilithium and for other added post quantum algorithms can be ran without the required configuration file. Here is an example that will run benchmarks for all available algorithms
 \begin{itemize}
   \item \texttt{./pqcom benchmark -i 500}
 \end{itemize}
@@ -31,7 +35,7 @@ Before commands that create quantum resistant connections can be used a configur
 \begin{itemize}
   \item \texttt{./pqcom config gen}
 \end{itemize}
-To use different algorithms for the configuration check the section \ref{sec:cmd_config}. Too use a created configuration file use one of the three options defined in section \ref{sec:cmd_app}. In order to receive log messages the option \texttt{-\--log info} can be appended to the commands to enable logging at the info level. By default the logging will be output to the \texttt{stderr} channel of the terminal. However while application using the \texttt{chat} mode, log messages are instead saved to a file located at \texttt{\$HOME/.local/state/pqcom}.
+To use different algorithms for the configuration check the section \ref{sec:cmd_config}. Too use a created configuration file use one of the three options defined in section \ref{sec:cmd_app}. In order to receive all log messages the option \texttt{-\--log debug} can be appended to the commands to enable logging at the debug level. By default the logging will be output to the \texttt{stderr} channel of the terminal. However while application using the \texttt{chat} mode, log messages are instead saved to a file located at the log directory listed in appendix \ref{ch:directories_app}.
 
 \subsection{Chat mode}
 Now that configuration files are generated, the application can be used to create connections, for example using the \texttt{chat} command. Firstly the server has to start listening. By default command
@@ -51,13 +55,13 @@ To run the application in send/receive mode for file exchange one of the peers f
 \end{itemize}
 and the other peer has to run
 \begin{itemize}
-  \item \texttt{cat test.txt | ./pqcom app send -\--config pqcom\_client.json}
+  \item \texttt{cat input.txt | ./pqcom app send -\--config pqcom\_client.json}
 \end{itemize}
-When the commands are ran in the correct order, the client will send contents of the \texttt{test.txt} file to the server who will save the file in a file named \texttt{output.txt}.
+When the commands are ran in the correct order, the client will send contents of the \texttt{input.txt} file to the server who will save the file in a file named \texttt{output.txt}.
 
 \section{How to test}
 Tests that check whether the implementations are working correctly can be ran by entering
 \begin{itemize}
   \item \texttt{go test -v ./...}
 \end{itemize}
-into the command line interface in the root directory of the project. There are only two tests than check whether the implementations of the Kyber and Dilithium are functional.
+into the command line interface in the root directory of the project. These tests check whether the implementations of the Kyber and Dilithium are functional.
