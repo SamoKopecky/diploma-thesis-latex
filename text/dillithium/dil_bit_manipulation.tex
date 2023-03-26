@@ -13,7 +13,7 @@ A similar function \texttt{Power2Round} does basically the same but instead of t
 \end{align}
 
 Functions \texttt{MakeHint} and \texttt{UseHint} make use of the aforementioned functions to create and consume hints. The implementation for \texttt{MakeHint} is relatively simple and can be seen in listing \ref{lst:make_hint}. It returns true if the number $z+r_0$ is bigger than $\alpha$ because $r_1$ would either increase or decrease at least by one if that was the case. If the number $z$ doesn't change the high bits of $r$ it returns false which means that $z$ doesn't affect the high bits of $r$.
-\listing{text/code/dilithium.go}{\texttt{MakeHint} implementation}{lst:make_hint}{131}{131}
+\listing{text/code/dilithium.go}{\texttt{MakeHint} implementation}{lst:make_hint}{1}{1}
 \noindent\texttt{UseHint} takes $h$, $r$ and $\alpha$ as parameters. It can be used to calculate the high bits of $r+z$ without the knowledge of $z$ and using only the hint $h$ as seen in equation \ref{eq:use_hint}. The function first decomposes $r$ and if the hint is true it will either add or subtract 1 from $r_1$ (high bits of $r$) depending on the sign of $r_0$.
 
 \begin{equation}
