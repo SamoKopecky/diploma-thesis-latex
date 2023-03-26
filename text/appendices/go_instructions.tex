@@ -1,7 +1,7 @@
 This appendix contains the necessary information for building the go program, running it and then instructions on how to run the provided tests.
 
 \section{How to build}
-Go supports most of the well know operating systems such as Linux, Windows and Mac. This application supports the Linux and Windows operating systems. It was no tested on a Mac system but since theoretically it should also work on them. First of all download the latest version of the go binary from this link
+Go supports most of the well-known operating systems such as Linux, Windows and Mac. This application supports the Linux and Windows operating systems. It was not tested on a Mac system but theoretically, it should also work on them. First of all download the latest version of the go binary from this link
 \begin{itemize}
   \item \url{https://go.dev/doc/install}.
 \end{itemize}
@@ -13,9 +13,9 @@ or for Windows
 \begin{itemize}
   \item \texttt{go build -v -o pqcom.exe}
 \end{itemize}
-inside a command line interface. The command also has to be ran inside the root directory of the project. The output of this command should yield a~file named \texttt{pqcom} or \texttt{pqcom.exe} respectively. From now on only the Linux binary will be used for examples but the same examples also apply to the Windows executable.
+inside a command line interface. The command also has to be run inside the root directory of the project. The output of this command should yield a~file named \texttt{pqcom} or \texttt{pqcom.exe} respectively. From now on only the Linux binary will be used for examples but the same examples also apply to the Windows executable.
 \section{How to run}
-Once the binary is built it can be ran just like any other binary. Run with
+Once the binary is built it can be run just like any other binary. Run with
 \begin{itemize}
   \item \texttt{./pqcom}
 \end{itemize}
@@ -26,16 +26,16 @@ in the command line interface. Refer to chapter \ref{ch:app_capab} for applicati
 to see what commands are available.
 
 \section{Examples}
-The benchmarks for implementations of Kyber and Dilithium and for other added post quantum algorithms can be ran without the required configuration file. Here is an example that will run benchmarks for all available algorithms
+The benchmarks for implementations of Kyber and Dilithium and other added post-quantum algorithms can be run without the required configuration file. Here is an example that will run benchmarks for all available algorithms
 \begin{itemize}
   \item \texttt{./pqcom benchmark -i 500}
 \end{itemize}
 
-Before commands that create quantum resistant connections can be used a configuration file is needed. To easily generate configuration files for booth of the peers run
+Before commands that create quantum-resistant connections can be used a configuration file is needed. To easily generate configuration files for both of the peers run
 \begin{itemize}
   \item \texttt{./pqcom config gen}
 \end{itemize}
-To use different algorithms for the configuration check the section \ref{sec:cmd_config}. Too use a created configuration file use one of the three options defined in section \ref{sec:cmd_app}. In order to receive all log messages the option \texttt{-\--log debug} can be appended to the commands to enable logging at the debug level. By default the logging will be output to the \texttt{stderr} channel of the terminal. However while application using the \texttt{chat} mode, log messages are instead saved to a file located at the log directory listed in appendix \ref{ch:directories_app}.
+To use different algorithms for the configuration check the section \ref{sec:cmd_config}. To use a created configuration file use one of the three options defined in section \ref{sec:cmd_app}. In order to receive all log messages the option \texttt{-\--log debug} can be appended to the commands to enable logging at the debug level. By default, the logging will be output to the \texttt{stderr} channel of the terminal. However, while the application uses the \texttt{chat} mode, log messages are instead saved to a file located in the log directory listed in appendix \ref{ch:directories_app}.
 
 \subsection{Chat mode}
 Now that configuration files are generated, the application can be used to create connections, for example using the \texttt{chat} command. Firstly the server has to start listening. By default command
@@ -57,10 +57,10 @@ and the other peer has to run
 \begin{itemize}
   \item \texttt{cat input.txt | ./pqcom app send -\--config pqcom\_client.json}
 \end{itemize}
-When the commands are ran in the correct order, the client will send contents of the \texttt{input.txt} file to the server who will save the file in a file named \texttt{output.txt}.
+When the commands are run in the correct order, the client will send the contents of the \texttt{input.txt} file to the server who will save the file in a file named \texttt{output.txt}.
 
 \section{How to test}
-Tests that check whether the implementations are working correctly can be ran by entering
+Tests that check whether the implementations are working correctly can be run by entering
 \begin{itemize}
   \item \texttt{go test -v ./...}
 \end{itemize}

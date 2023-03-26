@@ -3,13 +3,13 @@ In order to transfer polynomials over the network they need to be serialized int
   \item \texttt{encode}($p$,\,$l$)\,--\,convert a polynomial \texttt{poly} into $32*l$ bytes,
   \item \texttt{decode}(B,\,$l$)\,--\,convert $32*l$ bytes into a polynomial.
 \end{itemize}
-In the following code listings functions like \texttt{encodePolyVec()} exist. It encodes every polynomial in the vector. The same applies for the decode functionality.
+In the following code listings functions like \texttt{encodePolyVec()} exist. It encodes every polynomial in the vector. The same applies to the decode functionality.
 
-Another feature of Kyber is the compression of polynomials that are encoded. Due to the fact that Kyber is based on LWE, the calculations don't need exact numbers to be correct. This is why a compression mechanism that discards some low-order bits from encoded polynomials can be introduced. Two more functions are defined by kyber for compressing and decompressing bytes:
+Another feature of Kyber is the compression of polynomials that are encoded. Because Kyber is based on LWE, the calculations don't need exact numbers to be correct. This is why a compression mechanism that discards some low-order bits from encoded polynomials can be introduced. Two more functions are defined by Kyber for compressing and decompressing bytes
 \begin{itemize}
   \item \texttt{compress}($x$,\,$d$)\,--\,compress a number into the range of $\{0,\dots,2^d-1\}$,
   \item \texttt{decompress}($x$,\,$d$)\,--\,decompress a number while loosing some low-order bits.
 \end{itemize}
-Similarly to the encoding/decoding function theses functions can be applied for every coefficient of a polynomial.
+Similarly to the encoding/decoding function, these functions can be applied to every coefficient of a polynomial.
 
-Whenever it mentioned that a random polynomial or a polynomial vector has been generated it is implied that a CBD (\acl{CBD}) is used with a parameter either $\eta_1$ or $\eta_2$.
+Whenever it is mentioned that a random polynomial or a polynomial vector has been generated it is implied that a CBD (\acl{CBD}) is used with a parameter either $\eta_1$ or $\eta_2$.
