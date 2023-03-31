@@ -12,7 +12,7 @@ Dilithium employs some helper functions which are used in both the simple and mo
 
 Functions \texttt{MakeHint} and \texttt{UseHint} make use of the aforementioned functions to create and consume hints. These functions are only used in the more complex implementation. Their role is to reduce the size of the public key without sacrificing security. Firstly the \texttt{MakeHint} function is used to check whether the addition of $z$ and $r$ would change its high bits. If it would the returned value is true and hint is made. If is small enough to not change the hight bits a hint isn't made. This process can be seen in listing \ref{lst:make_hint} which describes its implementation.
 \newpage
-\listing{text/code/dilithium.go}{\texttt{MakeHint} implementation}{lst:make_hint}{1}{1}
+\listing{text/code/dilithium_go.txt}{\texttt{MakeHint} implementation}{lst:make_hint}{1}{1}
 \noindent Now that the hints are created, they can be consumed with the function \texttt{UseHint}. This function is capable of reconstructing only the high bits of $r+z$ using the created hints without knowing $z$. It works by adding or subtracting 1 from $r_1$ depending on the sign of $r_0$ if a hint for that number was made. If it was not made $r_1$ stays the same. This concept can also be described by equation \ref{eq:use_hint}
 \begin{equation}
   \label{eq:use_hint}
