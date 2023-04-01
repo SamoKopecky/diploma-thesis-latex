@@ -13,4 +13,8 @@ parameter and supplying \texttt{x} repetitions. If the number of repetitions is 
 \begin{itemize}
   \item \texttt{-bench}
 \end{itemize}
-can be used provided with a regex expression.
+can be used provided with a regex expression. There is a possibility where the benchmarking/testing processes exists before finishing. This is because the default timeout is 10 minutes. If a benchmark will take longer then 10 seconds the timeout needs to be overwritten by supplying the
+\begin{itemize}
+  \item \texttt{-timeout=24h}
+\end{itemize}
+command. In this example the timeout is set to 24 hours.
