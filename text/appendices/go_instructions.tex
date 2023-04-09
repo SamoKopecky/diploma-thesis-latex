@@ -1,7 +1,7 @@
 This appendix contains the necessary information for building the go program, running it and then instructions on how to run the provided tests.
 
 \section{How to build}
-Go supports most of the well-known operating systems such as Linux, Windows and Mac. This application supports the Linux and Windows operating systems. It was not tested on a Mac system but theoretically, it should also work on them. First of all download the latest version of the go binary from this link
+Go supports most of the well-known operating systems such as Linux, Windows and Mac. This application supports the Linux and Windows operating systems. It was not tested on a Mac system but theoretically, it should also work on it. First of all download the latest version of the go binary from this link
 \begin{itemize}
   \item \url{https://go.dev/doc/install}.
 \end{itemize}
@@ -19,18 +19,27 @@ Once the binary is built it can be run just like any other binary. Run with
 \begin{itemize}
   \item \texttt{./pqcom}
 \end{itemize}
-in the command line interface. Refer to chapter \ref{ch:app_capab} for application capabilities or run
+in the command line interface. To run the Windows executable run
+\begin{itemize}
+  \item \texttt{pqcom.exe}
+\end{itemize}
+Refer to chapter \ref{ch:app_capab} for application capabilities or run
 \begin{itemize}
   \item \texttt{./pqcom -\--help}
 \end{itemize}
-to see what commands are available. The help command can also be used on additional subcommands to display more information.
+to see what commands are available. Additionally every command has has a short description of what it does on top of available commands/flags. For example to see information about the app command run
+\begin{itemize}
+  \item \texttt{./pqcom app -\--help}
+\end{itemize}
 
 \section{Examples}
 Before commands that create quantum-resistant connections can be used a configuration file is needed. To easily generate configuration files for both of the peers run
 \begin{itemize}
   \item \texttt{./pqcom config gen}
 \end{itemize}
-To use different algorithms for the configuration check the section \ref{sec:cmd_config}. To use a created configuration file use one of the three options defined in section \ref{sec:cmd_app}. In order to receive all log messages the option \texttt{-\--log debug} can be appended to the commands to enable logging at the debug level. By default, the logging will be output to the \texttt{stderr} channel of the terminal. However, while the application uses the \texttt{chat} mode, log messages are instead saved to a file located in the log directory listed in appendix \ref{ch:directories_app}.
+To use different algorithms for the configuration check the section \ref{sec:cmd_config}. To use a created configuration file use one of the three options defined in section \ref{sec:cmd_app}.
+
+In order to receive all log messages the option \texttt{-\--log debug} can be appended to the commands to enable logging at the debug level. By default, the logging will be output to the \texttt{stderr} channel of the terminal. However, while the application uses the \texttt{chat} mode, log messages are instead saved to a file located in the log directory listed in appendix \ref{ch:directories_app}.
 
 \subsection{Chat mode}
 Now that configuration files are generated, the application can be used to create connections, for example using the \texttt{chat} command. Firstly the server has to start listening. By default command
@@ -52,7 +61,15 @@ and the other peer has to run
 \begin{itemize}
   \item \texttt{cat input.txt | ./pqcom app send -\--config pqcom\_client.json}
 \end{itemize}
-When the commands are run in the correct order, the client will send the contents of the \texttt{input.txt} file to the server who will save the file in a file named \texttt{output.txt}.
+When the commands are run in the correct order, the client will send the contents of the \texttt{input.txt} file to the server who will save the file in a file named \texttt{output.txt}. However these two command will only work on Unix-like systems. To create a file exchange between two Windows systems run the following commands. The server side has to run
+\begin{itemize}
+  \item \texttt{./pqcom app receive -\--config pqcom\_server.json -\--dir .}
+\end{itemize}
+and the client needs to run
+\begin{itemize}
+  \item \texttt{./pqcom app send -\--config pqcom\_server.json -\--file input.txt}
+\end{itemize}
+The received file will be written in the given directory and named \texttt{pqcom\_temp\_XXXX} where the 5 X characaters are replaced by random characters.
 
 \section{How to test}
 Tests that check whether the implementations are working correctly can be run by entering
