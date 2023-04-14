@@ -1,23 +1,26 @@
-\begin{tabular}{|l||r|r|r|r|}
+\begin{tabular}{|l|r|r|r|r|}
   \hline
-  Processor  & KeyGen [\textmu s] & Enc [\textmu s]  & Dec [\textmu s]  & All [\textmu s]  \\
-  \hline
-  \hline
-  \multicolumn{5}{|c|}{Kyber512}                                                           \\
-  \hline
-  AMD 3600   & 116 $\pm\,0\%$     & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ \\
-  Intel 2300 & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ \\
+  Processor    & KeyGen [\textmu s] & Enc [\textmu s] & Dec [\textmu s] & All [\textmu s] \\
   \hline
   \hline
-  \multicolumn{5}{|c|}{Kyber768}                                                           \\
+  \multicolumn{5}{|c|}{Kyber512}                                                          \\
   \hline
-  AMD 3600   & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ \\
-  Intel 2300 & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ \\
+  AMD 3600     & \npm{115.6}{0}     & \npm{151.0}{0}  & \npm{205.4}{0}  & \npm{459.9}{1}  \\
+  Intel 2300   & \npm{235.2}{1}     & \npm{302.9}{1}  & \npm{421.2}{0}  & \npm{948.2}{1}  \\
+  Intel 10610u & \npm{96.65}{10}    & \npm{92.27}{2}  & \npm{132.5}{1}  & \npm{277.9}{1}  \\
   \hline
   \hline
-  \multicolumn{5}{|c|}{Kyber1024 }                                                         \\
+  \multicolumn{5}{|c|}{Kyber768}                                                          \\
   \hline
-  AMD 3600   & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ \\
-  Intel 2300 & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$ \\
+  AMD 3600     & \npm{185.0}{1}     & \npm{237.8}{0}  & \npm{309.3}{1}  & \npm{707.9}{1}  \\
+  Intel 2300   & \npm{368.8}{0}     & \npm{455}{1}    & \npm{618.1}{0}  & \npm{1442}{1}   \\
+  Intel 10610u & \npm{138.6}{7}     & \npm{144}{1}    & \npm{191.1}{0}  & \npm{420.3}{1}  \\
+  \hline
+  \hline
+  \multicolumn{5}{|c|}{Kyber1024 }                                                        \\
+  \hline
+  AMD 3600     & \npm{277.3}{1}     & \npm{318.5}{1}  & \npm{433.9}{0}  & \npm{1019}{1}   \\
+  Intel 2300   & \npm{547.9}{0}     & \npm{659.6}{0}  & \npm{863}{1}    & \npm{2074}{0}   \\
+  Intel 10610u & \npm{250.2}{17}    & \npm{209.8}{1}  & \npm{268.4}{0}  & \npm{607.2}{1}  \\
   \hline
 \end{tabular}

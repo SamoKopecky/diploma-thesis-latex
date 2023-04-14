@@ -1,23 +1,26 @@
-\begin{tabular}{|l||r|r|r|r|}
+\begin{tabular}{|l|r|r|r|r|}
   \hline
-  Processor  & KeyGen [\textmu s] & Sign [\textmu s] & Verify [\textmu s] & All [\textmu s]  \\
-  \hline
-  \hline
-  \multicolumn{5}{|c|}{Dilithium2}                                                           \\
-  \hline
-  AMD 3600   & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ \\
-  Intel 2300 & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ \\
+  Processor    & KeyGen [\textmu s] & Sign [\textmu s] & Verify [\textmu s] & All [\textmu s] \\
   \hline
   \hline
-  \multicolumn{5}{|c|}{Dilithium3}                                                           \\
+  \multicolumn{5}{|c|}{Dilithium2}                                                            \\
   \hline
-  AMD 3600   & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ \\
-  Intel 2300 & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ \\
+  AMD 3600     & \npm{99.6}{0}      & \npm{291.9}{1}   & \npm{84.3}{1}      & \npm{472.9}{1}  \\
+  Intel 2300   & \npm{344.4}{1}     & \npm{904.0}{3}   & \npm{230.1}{3}     & \npm{1455}{4}   \\
+  Intel 10610u & \npm{60.44}{5}     & \npm{137.8}{2}   & \npm{43.3}{1}      & \npm{235.8}{1}  \\
   \hline
   \hline
-  \multicolumn{5}{|c|}{Dilithium5}                                                           \\
+  \multicolumn{5}{|c|}{Dilithium3}                                                            \\
   \hline
-  AMD 3600   & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ \\
-  Intel 2300 & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ & 453.5 $\pm\,6\%$   & 453.5 $\pm\,6\%$ \\
+  AMD 3600     & \npm{189.5}{0}     & \npm{467.6}{1}   & \npm{135.2}{0}     & \npm{788.1}{0}  \\
+  Intel 2300   & \npm{587.5}{2}     & \npm{1546}{3}    & \npm{448.9}{1}     & \npm{2530}{4}   \\
+  Intel 10610u & \npm{139.2}{6}     & \npm{215.5}{1}   & \npm{69.1}{1}      & \npm{384}{1}    \\
+  \hline
+  \hline
+  \multicolumn{5}{|c|}{Dilithium5 }                                                           \\
+  \hline
+  AMD 3600     & \npm{256.7}{0}     & \npm{574.9}{1}   & \npm{217.7}{0}     & \npm{1054}{1}   \\
+  Intel 2300   & \npm{891.9}{1}     & \npm{1994}{2}    & \npm{736.9}{1}     & \npm{3733}{4}   \\
+  Intel 10610u & \npm{172.2}{9}     & \npm{269}{1}     & \npm{110.2}{0}     & \npm{509.6}{1}  \\
   \hline
 \end{tabular}
