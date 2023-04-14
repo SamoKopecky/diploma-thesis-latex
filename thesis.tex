@@ -109,12 +109,13 @@
 }
 
 \definecolor{mygreen}{RGB}{0,204,102}
-\usepackage{array,ragged2e} % don't now
-\usepackage{amsfonts} % don't now
-\usepackage{mathtools} % don't now
+\usepackage{amsfonts} % Rqequired for \mathbb
+\usepackage{mathtools} % Used for \lfloor and \rceil
 \usepackage{multirow} % Multi row/column tables
 \usepackage{fancyvrb} % Used for BVerbatin
-
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%      Definice informací o dokumentu             %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
