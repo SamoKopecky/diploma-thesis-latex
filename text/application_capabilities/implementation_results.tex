@@ -1,23 +1,10 @@
-% TODO: rework
-% TODO: Fix order of bibliography
-% TODO: Read trough everything 2 times
-% TODO: Do more spell checking
-% TODO: Citacie na kyber/dilithium?
-
-% mention previous benchmark
-
-% go test -bench="Kem|Signature" -run=ˆ# -count=20 -timeout=24h ./... | tee out.txt
-
-% The benchmarked values available in tables \ref{tab:kyber_perf} and \ref{tab:dil_perf} were measured using a go program available in the practical part of this thesis, more specifically the code inside the \texttt{benchmark.go} file. One iteration of the benchmarking process for Kyber consists of key generation, key encapsulation and decapuslation. Similarly an iteration for Dilithium consists of key generation, signing process and a verification process. All benchmarks were done on AMD Ryzen 3600 cpu with a base core clock of 3.6\,GHz. Implementations used to compare the performance to the thesis are the following:
-% \begin{itemize}
-%   \benchmarklink{kyber-k2so}{symbolicsoft}{https://github.com/SymbolicSoft/kyber-k2so}
-%   \benchmarklink{circl}{cloudflare}{https://github.com/cloudflare/circl}
-% \end{itemize}
-% \noindent As is clear from the results of benchmarking, this implementation of the post quantum algorithms is substantially worse then other implementations. This is because the main goal behind the implementations was to get an understanding of how these algorithms work and so they are not optimized in any way other then the NTT transformation used for polynomial multiplication. One of the main goals for the second part of this diploma thesis ill be optimizing these algorithms.
-% \object{tab}{tables/kyber_performance}{Kyber performace comparison}{tab:kyber_perf}
-% \object{tab}{tables/dil_performance}{Dilithium performace comparison}{tab:dil_perf}
-
-% Along with a guide on how to run/build the benchmarking application in appendix \ref{ch:go_instructions} it also contains a guide on how to test the correctness of Kyber and Dilithium implementations. In the case of Kyber the test only checks if the shared key is the same before and after decryption. The test for Dilithium checks if the~signature is verified. These tests can be found in \texttt{main\_test.go}.
+The results of the optimization process described in section \ref{sec:optimizing} for booth Kyber and Dilithium can be seen in tables \ref{tab:kem_sum} and \ref{tab:dil_sum}. The tables compare the average speed of each algorithm measured using benchmarks for two implementations. The Circl\footnote{\url{https://github.com/cloudflare/circl}} implementation is a cryptography library created by Cloudflare. The implementation of Kyber and Dilithium in this thesis is called PqCom. The process of benchmarking included key generation, encapsulation, decapsulation for Kyber and key generation, signature creation, verification for Dilithium. The benchmarks were ran on an AMD Ryzen 5 3600 processor.
 
 \object{tab}{tables/kem_sum.tex}{KEMs preformance summary}{tab:kem_sum}
 \object{tab}{tables/dil_sum.tex}{Digital signatures preformance summary}{tab:dil_sum}
+
+More detailed benchmarks can also be found in appendix \ref{ch:performance} where each table contains the performance information about one implementation of an algorithm, all of its modes and also measurements of its sub algorithms. Each table also contains comparisons to other models of processors. The exact command that was used to benchmark is
+\begin{itemize}
+  \item \texttt{go test -bench="Kem|Signature" -run=\^{}\# -count=20 -timeout=24h \textbackslash\\ ./... | tee out.txt}
+\end{itemize}
+This command runs benchmarks defined in appendix \ref{ch:available_algs}. Each benchmark is ran 20 times to reduce the amount of statistical noise. The output is written to the file \texttt{out.txt}. This file is then parsed with \texttt{benchstat} application mentioned in section \ref{sec:cmd_benchmark}.
