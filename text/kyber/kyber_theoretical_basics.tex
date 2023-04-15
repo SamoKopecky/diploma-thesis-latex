@@ -2,11 +2,11 @@ Kyber uses a structure called rings, more specifically the ring $R_q$ denoted as
 \begin{equation}
   \mathbb{Z}_q[X]/(X^n+1).
 \end{equation}
-A ring contains a polynomial of $n$ elements, where the coefficients of this polynomial are integers reduced modulo $q$ and the powers of the polynomial are reduced $(X^n+1)$. The parameters $n$ and $q$ are defined in table \ref{tab:kyber_sec_levels}. An example of a~polynomial with elements from the ring $R_q$
+A ring contains a polynomial of $n$ elements, where the coefficients of this polynomial are integers reduced modulo $q$ and the powers of the polynomial are reduced $(X^n+1)$. The parameters $n$ and $q$ are defined in table \ref{tab:kyber_sec_levels}. An example of a~polynomial with elements from the ring $R_q$ is
 \begin{equation}
   t_1 = 1564 + 2189x + 258x^2 + \dots + 655x^{n-2} + 2587x^{n-1}.
 \end{equation}
-A vector of size $k$ consists of $k$ polynomials with coefficients from the ring $R_q$. The~parameter $k$ can again be found in table \ref{tab:kyber_sec_levels}. The the polynomial $t_1$ from the~previous example together with a new polynomial $t_2$
+A vector of size $k$ consists of $k$ polynomials with coefficients from the ring $R_q$. The~parameter $k$ can be found in table \ref{tab:kyber_sec_levels}. The the polynomial $t_1$ from the~previous example together with a new polynomial $t_2$
 \begin{equation}
   t_2 = 2408 + 1932x + 420x^2 + \dots + 3256^{n-2} + 2399^{n-1},
 \end{equation}

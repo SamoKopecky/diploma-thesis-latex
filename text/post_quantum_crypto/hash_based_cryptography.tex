@@ -5,12 +5,12 @@ The first hash-based scheme was proposed by Leslie Lamport in 1975. If the outpu
   x & =(x_{0,0}, x_{0,1}, x_{1,0}, x_{1,1},\dots,x_{256, 0},x_{256, 1}),                   \\
   y & =(h(x_{0,0}), h(x_{0,1}), h(x_{1,0}), h(x_{1,1}),\dots,h(x_{256, 0}),h(x_{256, 1})).
 \end{align}
-Given a message $m$ which at first is hashed, the signature $\sigma$ consists of either $x_{0,0}$ if the first bit of the message hashes its 0 or $x_{0,1}$ if its 1. This repeats for every bit of the hashed message. The resulting signature for a given message is
+Given a message $m$ which at first is hashed, the signature $\sigma$ consists of either $x_{0,0}$ if the first bit of the message hash is 0 or $x_{0,1}$ if its 1. This repeats for every bit of the hashed message. The resulting signature for a given message is
 \begin{align}
   h(m)   & =(01\dots0)^{256},                           \\
   \sigma & =(x_{0,0}, x_{1,1}, \dots, x_{256,0})^{256}.
 \end{align}
-The verifier also hashes the message, generating the same hash. He then chooses hash values from the public key depending on the bit string of the message hash and creates $y_p$. Then he hashes each hash of the signature and generates $h(\sigma)$, which are
+The verifier also hashes the message, generating the same hash. He then chooses hash values from the public key depending on the bit string of the message hash and creates $y_p$. Then he hashes each hash of the signature and generates $h(\sigma)$, which is
 \begin{align}
   h(\sigma) & =(h(x_{0,0}), h(x_{1,1}), \dots, h(x_{256,0}))^{256}, \\
   y_p       & =(h(x_{0,0}), h(x_{1,1}), \dots, h(x_{256,0}))^{256}.

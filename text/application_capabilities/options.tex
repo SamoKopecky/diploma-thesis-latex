@@ -1,8 +1,8 @@
-The Cobra library uses a concept called \textit{command} to split an application into logical parts and execution paths. A group of commands of an application can form a hierarchical structure. This means that a command can only be used if its parent commands were used beforehand. An example of a hierarchical structure of commands can be
+The Cobra library uses a concept called command to split an application into logical parts and execution paths. A group of commands of an application can form a hierarchical structure. This means that a command can only be used if its parent commands were used beforehand. An example of a hierarchical structure of commands can be
 
 \vspace{0.5em}
 \dirtree{%.
-  .1 example\_app.
+  .1 app.
   .2 foo.
   .3 bar.
   .4 baz.
@@ -12,18 +12,18 @@ The Cobra library uses a concept called \textit{command} to split an application
 
 \noindent In this case the command \texttt{baz} can only be used if \texttt{bar} and \texttt{foo} have been used before
 \begin{center}
-  \texttt{example\_app foo bar baz}.
+  \texttt{app foo bar baz}.
 \end{center}
 On the other hand \texttt{baz} can't be used if it doesn't have the required parent commands present, so the Cobra parser would throw an error if given this set of commands
 \begin{center}
-  \texttt{example\_app foo {\color{red} qux} baz}.
+  \texttt{app foo {\color{red} qux} baz}.
 \end{center}
-Additionally, Cobra allows the programmer to add a \textit{flag} to a command that alters the command in some way. Flags can be inherited by other commands so that they don't have to be defined in every command separately. A good example of an inherited flag is the \texttt{-\--log} flag which enables a level of logging for the application. As this flag is created in the root of the command hierarchy of this application, all of the subcommands will share it. An example of using a flag other with commands using the previous command structure can look like this
+Additionally, Cobra allows the programmer to add a flag to a command that alters the command in some way. Flags can be inherited by other commands so that they don't have to be defined in every command separately. A good example of an inherited flag is the \texttt{-\--log} flag which enables a level of logging for the application. As this flag is created in the root of the command hierarchy of this application, all of the subcommands will share it. An example of using a flag other with commands using the previous command structure can look like this
 \begin{center}
-  \texttt{example\_app foo qux baz -\--log info}.
+  \texttt{app foo qux baz -\--log info}.
 \end{center}
 
-The full list of commands for this application is presented below. Each command has more flags that alter its execution path. Individual commands and flags can be explored in more detail by using the application. The commands that are greyed out don't alter the execution path by themselves but are needed for creating a parent for its commands so that flags can be shared amongst the command children. Another use for them is just having a parent command to logically group the command children. That means if they are run by themselves, the application just prints the output of the \texttt{help} command.
+The full list of commands for this application is presented below. Each command has more flags that alter its execution path. Individual commands and flags can be explored in more detail by using the application. The commands that are greyed out don't alter the execution path by themselves but are needed for creating a parent for its subcommands so that flags can be shared amongst the command children. Another use for them is just having a parent command to logically group the command children. That means if they are run by themselves, the application just prints the output of the \texttt{help} command.
 
 \vspace{0.5em}
 \dirtree{%.

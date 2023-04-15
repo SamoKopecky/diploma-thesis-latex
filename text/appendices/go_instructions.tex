@@ -27,7 +27,7 @@ Refer to chapter \ref{ch:app_capab} for application capabilities or run
 \begin{itemize}
   \item \texttt{./pqcom -\--help}
 \end{itemize}
-to see what commands are available. Additionally every command has has a short description of what it does on top of available commands/flags. For example to see information about the app command run
+to see what commands are available. Additionally, every command has a short description of what it does on top of available commands or flags. For example to see information about the app command run
 \begin{itemize}
   \item \texttt{./pqcom app -\--help}
 \end{itemize}
@@ -61,7 +61,7 @@ and the other peer has to run
 \begin{itemize}
   \item \texttt{cat input.txt | ./pqcom app send -\--config pqcom\_client.json}
 \end{itemize}
-When the commands are run in the correct order, the client will send the contents of the \texttt{input.txt} file to the server who will save the file in a file named \texttt{output.txt}. However these two command will only work on Unix-like systems. To create a file exchange between two Windows systems run the following commands. The server side has to run
+When the commands are run in the correct order, the client will send the contents of the \texttt{input.txt} file to the server who will save the file in a file named \texttt{output.txt}. However, these two commands will only work on Unix-like systems. To create a file exchange between two Windows systems run the following commands. The server side has to run
 \begin{itemize}
   \item \texttt{./pqcom app receive -\--config pqcom\_server.json -\--dir .}
 \end{itemize}
@@ -69,7 +69,7 @@ and the client needs to run
 \begin{itemize}
   \item \texttt{./pqcom app send -\--config pqcom\_server.json -\--file input.txt}
 \end{itemize}
-The received file will be written in the given directory and named \texttt{pqcom\_temp\_XXXX} where the 5 X characaters are replaced by random characters.
+The received file will be written in the given directory and named \texttt{pqcom\_temp\_xxxxx} where the five \texttt{x} characaters are replaced by random characters.
 
 \section{How to test}
 Tests that check whether the implementations are working correctly can be run by entering
