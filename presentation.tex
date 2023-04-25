@@ -105,140 +105,140 @@
 
 % \end{frame}
 
-\begin{frame}[c]
-	\frametitle{Programovací jazyk Go}
-	\large{\begin{itemize}
-			\item Relatívne nový (2009) kompilovaný jazyk od spoločnosti Google
-			\item Podobný jazyku C
-			\item Zameraný na vytváranie rýchlych sieťových aplikácií
-		\end{itemize}}
-
-	\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=\textwidth]{pictures/compiler_sk.pdf}
-	\end{figure}
-\end{frame}
-
-\begin{frame}[c]
-
-	\frametitle{Kyber a Dilithium}
-	\large{
-		\begin{itemize}
-			\item Post kvantové algoritmy založené na mriežkach
-			\item Zvolené v treťom kole NIST štandardizácie (Júl 2022)
-			\item 3 módy bezpečnosti
-			\item Formálny dôkaz o bezpečnosti problému LWE
-		\end{itemize}
-		\vspace{3ex}
-		\begin{columns}[T]
-			\begin{column}{0.5\textwidth}
-				CRYSTALS-Kyber
-				\begin{itemize}
-					\item Výmena kľúčov
-					\item Najrýchlejší algoritmus
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.5\textwidth}
-				CRYSTALS-Dilithium
-				\begin{itemize}
-					\item Digitálny podpis
-					\item Najmenší verejný kľúč
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Proces implementácie algoritmu Kyber}
-	\large{
-		\begin{itemize}
-			\item Implementácia vychádza z oficiálnej špecifikácie
-			\item NTT implementácia
-			\item Implementácia pomocných funkcií
-			\item Zostavenie algoritmu z častí
-			\item Implementácia transformácie polynómov na bajty
-		\end{itemize}
-	}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Všeobecná násobenie v NTT tvare}
-	\large{
-		Pre polynómy $f$ a $g$
-		\begin{align*}
-			f & = f_0 + f_1x + f_2x^2 + \dots + f_{254}x^{254} + f_{255}x^{255}, \\
-			g & = g_0 + g_1x + g_2x^2 + \dots + g_{254}x^{254} + g_{255}x^{255},
-		\end{align*}
-		je násobenie pre $\hat{h}=\hat{f}*\hat{g}$ v tvare NTT
-		\begin{align*}
-			\hat{h} & = \hat{f}_0\hat{g}_0 + \hat{f}_1\hat{g}_1x + \hat{f}_2\hat{g}_2x^2 + \dots + \hat{f}_{254}\hat{g}_{254}x^{254} + \hat{f}_{255}\hat{g}_{255}x^{255}.
-		\end{align*}
-	}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Proces implementácie algoritmu Dilithium}
-	\large{
-		\begin{itemize}
-			\item Implementácia vychádza z oficiálnej špecifikácie
-			\item Využitie NTT z Kyber implementácie s malou úpravou
-			\item Implementácia pomocných funkcií
-			\item Zostavenie algoritmu z častí
-			\item Zložitejšia implementácia transformácie polynómov na bajty
-		\end{itemize}
-	}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Transformácia na bajty}
-	\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=\textwidth]{pictures/bit_packing.pdf}
-	\end{figure}
-\end{frame}
-
-
-\begin{frame}[c]
-	\frametitle{Výsledky implementácie}
-	Implementácia využíva jedinú externú knižnicu pre Hash funkcie
-	\begin{table}[htbp]
-		\centering
-		\input{tables/kyber_performance_sk}
-		\caption{Kyber}
-	\end{table}
-	\begin{table}[htbp]
-		\centering
-		\input{tables/dil_performance_sk}
-		\caption{Dilithium}
-	\end{table}
-\end{frame}
-
 % \begin{frame}[c]
-% 	\frametitle{Navádzajúca post kvantová komunikácia}
+% 	\frametitle{Programovací jazyk Go}
+% 	\large{\begin{itemize}
+% 			\item Relatívne nový (2009) kompilovaný jazyk od spoločnosti Google
+% 			\item Podobný jazyku C
+% 			\item Zameraný na vytváranie rýchlych sieťových aplikácií
+% 		\end{itemize}}
+
 % 	\begin{figure}[htbp]
 % 		\centering
-% 		\includegraphics[width=0.7\textwidth]{pictures/future.pdf}
+% 		\includegraphics[width=\textwidth]{pictures/compiler_sk.pdf}
 % 	\end{figure}
 % \end{frame}
 
-\begin{frame}[c]
-	\frametitle{Záver}
-	\large{
-		Dosiahnuté ciele
-		\begin{itemize}
-			\item Implementácia algoritmov pre výmenu kľúčov, šifrovanie a digitálny podpis
-		\end{itemize}
-		Ciele v nasledujúcej práci
-		\begin{itemize}
-			\item Vylepšenie výsledkov implementácie Kyber a Dilithium
-			\item Implementácia všetkých bezpečnostných úrovní
-			\item Implementovanie post kvantovej komunikácie
-			\item Rozsiahlejšie výkonové testovanie implementácií
-		\end{itemize}
-	}
+% \begin{frame}[c]
 
-\end{frame}
+% 	\frametitle{Kyber a Dilithium}
+% 	\large{
+% 		\begin{itemize}
+% 			\item Post kvantové algoritmy založené na mriežkach
+% 			\item Zvolené v treťom kole NIST štandardizácie (Júl 2022)
+% 			\item 3 módy bezpečnosti
+% 			\item Formálny dôkaz o bezpečnosti problému LWE
+% 		\end{itemize}
+% 		\vspace{3ex}
+% 		\begin{columns}[T]
+% 			\begin{column}{0.5\textwidth}
+% 				CRYSTALS-Kyber
+% 				\begin{itemize}
+% 					\item Výmena kľúčov
+% 					\item Najrýchlejší algoritmus
+% 				\end{itemize}
+% 			\end{column}
+% 			\begin{column}{0.5\textwidth}
+% 				CRYSTALS-Dilithium
+% 				\begin{itemize}
+% 					\item Digitálny podpis
+% 					\item Najmenší verejný kľúč
+% 				\end{itemize}
+% 			\end{column}
+% 		\end{columns}
+% 	}
+% \end{frame}
+
+% \begin{frame}[c]
+% 	\frametitle{Proces implementácie algoritmu Kyber}
+% 	\large{
+% 		\begin{itemize}
+% 			\item Implementácia vychádza z oficiálnej špecifikácie
+% 			\item NTT implementácia
+% 			\item Implementácia pomocných funkcií
+% 			\item Zostavenie algoritmu z častí
+% 			\item Implementácia transformácie polynómov na bajty
+% 		\end{itemize}
+% 	}
+% \end{frame}
+
+% \begin{frame}[c]
+% 	\frametitle{Všeobecná násobenie v NTT tvare}
+% 	\large{
+% 		Pre polynómy $f$ a $g$
+% 		\begin{align*}
+% 			f & = f_0 + f_1x + f_2x^2 + \dots + f_{254}x^{254} + f_{255}x^{255}, \\
+% 			g & = g_0 + g_1x + g_2x^2 + \dots + g_{254}x^{254} + g_{255}x^{255},
+% 		\end{align*}
+% 		je násobenie pre $\hat{h}=\hat{f}*\hat{g}$ v tvare NTT
+% 		\begin{align*}
+% 			\hat{h} & = \hat{f}_0\hat{g}_0 + \hat{f}_1\hat{g}_1x + \hat{f}_2\hat{g}_2x^2 + \dots + \hat{f}_{254}\hat{g}_{254}x^{254} + \hat{f}_{255}\hat{g}_{255}x^{255}.
+% 		\end{align*}
+% 	}
+% \end{frame}
+
+% \begin{frame}[c]
+% 	\frametitle{Proces implementácie algoritmu Dilithium}
+% 	\large{
+% 		\begin{itemize}
+% 			\item Implementácia vychádza z oficiálnej špecifikácie
+% 			\item Využitie NTT z Kyber implementácie s malou úpravou
+% 			\item Implementácia pomocných funkcií
+% 			\item Zostavenie algoritmu z častí
+% 			\item Zložitejšia implementácia transformácie polynómov na bajty
+% 		\end{itemize}
+% 	}
+% \end{frame}
+
+% \begin{frame}[c]
+% 	\frametitle{Transformácia na bajty}
+% 	\begin{figure}[htbp]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{pictures/bit_packing.pdf}
+% 	\end{figure}
+% \end{frame}
+
+
+% \begin{frame}[c]
+% 	\frametitle{Výsledky implementácie}
+% 	Implementácia využíva jedinú externú knižnicu pre Hash funkcie
+% 	\begin{table}[htbp]
+% 		\centering
+% 		\input{tables/kyber_performance_sk}
+% 		\caption{Kyber}
+% 	\end{table}
+% 	\begin{table}[htbp]
+% 		\centering
+% 		\input{tables/dil_performance_sk}
+% 		\caption{Dilithium}
+% 	\end{table}
+% \end{frame}
+
+% % \begin{frame}[c]
+% % 	\frametitle{Navádzajúca post kvantová komunikácia}
+% % 	\begin{figure}[htbp]
+% % 		\centering
+% % 		\includegraphics[width=0.7\textwidth]{pictures/future.pdf}
+% % 	\end{figure}
+% % \end{frame}
+
+% \begin{frame}[c]
+% 	\frametitle{Záver}
+% 	\large{
+% 		Dosiahnuté ciele
+% 		\begin{itemize}
+% 			\item Implementácia algoritmov pre výmenu kľúčov, šifrovanie a digitálny podpis
+% 		\end{itemize}
+% 		Ciele v nasledujúcej práci
+% 		\begin{itemize}
+% 			\item Vylepšenie výsledkov implementácie Kyber a Dilithium
+% 			\item Implementácia všetkých bezpečnostných úrovní
+% 			\item Implementovanie post kvantovej komunikácie
+% 			\item Rozsiahlejšie výkonové testovanie implementácií
+% 		\end{itemize}
+% 	}
+
+% \end{frame}
 
 % podekovani
 \begin{frame}[c]

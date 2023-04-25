@@ -13,13 +13,13 @@ Install the required dependencies using [this guide](https://gist.github.com/oga
 To generate a pdf for the thesis run:
 
 ```sh
-latexmk -pdf thesis.pdf
+latexmk -pdf thesis.tex
 ```
 
 To generate a pdf for the presentation run:
 
 ```sh
-latexmk -pdf presentation.pdf
+latexmk -pdf presentation.tex
 ```
 
 <!-- ## Info
