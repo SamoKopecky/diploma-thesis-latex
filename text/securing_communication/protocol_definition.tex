@@ -1,4 +1,4 @@
-As with any modern L7 protocol, the messages in this protocol consist of a header the actual data that is being sent also referred to as a payload. The data can either be used for initializing the connection or just for sending arbitrary data. The header is very simple and consists of only two fields the length of the payload and the type of the payload. As can be seen in figure \ref{img:header}, the type is an 8\,bit integer and the length is a 16\,bit integer.
+As with any modern L7 protocol, the messages in this protocol consist of a header the actual data that is being sent also referred to as a payload. The data can either be used for initializing the connection or just for sending arbitrary data. The header is very simple and consists of only two fields the length of the payload and the type of the payload. As can be seen in Figure \ref{img:header}, the type is an 8\,bit integer and the length is a 16\,bit integer.
 
 \object[0.6]{obr}{pictures/header.pdf}{Protocol header}{img:header}
 \noindent From the possible 255 types only 4 types of payloads are implemented:
@@ -8,4 +8,4 @@ As with any modern L7 protocol, the messages in this protocol consist of a heade
   \itemtt{ContentT}\,--\,generic data payload type,
   \itemtt{ErrorT}\,--\,error messages.
 \end{itemize}
-The initialization together with the client and server init types is detailed in the following subsection \ref{subsec:init_phase}. The rest of the types are mentioned in subsection \ref{subsec:other_phase}. Apart from the headers of the message types all of the data is encrypted using a quantum-resistant symmetric cipher, more specifically AES-GCM with a keys size of 256\,b. The GCM block mode also computes a MAC which is used for validating the authentication and integrity of the encrypted message \cite{Paar2010}.
+The initialization together with the client and server init types is detailed in the following Subsection \ref{subsec:init_phase}. The rest of the types are mentioned in Subsection \ref{subsec:other_phase}. Apart from the headers of the message types all of the data is encrypted using a quantum-resistant symmetric cipher, more specifically AES-GCM with a keys size of 256\,b. The GCM block mode also computes a MAC which is used for validating the authentication and integrity of the encrypted message \cite{Paar2010}.
