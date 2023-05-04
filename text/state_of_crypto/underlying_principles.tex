@@ -2,9 +2,9 @@ One of the underlying principles used in asymmetric cryptography is the integer 
 \begin{equation}
   n=p*q.
 \end{equation}
-where $p$ and $q$ are the unique prime number. IFP together with modular arithmetic create the RSA (\acl{RSA}) cipher that is one of the most used ciphers used today for creating digital signatures. The private and public keys are derived from the integer $n$.
+where $p$ and $q$ are the unique prime numbers. IFP together with modular arithmetic create the RSA (\acl{RSA}) cipher that is one of the most used ciphers used today for creating digital signatures. The private and public keys are derived from the integer $n$.
 
-The other principle that is used often in today's asymmetric cryptography is the discrete logarithm problem (\acs{DLP}). It heavily relies on the use of modular arithmetic and cyclic groups in which there are a finite amount of integer values. This is possible because it uses the modulo operation together with any other operation to stay inside this cyclic group. In this group, it is very easy (in polynomial time) to compute $\beta$ with
+The other principle that is used often in today's asymmetric cryptography is the discrete logarithm problem (\acs{DLP}). It heavily relies on the use of modular arithmetic and cyclic groups in which there are a finite amount of integer values. This is possible because it uses the modulo operation together with other operations to stay inside this cyclic group. In this group, it is very easy (in polynomial time) to compute $\beta$ with
 \begin{equation}
   \alpha^x\equiv\beta\,\mathrm{mod}\,p
 \end{equation}

@@ -1,5 +1,5 @@
 Symmetric cryptography is used for maintaining the confidentiality of data that is~being transferred over a communication medium. The general idea of symmetric ciphers is that they are fast ciphers (compared to the asymmetric ones) that only use one secret (the secret key) to encrypt data. This key needs to be either pre-shared before the communication starts or a KEP ({\acl{KEP}}) has to be used (see Section \ref{sec:key_agreement}). \cite{Ristic2014}
 
-How symmetric ciphers work is illustrated in Figure \ref{img:sym_crypto}. In a situation where Alice wants to send Bob an obfuscated document (plaintext), Alice first needs to encrypt the document with the shared secret key. She then sends Bob the encrypted document (ciphertext) and Bob can decrypt it again with a shared key. Symmetric ciphers can be split into block and stream ciphers.
+How symmetric ciphers work is illustrated in Figure \ref{img:sym_crypto}. In a situation where Alice wants to send Bob a document (plaintext), Alice first needs to encrypt the document with the shared secret key. She then sends Bob the encrypted document (ciphertext) and Bob can decrypt it again with a shared key. Symmetric ciphers can be split into block and stream ciphers.
 
 \object[0.9]{obr}{pictures/sym_crypto.pdf}{Simplified symmetric cipher}{img:sym_crypto}

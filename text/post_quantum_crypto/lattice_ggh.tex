@@ -7,7 +7,7 @@ One of the first public key encryption schemes was the GGH cryptosystem which wa
     HT^{-1}&=B.
   \end{aligned}
 \end{equation}
-This transformation of $B$ into $H$ creates an orthogonality defect, which means the generated vectors by the basis are no longer orthogonal or close to orthogonal, this fact will be important later. The message to be encrypted is encoded into a vector $v$ which is a lattice point in $\mathcal{L}$. Next a small noise vector $e$ is chosen that is not a lattice point in $\mathcal{L}$. Given these values the ciphertext $c$ can be computed with $c = Hv + e$. The vector $v$ or the plaintext can be extracted from $c$ given $v=T \round{B^{-1}c}$. The~rounding operation is very important here since it removes the~error that was added by vector $e$. \cite{Bernstein2009}\cite{Goldreich1997}
+This transformation of $B$ into $H$ creates an orthogonality defect, which means the generated vectors by the basis are no longer orthogonal or close to orthogonal, this fact will be important later. The message to be encrypted is encoded into a vector $v$ which is a lattice point in. Next a small noise vector $e$ is chosen that is not a lattice point. Given these values the ciphertext $c$ can be computed with $c = Hv + e$. The vector $v$ or the plaintext can be extracted from $c$ given $v=T \round{B^{-1}c}$. The~rounding operation is very important here since it removes the~error that was added by vector~$e$. \cite{Bernstein2009}\cite{Goldreich1997}
 
 \object[0.5]{obr}{pictures/lattice_ggh.pdf}{\acl{CVP}}{img:lattice_ggh}
 
