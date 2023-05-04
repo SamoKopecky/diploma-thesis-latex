@@ -1,4 +1,4 @@
-The biggest threat to modern cryptography is Shor's algorithm. It can be used for factoring prime numbers ($N$) in time complexity of $O(n^2\ \mathrm{log}\,n\ \mathrm{log}\ \mathrm{log}\,n)$ where $n$ is the number of bits required to represent $N$ \cite{Yanofsky2008}. One of the fundamental problems used in modern cryptography is the IFP (see subsection \ref{subsec:underlying_principles}) used in RSA, which can be broken by Shor's algorithm in polynomial time. Shor's algorithm can be split into two parts. The first part can easily be computed on a classical computer, and the second part can also theoretically be done on a classical computer but it would take much longer than on a quantum computer.
+The biggest threat to modern cryptography is Shor's algorithm. It can be used for factoring prime numbers ($N$) in time complexity of $O(n^2\ \mathrm{log}\,n\ \mathrm{log}\ \mathrm{log}\,n)$ where $n$ is the number of bits required to represent $N$ \cite{Yanofsky2008}. One of the fundamental problems used in modern cryptography is the IFP (see Subsection \ref{subsec:underlying_principles}) used in RSA, which can be broken by Shor's algorithm in polynomial time. Shor's algorithm can be split into two parts. The first part can easily be computed on a classical computer, and the second part can also theoretically be done on a classical computer but it would take much longer than on a quantum computer.
 
 The first part of Shor's algorithms is as follows. Generate a random number $a$ in the range of $a\in\{2,\dots,N-1\}$ which is co-prime to $N$, or
 \begin{equation}
@@ -9,7 +9,7 @@ fortunately, we can use Euclid's algorithm to compute the GCD (\acl{GCD}) very f
   \label{eq:order}
   a^r \equiv 1\,\mathrm{mod}\,N.
 \end{equation}
-Finding the order of $a$ is computationally infeasible in polynomial time using a classical computer, that's why a quantum computer is needed to find $r$ and will be explained later. If $r$ is odd it is discarded and a new $r$ is found by generating a new $a$. After the correct $a$ is found, the equation \ref{eq:order} can now be altered by subtracting 1 from both sides
+Finding the order of $a$ is computationally infeasible in polynomial time using a classical computer, that's why a quantum computer is needed to find $r$ and will be explained later. If $r$ is odd it is discarded and a new $r$ is found by generating a new $a$. After the correct $a$ is found, the Equation \ref{eq:order} can now be altered by subtracting 1 from both sides
 \begin{equation}
   a^r -1\equiv 0\,\mathrm{mod}\,N,
 \end{equation}
@@ -39,6 +39,6 @@ The second part of the algorithm as mentioned is used for finding the order of $
 \begin{equation}
   f_{a,N}(x)\equiv a^x\,\mathrm{mod}\,N,
 \end{equation}
-where its output values are repeated at regular intervals of size $r$ \cite{Yanofsky2008}. The table \ref{tab:func_period} shows an example for $N=15$, $a=2$ and $x\in\{0,1,2,3,4,5\}$, where it is shown that the period (order) of $a$ is $r=4$. The repeating outputs can also be seen for $x\in\{5,6\}$. As mentioned earlier, computing this on a classical computer for large $N$ is infeasible but a quantum computer can evaluate a function for many values at the same time (see section \ref{sec:quantum_data_repr}). This property is used in finding the order of $a$. It firstly calculates the repeating sequence of outputs for the function $f_{a,N}$ all at the same time. Using the QFT (\acl{QFT}) the period is found which is the number $r$, then it can be used in the rest of the algorithm. \cite{McMahon2008}
+where its output values are repeated at regular intervals of size $r$ \cite{Yanofsky2008}. The Table \ref{tab:func_period} shows an example for $N=15$, $a=2$ and $x\in\{0,1,2,3,4,5\}$, where it is shown that the period (order) of $a$ is $r=4$. The repeating outputs can also be seen for $x\in\{5,6\}$. As mentioned earlier, computing this on a classical computer for large $N$ is infeasible but a quantum computer can evaluate a function for many values at the same time (see Section \ref{sec:quantum_data_repr}). This property is used in finding the order of $a$. It firstly calculates the repeating sequence of outputs for the function $f_{a,N}$ all at the same time. Using the QFT (\acl{QFT}) the period is found which is the number $r$, then it can be used in the rest of the algorithm. \cite{McMahon2008}
 
 \object{tab}{tables/order_example}{Example of a function period}{tab:func_period}
