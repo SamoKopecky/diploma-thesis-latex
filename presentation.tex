@@ -50,6 +50,7 @@
 \input{settings}      % v tomto souboru doplňte údaje o sobě, o názvu práce...
                        % (tento soubor je sdílený s textem práce)
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -78,167 +79,150 @@
 % v případě zakomentování následujícího se zobrazí v pravém dolním rohu slajdů klikatelné navigační symboly
 \disablenavigationsymbols
 
+
 % titulní snímek, vysazen bez horních, dolních a postranních lišt (volba plain),
 % není tak vysazen ani nadpis snímku
 \maketitle
-
+\newcommand{\npm}[2]{{#1}\,$\pm\,{#2}\%$}
 
 \begin{frame}[c]
 	\frametitle{Ciele práce}
 	\large{\begin{itemize}
-			\item Výber post kvantových algoritmov
-			\item Implementácia post kvantového algoritmu pre výmenu kľúčov/šifrovanie
-			\item Implementácia post kvantového algoritmu pre digitálny podpis
-			\item Výber implementačného programovacieho jazyka
-		\end{itemize}}
-
+			\item Optimalizácia post kvantových algoritmov
+			\item Protokol na výmenu dát z zabepečeným post kvantovou kryptografiou
+			\item Systém modularity kryptografických algoritmov
+			\item Textové terminálové rozhranie
+			\item Grafické terminálové rozhranie -- TUI
+		\end{itemize}
+	}
 \end{frame}
 
-% \begin{frame}[c]
-% 	\frametitle{Post kvantová kryptografia}
-% 	\large{\begin{itemize}
-% 			\item Shorov algoritmus prelomí IFP a DLP
-% 			\item Potreba kvantového počítača z miliónmy qubitov
-% 			\item Kvantový počítač od IBM\,--\,127 qubitov
-% 			\item Potreba algoritmov asymetcikej kryptografie odolné voči kvantovým počítačom
-% 		\end{itemize}}
+\begin{frame}[c]
+	\frametitle{Post kvantové algoritmy}
+	\begin{columns}[T]
+		\begin{column}{0.8\textwidth}
+			\large{\begin{itemize}
+					\item Algoritmus výmenu tajného klúča -- Kyber
+					\item Algoritmus digitálneho podpisu -- Dilithium
+					\item NIST štandardrizované algoritmy
+					\item Implementácia v jazyku Go (Golang)
+					\item Výsledky implementácie porovnávané z kničnicou Circl od Cloudflare
+				\end{itemize}
+			}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\begin{figure}
+				\includegraphics[width=\linewidth]{presentation_pictures/Golang_Logo.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-% \end{frame}
+\begin{frame}[c]
+	\frametitle{Výsledky implementácie}
+	\large{
+		\begin{itemize}
+			\item Testované na AMD 3600 s frekvenciou jadra 3.6\,Ghz
+		\end{itemize}
+	}
+	\normalsize{
+		\begin{table}[h!]
+			\centering
+			\include{tables/algs_sum_sk.tex}
+		\end{table}
+	}
+\end{frame}
 
-% \begin{frame}[c]
-% 	\frametitle{Programovací jazyk Go}
-% 	\large{\begin{itemize}
-% 			\item Relatívne nový (2009) kompilovaný jazyk od spoločnosti Google
-% 			\item Podobný jazyku C
-% 			\item Zameraný na vytváranie rýchlych sieťových aplikácií
-% 		\end{itemize}}
+\begin{frame}[c]
+	\frametitle{Protokol sieťovej komunikácie}
+	\large{\begin{itemize}
+			\item Založený na protokole TCP, predvolený port 4040
+			\item Zabezpečený len post kvantovou kryptografiou
+			\item Šifrovanie a integrita zaistená pomcou AES-256-GCM
+			\item Algoritmy pre výmna klúča a digitálny podpis sú modulárne
+			\item Používa fixnú velkosť hlavičky ktorá ma iba 3\,B
+		\end{itemize}}
+	\begin{figure}
+		\includegraphics[width=.8\textwidth]{presentation_pictures/header_sk.pdf}
+	\end{figure}
+\end{frame}
 
-% 	\begin{figure}[htbp]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{pictures/compiler_sk.pdf}
-% 	\end{figure}
-% \end{frame}
+\begin{frame}[c]
+	\frametitle{Protokol sieťovej komunikácie}
+	\large{\begin{itemize}
+			\item Typ určuje štruktúru správy, existujú 4 typy správ
+			      \begin{itemize}
+				      \large{\item \texttt{ClientInitT}}
+				            \large{\item \texttt{ServerInitT}}
+				            \large{\item \texttt{ContentT}}
+				            \large{\item \texttt{ErrorT}}
+			      \end{itemize}
+			\item Existuje podpora pre dalších 251 typov
+		\end{itemize}}
+\end{frame}
 
-% \begin{frame}[c]
+\begin{frame}[c]
+	\frametitle{Protokol sieťovej komunikácie}
+	\begin{figure}
+		\includegraphics[width=.8\textwidth]{presentation_pictures/comm.pdf}
+	\end{figure}
+\end{frame}
 
-% 	\frametitle{Kyber a Dilithium}
-% 	\large{
-% 		\begin{itemize}
-% 			\item Post kvantové algoritmy založené na mriežkach
-% 			\item Zvolené v treťom kole NIST štandardizácie (Júl 2022)
-% 			\item 3 módy bezpečnosti
-% 			\item Formálny dôkaz o bezpečnosti problému LWE
-% 		\end{itemize}
-% 		\vspace{3ex}
-% 		\begin{columns}[T]
-% 			\begin{column}{0.5\textwidth}
-% 				CRYSTALS-Kyber
-% 				\begin{itemize}
-% 					\item Výmena kľúčov
-% 					\item Najrýchlejší algoritmus
-% 				\end{itemize}
-% 			\end{column}
-% 			\begin{column}{0.5\textwidth}
-% 				CRYSTALS-Dilithium
-% 				\begin{itemize}
-% 					\item Digitálny podpis
-% 					\item Najmenší verejný kľúč
-% 				\end{itemize}
-% 			\end{column}
-% 		\end{columns}
-% 	}
-% \end{frame}
+\begin{frame}[c]
+	\frametitle{Protokol sieťovej komunikácie}
+	\large{\begin{itemize}
+			\item Klient pošle svôj verejný klúč a podpíše správu
+			\item Server overí podpis, zašifruje súkromný klúč a podpíše správu
+			\item Klient overý podpis, dešifruje súkromný klúč
+			\item Začne šifrovaná komunikácia pomocou súkromného klúča
+		\end{itemize}
+	}
+\end{frame}
 
-% \begin{frame}[c]
-% 	\frametitle{Proces implementácie algoritmu Kyber}
-% 	\large{
-% 		\begin{itemize}
-% 			\item Implementácia vychádza z oficiálnej špecifikácie
-% 			\item NTT implementácia
-% 			\item Implementácia pomocných funkcií
-% 			\item Zostavenie algoritmu z častí
-% 			\item Implementácia transformácie polynómov na bajty
-% 		\end{itemize}
-% 	}
-% \end{frame}
+\begin{frame}[c]
+	\frametitle{Modularita algoritmov}
+	\large{\begin{itemize}
+			\item Algoritmy sa volia pomocou konfiguračných súborov
+			\item Konfiguračné súbory naďalej obsahujú verejný a súkromný klúč
+			\item Algoritmy sa musia rovnať pri vzájomnej komunikácií
+			\item Možno dodať ďalšie algoritmy z minimálnou zmenou v kóde
+		\end{itemize}}
+\end{frame}
 
-% \begin{frame}[c]
-% 	\frametitle{Všeobecná násobenie v NTT tvare}
-% 	\large{
-% 		Pre polynómy $f$ a $g$
-% 		\begin{align*}
-% 			f & = f_0 + f_1x + f_2x^2 + \dots + f_{254}x^{254} + f_{255}x^{255}, \\
-% 			g & = g_0 + g_1x + g_2x^2 + \dots + g_{254}x^{254} + g_{255}x^{255},
-% 		\end{align*}
-% 		je násobenie pre $\hat{h}=\hat{f}*\hat{g}$ v tvare NTT
-% 		\begin{align*}
-% 			\hat{h} & = \hat{f}_0\hat{g}_0 + \hat{f}_1\hat{g}_1x + \hat{f}_2\hat{g}_2x^2 + \dots + \hat{f}_{254}\hat{g}_{254}x^{254} + \hat{f}_{255}\hat{g}_{255}x^{255}.
-% 		\end{align*}
-% 	}
-% \end{frame}
+\begin{frame}[c]
+	% bez nadpisu snímku
+	\frametitle{\mbox{ }}
+	\begin{center}
+		{\Huge Ukážka aplikácie v TUI}
+	\end{center}
+\end{frame}
 
-% \begin{frame}[c]
-% 	\frametitle{Proces implementácie algoritmu Dilithium}
-% 	\large{
-% 		\begin{itemize}
-% 			\item Implementácia vychádza z oficiálnej špecifikácie
-% 			\item Využitie NTT z Kyber implementácie s malou úpravou
-% 			\item Implementácia pomocných funkcií
-% 			\item Zostavenie algoritmu z častí
-% 			\item Zložitejšia implementácia transformácie polynómov na bajty
-% 		\end{itemize}
-% 	}
-% \end{frame}
+\begin{frame}[c]
+	\frametitle{Chyba v konfigurácií}
+	\begin{figure}
+		\includegraphics[width=.9\textwidth]{presentation_pictures/comm_err.pdf}
+	\end{figure}
+\end{frame}
 
-% \begin{frame}[c]
-% 	\frametitle{Transformácia na bajty}
-% 	\begin{figure}[htbp]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{pictures/bit_packing.pdf}
-% 	\end{figure}
-% \end{frame}
+\begin{frame}[c]
+	\frametitle{Chyba v konfigurácií}
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=\textwidth]{presentation_pictures/client_err.pdf}
+	\end{figure}
+\end{frame}
 
-
-% \begin{frame}[c]
-% 	\frametitle{Výsledky implementácie}
-% 	Implementácia využíva jedinú externú knižnicu pre Hash funkcie
-% 	\begin{table}[htbp]
-% 		\centering
-% 		\input{tables/kyber_performance_sk}
-% 		\caption{Kyber}
-% 	\end{table}
-% 	\begin{table}[htbp]
-% 		\centering
-% 		\input{tables/dil_performance_sk}
-% 		\caption{Dilithium}
-% 	\end{table}
-% \end{frame}
-
-% % \begin{frame}[c]
-% % 	\frametitle{Navádzajúca post kvantová komunikácia}
-% % 	\begin{figure}[htbp]
-% % 		\centering
-% % 		\includegraphics[width=0.7\textwidth]{pictures/future.pdf}
-% % 	\end{figure}
-% % \end{frame}
-
-% \begin{frame}[c]
-% 	\frametitle{Záver}
-% 	\large{
-% 		Dosiahnuté ciele
-% 		\begin{itemize}
-% 			\item Implementácia algoritmov pre výmenu kľúčov, šifrovanie a digitálny podpis
-% 		\end{itemize}
-% 		Ciele v nasledujúcej práci
-% 		\begin{itemize}
-% 			\item Vylepšenie výsledkov implementácie Kyber a Dilithium
-% 			\item Implementácia všetkých bezpečnostných úrovní
-% 			\item Implementovanie post kvantovej komunikácie
-% 			\item Rozsiahlejšie výkonové testovanie implementácií
-% 		\end{itemize}
-% 	}
-
-% \end{frame}
+\begin{frame}[c]
+	\frametitle{Ďalšie vlastnosti aplikácie}
+	\large{\begin{itemize}
+			\item Program informuje uživatela o dalších informáciach pomocou log správ
+			\item Ukladanie log správ do súboru počas TUI
+			\item Integrácia z UNIX textovým rozhraním (presmerovanie \texttt{stdout}, \texttt{stdin})
+			\item Ochrana proti útokom s opakovaním správ pomocou cookie
+			\item Integrácia analýzi vo wiresharku pomocou \texttt{lua} skriptu
+			\item Podpora Windows aj Unix systémoch
+		\end{itemize}}
+\end{frame}
 
 % podekovani
 \begin{frame}[c]

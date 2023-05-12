@@ -6,7 +6,7 @@
   a4paper,    				% Formát papíru je A4
   oneside,      			% Jednostranný tisk
 	%twoside,      			% Dvoustranný tisk (kapitoly a další důležité části tedy začínají na lichých stranách)
-	unicode,						% Záložky a metainformace ve výsledném  PDF budou v kódování unicode
+	%unicode,						% Záložky a metainformace ve výsledném  PDF budou v kódování unicode
 ]{report}				    	% Dokument třídy 'zpráva', vhodná pro sazbu závěrečných prací s kapitolami
 
 \usepackage[utf8]		  %	Kódování zdrojových souborů je UTF-8
@@ -152,9 +152,9 @@
 %%% NEBO vytvoření desek z balíčku
 %%\makecover
 %%%
-%\oddpage % při dvojstranném tisku přidá prázdnou stránku
+\oddpage % při dvojstranném tisku přidá prázdnou stránku
 %% kazdopádně ale:
-%\setcounter{page}{1} %resetovaní čítače stránek -- desky do číslování nezahrnujeme
+\setcounter{page}{1} %resetovaní čítače stránek -- desky do číslování nezahrnujeme
 
 %% Vložení titulního listu
 \includepdf[pages=1]%    buďto generovaného informačním systémem
