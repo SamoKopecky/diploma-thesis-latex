@@ -89,7 +89,7 @@
 	\frametitle{Ciele práce}
 	\large{\begin{itemize}
 			\item Optimalizácia post kvantových algoritmov
-			\item Protokol na výmenu dát z zabepečeným post kvantovou kryptografiou
+			\item Protokol na výmenu dát zabepečeným post kvantovou kryptografiou
 			\item Systém modularity kryptografických algoritmov
 			\item Textové terminálové rozhranie
 			\item Grafické terminálové rozhranie -- TUI
@@ -122,7 +122,7 @@
 	\frametitle{Výsledky implementácie}
 	\large{
 		\begin{itemize}
-			\item Testované na AMD 3600 s frekvenciou jadra 3.6\,Ghz
+			\item Testované na procesore AMD 3600 s frekvenciou jadra 3.6\,Ghz
 		\end{itemize}
 	}
 	\normalsize{
@@ -242,9 +242,29 @@
 % otázky oponenta
 \frame{
 	\frametitle{Otázky oponenta}
-	\emph{Otázka 1}\\[2ex]
+	\emph{Jaké délky klíčů a podpisu jsou typické u variant dig. podpisu Falcon?}\\[2ex]
 	%
-	Odpoveď 1
+	Odporúča sa používať Falcon 1024, rovnakú bezpečnostú úroveň má aj Dilithium 5.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|l|r|r|r|}
+
+			\hline
+			Meno        & Verejný klúč [B] & Súkromný klúč [B] & Podpis [B] \\
+			\hline
+			Dilithium 5 & 2 592            & 4 864            & 4 595      \\
+			Falcon 1024 & 1 793            & 2 305            & 1 280      \\
+			\hline
+		\end{tabular}
+	\end{table}
+}
+
+\frame{
+	\frametitle{Otázky oponenta}
+	\emph{Jak jsou zabezpečeny zprávy ``Error message'' proti zneužití? Např. proti nelegitimnímu zaslání od útočníka směrem ke klientovi.}\\[2ex]
+	%
+	Správa ``Error message'' není zabezpečená proti zneužití.	Môže byť vložená útočníkom do spojenia po získaní TCP seqvenčného čísla. Vložením správy môže útočník ukončiť spojenie predčasne.
 }
 
 \end{document}
