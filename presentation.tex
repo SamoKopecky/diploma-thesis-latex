@@ -130,7 +130,6 @@
 	\normalsize{
 		\centering{\include{tables/algs_sum_sk.tex}}
 	}
-
 \end{frame}
 
 \begin{frame}[c]
@@ -138,9 +137,9 @@
 	\large{\begin{itemize}
 			\item Založený na protokole TCP, predvolený port 4040
 			\item Zabezpečený len post kvantovou kryptografiou
-			\item Dôveryhodnosť a integrita zaistená pomocou šifry AES-256-GCM
+			\item Dôveryhodnosť a integrita zaistená šifrou AES-256-GCM
 			\item Algoritmy pre výmena kľúča a digitálny podpis sú modulárne
-			\item Používa fixnú veľkosť hlavičky ktorá ma iba 3\,B
+			\item Používa fixnú veľkosť hlavičky ktorá má 3\,B
 		\end{itemize}}
 	\begin{figure}
 		\includegraphics[width=.8\textwidth]{presentation_pictures/header_sk.pdf}
@@ -198,6 +197,16 @@
 
 
 \begin{frame}[c]
+	\frametitle{Modularita algoritmov}
+	\large{\begin{itemize}
+			\item Algoritmy sa volia pomocou konfiguračných súborov
+			\item Konfiguračné súbory naďalej obsahujú verejný a súkromný klúč
+			\item Algoritmy sa musia rovnať pri vzájomnej komunikácií
+			\item Možno dodať ďalšie algoritmy z minimálnou zmenou v kóde
+		\end{itemize}}
+\end{frame}
+
+\begin{frame}[c]
 	\frametitle{Chyba v konfigurácií}
 	\begin{figure}
 		\includegraphics[width=\textwidth]{presentation_pictures/comm_err.pdf}
@@ -212,15 +221,7 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}[c]
-	\frametitle{Modularita algoritmov}
-	\large{\begin{itemize}
-			\item Algoritmy sa volia pomocou konfiguračných súborov
-			\item Konfiguračné súbory naďalej obsahujú verejný a súkromný klúč
-			\item Algoritmy sa musia rovnať pri vzájomnej komunikácií
-			\item Možno dodať ďalšie algoritmy z minimálnou zmenou v kóde
-		\end{itemize}}
-\end{frame}
+
 
 \begin{frame}[c]
 	\frametitle{Ďalšie vlastnosti aplikácie}
