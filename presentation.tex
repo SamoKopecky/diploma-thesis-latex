@@ -89,7 +89,7 @@
 	\frametitle{Ciele práce}
 	\large{\begin{itemize}
 			\item Optimalizácia post kvantových algoritmov
-			\item Protokol na výmenu dát zabepečeným post kvantovou kryptografiou
+			\item Protokol na výmenu dát zabezpečeným post kvantovou kryptografiou
 			\item Systém modularity kryptografických algoritmov
 			\item Textové terminálové rozhranie
 			\item Grafické terminálové rozhranie -- TUI
@@ -97,40 +97,40 @@
 	}
 \end{frame}
 
-\begin{frame}[c]
-	\frametitle{Post kvantové algoritmy}
-	\begin{columns}[T]
-		\begin{column}{0.8\textwidth}
-			\large{\begin{itemize}
-					\item Algoritmus výmenu tajného klúča -- Kyber
-					\item Algoritmus digitálneho podpisu -- Dilithium
-					\item NIST štandardrizované algoritmy
-					\item Implementácia v jazyku Go (Golang)
-					\item Výsledky implementácie porovnávané z kničnicou Circl od Cloudflare
-				\end{itemize}
-			}
-		\end{column}
-		\begin{column}{0.2\textwidth}
-			\begin{figure}
-				\includegraphics[width=\linewidth]{presentation_pictures/Golang_Logo.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
+% \begin{frame}[c]
+% 	\frametitle{Post kvantové algoritmy}
+% 	\begin{columns}[T]
+% 		\begin{column}{0.8\textwidth}
+% 			\large{\begin{itemize}
+% 					\item Algoritmus výmenu tajného klúča -- Kyber
+% 					\item Algoritmus digitálneho podpisu -- Dilithium
+% 					\item NIST štandardrizované algoritmy
+
+% 					\item Výsledky implementácie porovnávané z kničnicou Circl od Cloudflare
+% 				\end{itemize}
+% 			}
+% 		\end{column}
+% 		\begin{column}{0.2\textwidth}
+% 			\begin{figure}
+% 				\includegraphics[width=\linewidth]{presentation_pictures/Golang_Logo.png}
+% 			\end{figure}
+% 		\end{column}
+% 	\end{columns}
+% \end{frame}
 
 \begin{frame}[c]
 	\frametitle{Výsledky implementácie}
 	\large{
 		\begin{itemize}
-			\item Testované na procesore AMD 3600 s frekvenciou jadra 3.6\,Ghz
+			\item Implementácia v jazyku Go (Golang)
+			\item Porovnávané z knižnicou Circl od Cloudflare
+			\item Testované na procesore AMD s frekvenciou 3.6\,Ghz
 		\end{itemize}
 	}
 	\normalsize{
-		\begin{table}[h!]
-			\centering
-			\include{tables/algs_sum_sk.tex}
-		\end{table}
+		\centering{\include{tables/algs_sum_sk.tex}}
 	}
+
 \end{frame}
 
 \begin{frame}[c]
@@ -138,9 +138,9 @@
 	\large{\begin{itemize}
 			\item Založený na protokole TCP, predvolený port 4040
 			\item Zabezpečený len post kvantovou kryptografiou
-			\item Šifrovanie a integrita zaistená pomcou AES-256-GCM
-			\item Algoritmy pre výmna klúča a digitálny podpis sú modulárne
-			\item Používa fixnú velkosť hlavičky ktorá ma iba 3\,B
+			\item Dôveryhodnosť a integrita zaistená pomocou šifry AES-256-GCM
+			\item Algoritmy pre výmena kľúča a digitálny podpis sú modulárne
+			\item Používa fixnú veľkosť hlavičky ktorá ma iba 3\,B
 		\end{itemize}}
 	\begin{figure}
 		\includegraphics[width=.8\textwidth]{presentation_pictures/header_sk.pdf}
@@ -152,12 +152,13 @@
 	\large{\begin{itemize}
 			\item Typ určuje štruktúru správy, existujú 4 typy správ
 			      \begin{itemize}
-				      \large{\item \texttt{ClientInitT}}
-				            \large{\item \texttt{ServerInitT}}
-				            \large{\item \texttt{ContentT}}
-				            \large{\item \texttt{ErrorT}}
+				      \large{\item \texttt{ClientInitT}} -- verejný kľúč, typ algoritmov
+				            \large{\item \texttt{ServerInitT}} -- zašifrovaný zdielaný kľúč, typ algoritmov
+				            \large{\item \texttt{ContentT}} -- nonce (IV), zašifrované dáta
+				            \large{\item \texttt{ErrorT}} -- typ chyby
 			      \end{itemize}
-			\item Existuje podpora pre dalších 251 typov
+			\item Existuje podpora pre ďalších 251 typov
+			\item Správy \texttt{ClientInitT} a \texttt{ServerInitT} sú digitálne podpísané
 		\end{itemize}}
 \end{frame}
 
@@ -168,15 +169,47 @@
 	\end{figure}
 \end{frame}
 
+% \begin{frame}[c]
+% 	\frametitle{Protokol sieťovej komunikácie (popis)}
+% 	\large{\begin{itemize}
+% 			\item Klient pošle svôj verejný klúč a podpíše správu
+% 			\item Server overí podpis, zašifruje súkromný klúč a podpíše správu
+% 			\item Klient overý podpis, dešifruje súkromný klúč
+% 			\item Začne šifrovaná komunikácia pomocou súkromného klúča
+% 		\end{itemize}
+% 	}
+% \end{frame}
+
 \begin{frame}[c]
-	\frametitle{Protokol sieťovej komunikácie}
-	\large{\begin{itemize}
-			\item Klient pošle svôj verejný klúč a podpíše správu
-			\item Server overí podpis, zašifruje súkromný klúč a podpíše správu
-			\item Klient overý podpis, dešifruje súkromný klúč
-			\item Začne šifrovaná komunikácia pomocou súkromného klúča
-		\end{itemize}
-	}
+	% bez nadpisu snímku
+	\frametitle{\mbox{ }}
+	\begin{center}
+		{\Huge Ukážka aplikácie v TUI}
+	\end{center}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Bežný chod aplikácie}
+	% \begin{figure}
+	\centering{
+		\includegraphics[width=1.1\textwidth]{presentation_pictures/normal_comm.pdf}}
+	% \end{figure}
+\end{frame}
+
+
+\begin{frame}[c]
+	\frametitle{Chyba v konfigurácií}
+	\begin{figure}
+		\includegraphics[width=\textwidth]{presentation_pictures/comm_err.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Chyba v konfigurácií}
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=\textwidth]{presentation_pictures/client_err.pdf}
+	\end{figure}
 \end{frame}
 
 \begin{frame}[c]
@@ -190,45 +223,26 @@
 \end{frame}
 
 \begin{frame}[c]
-	% bez nadpisu snímku
-	\frametitle{\mbox{ }}
-	\begin{center}
-		{\Huge Ukážka aplikácie v TUI}
-	\end{center}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Bežný chod aplikácie}
-	\begin{figure}
-		\includegraphics[width=\textwidth]{presentation_pictures/normal_comm.pdf}
-	\end{figure}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Chyba v konfigurácií}
-	\begin{figure}
-		\includegraphics[width=.9\textwidth]{presentation_pictures/comm_err.pdf}
-	\end{figure}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Chyba v konfigurácií}
-	\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=\textwidth]{presentation_pictures/client_err.pdf}
-	\end{figure}
-\end{frame}
-
-\begin{frame}[c]
 	\frametitle{Ďalšie vlastnosti aplikácie}
 	\large{\begin{itemize}
 			\item Ukladanie log správ do súboru počas TUI
 			\item Integrácia z UNIX textovým rozhraním (presmerovanie \texttt{stdout}, \texttt{stdin})
 			\item Ochrana proti útokom s opakovaním správ pomocou cookie
-			\item Integrácia analýzi sieťového prenosu vo wiresharku pomocou \texttt{lua} skriptu
+			\item Integrácia analýzy sieťového prenosu vo Wiresharku pomocou \texttt{lua} skriptu
 			\item Podpora Windows aj UNIX systémoch
 		\end{itemize}}
 \end{frame}
+
+\begin{frame}[c]
+	\frametitle{Záver}
+	\large{\begin{itemize}
+			\item Implementované algoritmy sú priemerne 4 krát pomalšie oproti knižnici Circl
+			\item Aplikácia dokáže posielať zabezpečené dáta medzi dvoma užívateľmi
+			\item Je možné jednoducho integrovať ďalšie algoritmy vďaka systému modularity
+			\item Aplikácia poskytuje terminálové aj textové rozhranie
+		\end{itemize}}
+\end{frame}
+
 
 % podekovani
 \begin{frame}[c]
@@ -244,17 +258,17 @@
 	\frametitle{Otázky oponenta}
 	\emph{Jaké délky klíčů a podpisu jsou typické u variant dig. podpisu Falcon?}\\[2ex]
 	%
-	Odporúča sa používať Falcon 1024, rovnakú bezpečnostú úroveň má aj Dilithium 5.
+	Odporúča sa používať Falcon 1024, rovnakú bezpečnostnú úroveň má aj Dilithium 5.
 
 	\begin{table}[h!]
 		\centering
 		\begin{tabular}{|l|r|r|r|}
 
 			\hline
-			Meno        & Verejný klúč [B] & Súkromný klúč [B] & Podpis [B] \\
+			Algoritmus  & Verejný klúč [B] & Súkromný klúč [B] & Podpis [B] \\
 			\hline
-			Dilithium 5 & 2 592            & 4 864            & 4 595      \\
-			Falcon 1024 & 1 793            & 2 305            & 1 280      \\
+			Dilithium 5 & 2 592            & 4 864             & 4 595      \\
+			Falcon 1024 & 1 793            & 2 305             & 1 280      \\
 			\hline
 		\end{tabular}
 	\end{table}
@@ -264,7 +278,7 @@
 	\frametitle{Otázky oponenta}
 	\emph{Jak jsou zabezpečeny zprávy ``Error message'' proti zneužití? Např. proti nelegitimnímu zaslání od útočníka směrem ke klientovi.}\\[2ex]
 	%
-	Správa ``Error message'' není zabezpečená proti zneužití.	Môže byť vložená útočníkom do spojenia po získaní TCP seqvenčného čísla. Vložením správy môže útočník ukončiť spojenie predčasne.
+	Správa ``Error message'' není zabezpečená proti zneužití.	Môže byť vložená útočníkom do spojenia po získaní TCP sekvenčného čísla. Vložením správy môže útočník ukončiť spojenie predčasne.
 }
 
 \end{document}
